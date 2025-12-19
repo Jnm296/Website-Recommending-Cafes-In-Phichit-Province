@@ -129,7 +129,7 @@
     </div>
 
     <script>
-  const firebaseConfig = {
+    const firebaseConfig = {
     apiKey: "AIzaSyOt4kRBSacD2LPwmyFpcZ4FNHJpCT-p0wc",
     authDomain: "phichit-cafe.firebaseapp.com",
     databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
@@ -144,10 +144,23 @@
   const database = firebase.database(); // ประกาศตัวนี้ไว้บนสุดเพื่อให้ทุกฟังก์ชันเห็น
 
   // 2. ฟังก์ชันต่างๆ ของคุณ (Copy มาวางต่อได้เลย)
-  function openLogin() { ... }
-  function closeLogin() { ... }
-  
-  function handleGoogleResponse(response) {
+  function openLogin() {
+  document.getElementById('loginModal').style.display = 'flex';
+        }
+
+   function closeLogin() {
+    document.getElementById('loginModal').style.display = 'none';
+        }
+   function handleLogin(e) {
+            e.preventDefault();
+            // จำลองการล็อกอินสำเร็จ
+            closeLogin();
+            document.getElementById('mainAuthBtn').style.display = 'none';
+            document.getElementById('userAvatar').style.display = 'block';
+            alert('ยินดีต้อนรับ! ล็อกอินสำเร็จแล้วค่ะ');
+        }
+
+      function handleGoogleResponse(response) {
       const responsePayload = decodeJwtResponse(response.credential);
       
       // ตอนนี้ฟังก์ชันนี้จะเห็นตัวแปร database ที่ประกาศไว้ข้างบนแล้วค่ะ
@@ -161,33 +174,14 @@
       }).catch((error) => {
           console.error("บันทึกไม่สำเร็จเพราะ: ", error);
       });
-      </script>
 
-    <script>
-        function openLogin() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        function closeLogin() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            // จำลองการล็อกอินสำเร็จ
-            closeLogin();
-            document.getElementById('mainAuthBtn').style.display = 'none';
-            document.getElementById('userAvatar').style.display = 'block';
-            alert('ยินดีต้อนรับ! ล็อกอินสำเร็จแล้วค่ะ');
-        }
-
-        // คลิกพื้นที่ว่างข้างนอก Pop-up เพื่อปิด
+      // คลิกพื้นที่ว่างข้างนอก Pop-up เพื่อปิด
         window.onclick = function(event) {
             if (event.target == document.getElementById('loginModal')) {
                 closeLogin();
             }
         }
-
+      
         window.onload = function () {
     google.accounts.id.initialize({
         // ใส่ Client ID ของคุณที่ได้จาก Google Cloud
@@ -247,6 +241,7 @@ function decodeJwtResponse(token) {
 </html>
 
     
+
 
 
 
