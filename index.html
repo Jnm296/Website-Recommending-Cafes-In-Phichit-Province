@@ -197,30 +197,30 @@
     );
 }
 
-// ฟังก์ชันรับข้อมูลเมื่อล็อกอิน Google สำเร็จ
-function handleGoogleResponse(response) {
-    // ถอดรหัสข้อมูลผู้ใช้จาก Google (JWT Token)
+// เพิ่ม async เข้าไปข้างหน้าเพื่อให้ใช้ await บันทึกข้อมูลได้
+async function handleGoogleResponse(response) {
+    // 1. ถอดรหัสข้อมูลผู้ใช้จาก Google
     const responsePayload = decodeJwtResponse(response.credential);
 
-    database.ref('users/' + responsePayload.sub).set({
-        name: responsePayload.name,
-        email: responsePayload.email,
-        picture: responsePayload.picture,
-        last_login: new Date().toLocaleString()
-    });
+    // 2. บันทึกลง Firestore (ใช้ db และ setDoc ที่เรา import มา)
+    try {
+        await setDoc(doc(db, "users", responsePayload.sub), {
+            name: responsePayload.name,
+            email: responsePayload.email,
+            photo: responsePayload.picture,
+            lastLogin: new Date()
+        }, { merge: true });
+        console.log("บันทึกข้อมูลลง Firestore สำเร็จ!");
+    } catch (e) {
+        console.error("เกิดข้อผิดพลาดในการบันทึกข้อมูล: ", e);
+    }
 
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Email: ' + responsePayload.email);
-
-    // ปิดหน้าต่างล็อกอิน
+    // 3. ส่วนการแสดงผลบนหน้าเว็บเหมือนเดิม
     closeLogin();
-
-    // เปลี่ยนปุ่ม "เข้าสู่ระบบ" เป็น "รูปโปรไฟล์จริง"
     document.getElementById('mainAuthBtn').style.display = 'none';
     const userAvatar = document.getElementById('userAvatar');
     userAvatar.style.display = 'block';
-    userAvatar.querySelector('img').src = responsePayload.picture; // ใช้รูปจาก Google
+    userAvatar.querySelector('img').src = responsePayload.picture;
 
     alert('ยินดีต้อนรับคุณ ' + responsePayload.name + ' เข้าสู่ Phichit Cafe ค่ะ!');
 }
@@ -249,12 +249,13 @@ await setDoc(doc(db, "users", user.uid), {
 }, { merge: true }); // merge: true คือถ้ามีข้อมูลเดิมอยู่แล้วให้แค่อัปเดต ไม่ต้องลบของเก่า
 
         window.openLogin = openLogin;
-window.closeLogin = closeLogin;
-window.handleLogin = handleLogin;
+  window.closeLogin = closeLogin;
+  window.handleLogin = handleLogin;
         </script>
 </body>
 </html>
 
     
+
 
 
