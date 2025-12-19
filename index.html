@@ -155,9 +155,7 @@
     });
   }
   getCafes();
-</script>
-    
-    <script>
+
         function openLogin() {
             document.getElementById('loginModal').style.display = 'flex';
         }
@@ -224,6 +222,7 @@ function handleGoogleResponse(response) {
     alert('ยินดีต้อนรับคุณ ' + responsePayload.name + ' เข้าสู่ Phichit Cafe ค่ะ!');
 }
 
+        
 // ฟังก์ชันสำหรับแกะข้อมูล Token (ใช้แบบง่ายๆ)
 function decodeJwtResponse(token) {
     let base64Url = token.split('.')[1];
@@ -233,9 +232,6 @@ function decodeJwtResponse(token) {
     }).join(''));
     return JSON.parse(jsonPayload);
 }
-    </script>
-
-    <script>
     import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // หลังจากที่ user ล็อกอินสำเร็จแล้ว
@@ -487,6 +483,7 @@ await setDoc(doc(db, "users", user.uid), {
 </html>
 
     
+
 
 
 
