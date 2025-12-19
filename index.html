@@ -133,21 +133,20 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         
         const firebaseConfig = {
         apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
         authDomain: "phichit-cafe.firebaseapp.com",
         databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
-      projectId: "phichit-cafe",
-      storageBucket: "phichit-cafe.firebasestorage.app",
-      messagingSenderId: "825175930096",
-      appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
-      measurementId: "G-SNG4GZ50C0"
-};
+        projectId: "phichit-cafe",
+        storageBucket: "phichit-cafe.firebasestorage.app",
+        messagingSenderId: "825175930096",
+        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
+        measurementId: "G-SNG4GZ50C0" };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
   // ฟังก์ชันดึงข้อมูลมาโชว์
   async function getCafes() {
@@ -241,11 +240,5 @@ window.openLogin = openLogin;
 window.closeLogin = closeLogin;
 window.handleLogin = handleLogin;
         </script>
-</body>
+    </body>
 </html>
-
-    
-
-
-
-
