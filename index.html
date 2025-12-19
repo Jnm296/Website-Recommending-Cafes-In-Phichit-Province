@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เว็บไซต์แนะนำคาเฟ่ในพิจิตร</title>
+    <title>หน้าแรก - Cafe Phichit</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -123,44 +124,11 @@
 
             <div class="social-login-mini">
                 <div id="googleBtn" style="display: flex; justify-content: center; margin-top: 10px;"></div>
+                <div class="social-icon" style="color:#1877f2">f</div>
+                <div class="social-icon" style="color:#00b900">L</div>
             </div>
         </div>
     </div>
-
-    <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyOt4kRBSacD2LPwmyFpcZ4FNHJpCT-p0wc",
-    authDomain: "phichit-cafe.firebaseapp.com",
-    databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
-    projectId: "phichit-cafe",
-    storageBucket: "phichit-cafe.firebasestorage.app",
-    messagingSenderId: "825175938096",
-    appId: "1:825175938096:web:32336e0ebc1cdf3c33e36",
-    measurementId: "G-SN94GZ50C0"
-  };
-  
-  firebase.initializeApp(firebaseConfig);
-  const database = firebase.database(); // ประกาศตัวนี้ไว้บนสุดเพื่อให้ทุกฟังก์ชันเห็น
-
-  // 2. ฟังก์ชันต่างๆ ของคุณ (Copy มาวางต่อได้เลย)
-  function openLogin() { ... }
-  function closeLogin() { ... }
-  
-  function handleGoogleResponse(response) {
-      const responsePayload = decodeJwtResponse(response.credential);
-      
-      // ตอนนี้ฟังก์ชันนี้จะเห็นตัวแปร database ที่ประกาศไว้ข้างบนแล้วค่ะ
-      database.ref('users/' + responsePayload.sub).set({
-          name: responsePayload.name,
-          email: responsePayload.email,
-          picture: responsePayload.picture,
-          last_login: new Date().toLocaleString()
-      }).then(() => {
-          console.log("บันทึกสำเร็จ!");
-      }).catch((error) => {
-          console.error("บันทึกไม่สำเร็จเพราะ: ", error);
-      });
-      </script>
 
     <script>
         function openLogin() {
@@ -238,17 +206,25 @@ function decodeJwtResponse(token) {
     }).join(''));
     return JSON.parse(jsonPayload);
 }
-
-
-</script>
+    </script>
+<script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyOt4kRBSacD2LPwmyFpcZ4FNHJpCT-p0wc",
+  authDomain: "phichit-cafe.firebaseapp.com",
+  databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
+  projectId: "phichit-cafe",
+  storageBucket: "phichit-cafe.firebasestorage.app",
+  messagingSenderId: "825175938096",
+  appId: "1:825175938096:web:32336e0ebc1cdf3c33e36",
+  measurementId: "G-SN94GZ50C0"
+};
+    firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+    </script>
 
 </body>
 </html>
 
     
-
-
-
-
 
 
