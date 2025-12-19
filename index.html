@@ -143,13 +143,8 @@
   const database = firebase.database(); // ประกาศตัวนี้ไว้บนสุดเพื่อให้ทุกฟังก์ชันเห็น
 
   // 2. ฟังก์ชันต่างๆ ของคุณ (Copy มาวางต่อได้เลย)
-  function openLogin() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        function closeLogin() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
+  function openLogin() { ... }
+  function closeLogin() { ... }
   
   function handleGoogleResponse(response) {
       const responsePayload = decodeJwtResponse(response.credential);
@@ -168,7 +163,13 @@
       </script>
 
     <script>
-        
+        function openLogin() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
 
         function handleLogin(e) {
             e.preventDefault();
