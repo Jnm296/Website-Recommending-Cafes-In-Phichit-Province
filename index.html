@@ -198,8 +198,23 @@ function decodeJwtResponse(token) {
     return JSON.parse(jsonPayload);
 }
     </script>
+<script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyOt4kRBSacD2LPwmyFpcZ4FNHJpCT-p0wc",
+  authDomain: "phichit-cafe.firebaseapp.com",
+  databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
+  projectId: "phichit-cafe",
+  storageBucket: "phichit-cafe.firebasestorage.app",
+  messagingSenderId: "825175938096",
+  appId: "1:825175938096:web:32336e0ebc1cdf3c33e36",
+  measurementId: "G-SN94GZ50C0"
+};
+    firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+    </script>
 
 </body>
 </html>
 
     
+
