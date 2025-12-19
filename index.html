@@ -129,18 +129,29 @@
     </div>
 
     <script>
-    const firebaseConfig = {
-  apiKey: "AIzaSyOt4kRBSacD2LPwmyFpcZ4FNHJpCT-p0wc",
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
   authDomain: "phichit-cafe.firebaseapp.com",
   databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
   projectId: "phichit-cafe",
   storageBucket: "phichit-cafe.firebasestorage.app",
-  messagingSenderId: "825175938096",
-  appId: "1:825175938096:web:32336e0ebc1cdf3c33e36",
-  measurementId: "G-SN94GZ50C0"
+  messagingSenderId: "825175930096",
+  appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
+  measurementId: "G-SNG4GZ50C0"
 };
-    firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+    
     </script>
     
     <script>
@@ -225,4 +236,5 @@ function decodeJwtResponse(token) {
 </html>
 
     
+
 
