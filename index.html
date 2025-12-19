@@ -132,15 +132,18 @@
     </div>
 
     <script type="module">
-  const firebaseConfig = {
-  apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
-  authDomain: "phichit-cafe.firebaseapp.com",
-  databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
-  projectId: "phichit-cafe",
-  storageBucket: "phichit-cafe.firebasestorage.app",
-  messagingSenderId: "825175930096",
-  appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
-  measurementId: "G-SNG4GZ50C0"
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        
+        const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
+        databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
+      projectId: "phichit-cafe",
+      storageBucket: "phichit-cafe.firebasestorage.app",
+      messagingSenderId: "825175930096",
+      appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
+      measurementId: "G-SNG4GZ50C0"
 };
 
   const app = initializeApp(firebaseConfig);
@@ -245,249 +248,13 @@ await setDoc(doc(db, "users", user.uid), {
   lastLogin: new Date()
 }, { merge: true }); // merge: true คือถ้ามีข้อมูลเดิมอยู่แล้วให้แค่อัปเดต ไม่ต้องลบของเก่า
 
+        window.openLogin = openLogin;
+window.closeLogin = closeLogin;
+window.handleLogin = handleLogin;
         </script>
 </body>
 </html>
 
     
-
-
-
-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก - Cafe Phichit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">Cafe Phichit</div>
-        <ul class="nav-links">
-            <li><a href="https://jnm296.github.io/Website-Recommending-Cafes-In-Phichit-Province" target="_blank" rel="noopener noreferrer">หน้าแรก</a></li>
-            <li><a href="#">รวมคาเฟ่</a></li>
-            <li><a href="#">จัดทริป</a></li>
-            <li><a href="#">รีวิว</a></li>
-            <li><a href="#">ติดต่อเรา</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-text">
-            <h1>ค้นพบเสน่ห์<br>คาเฟ่ในพิจิตร</h1>
-            <p>สัมผัสบรรยากาศ Minimal และรสชาติกาแฟที่อบอุ่น<br>รวบรวม 12 คาเฟ่ยอดฮิตที่คุณต้องไปเช็คอิน</p>
-            <a href="#" class="btn-main">เริ่มสำรวจเลย</a>
-        </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/500x600" alt="Cafe in Phichit">
-        </div>
-    </header>
-
-    <section class="features">
-        <div class="feature-card">
-            <i>☕</i>
-            <h3>12 คาเฟ่แนะนำ</h3>
-            <p>คัดมาแล้วว่าดี ทั้งรสชาติและมุมถ่ายรูปสวยๆ</p>
-        </div>
-        <div class="feature-card">
-            <i>🗺️</i>
-            <h3>จัดทริปง่ายๆ</h3>
-            <p>วางแผนเส้นทางเที่ยวพิจิตรได้ในวันเดียว</p>
-        </div>
-        <div class="feature-card">
-            <i>⭐</i>
-            <h3>รีวิวจากเพื่อนๆ</h3>
-            <p>อ่านประสบการณ์จริงจากเหล่า Cafe Hopping</p>
-        </div>
-    </section>
-        
-    <div class="container">
-        <h2 class="section-title">Editor's Pick: คาเฟ่แนะนำประจำเดือน</h2>
-
-        <div class="highlight-card">
-            <div class="highlight-img">
-                <img src="https://via.placeholder.com/600x800" alt="Cafe 1">
-            </div>
-            <div class="highlight-info">
-                <span class="tag">#Minimal #Cozy</span>
-                <h2>11:25 Hours Cafe</h2>
-                <p>ร้านกาแฟโทนขาว-เขียวสุดละมุน มีมุมซุ้มประตูโค้งที่ใครมาก็ต้องถ่ายรูป พร้อมเมนูเค้กโฮมเมดที่หน้าตาน่ารักและรสชาติกลมกล่อมมากค่ะ</p>
-                <a href="#" class="read-more">ไปดูรีวิวฉบับเต็ม →</a>
-            </div>
-        </div>
-
-        <div class="highlight-card">
-            <div class="highlight-img">
-                <img src="https://via.placeholder.com/600x800" alt="Cafe 2">
-            </div>
-            <div class="highlight-info">
-                <span class="tag">#Vintage #RiverSide</span>
-                <h2>Riverside Phichit</h2>
-                <p>คาเฟ่ริมน้ำรับลมเย็นๆ ตกแต่งสไตล์วินเทจ เหมาะกับการมานั่งชิลล์อ่านหนังสือหรือจิบกาแฟยามบ่าย บรรยากาศเงียบสงบเหมือนย้อนเวลากลับไปในอดีต</p>
-                <a href="#" class="read-more">ไปดูรีวิวฉบับเต็ม →</a>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-logo">CAFE PHICHIT</div>
-        <p>คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทางที่ครบที่สุด</p>
-        
-        <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Line</a>
-        </div>
-
-        <p style="font-size: 0.9rem; color: #888;">อยากให้เราไปรีวิวร้านไหน? <a href="#" style="color: var(--primary-pink);">ส่งข้อความหาเราได้เลย</a></p>
-        
-        <div class="copyright">
-            &copy; 2025 Cafe Phichit. Created with ❤️ for Cafe Lovers.
-        </div>
-    </footer>
-
-    <div class="floating-auth">
-        <button id="mainAuthBtn" class="btn-open-login" onclick="openLogin()">
-            <span>👤</span> เข้าสู่ระบบ
-        </button>
-        
-        <div id="userAvatar" class="user-profile-float" onclick="location.href='profile.html'">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi" alt="Avatar">
-        </div>
-    </div>
-
-    <div id="loginModal" class="login-overlay">
-        <div class="login-box">
-            <span class="close-btn" onclick="closeLogin()">&times;</span>
-            <h2>Welcome Back!</h2>
-            <p style="color:#888; font-size: 0.9rem; margin-top:-20px; margin-bottom: 25px;">ล็อกอินเพื่อบันทึกคาเฟ่โปรดของคุณ</p>
-            
-            <form onsubmit="handleLogin(event)">
-                <input type="email" placeholder="อีเมลของคุณ" required>
-                <input type="password" placeholder="รหัสผ่าน" required>
-                <button type="submit" class="btn-login-submit">เข้าสู่ระบบ</button>
-            </form>
-
-            <div style="margin: 20px 0; color: #ddd; font-size: 0.8rem;">หรือเชื่อมต่อด้วย</div>
-
-            <div class="social-login-mini">
-                <div id="googleBtn" style="display: flex; justify-content: center; margin-top: 10px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { 
-        getAuth, 
-        signInWithCredential, 
-        GoogleAuthProvider, 
-        onAuthStateChanged 
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { 
-        getFirestore, 
-        doc, 
-        setDoc, 
-        collection, 
-        getDocs 
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
-        authDomain: "phichit-cafe.firebaseapp.com",
-        projectId: "phichit-cafe",
-        storageBucket: "phichit-cafe.firebasestorage.app",
-        messagingSenderId: "825175930096",
-        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    // 1. ตรวจสอบสถานะการล็อกอิน (เมื่อหน้าเว็บโหลด)
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            updateUI(user);
-        } else {
-            // โหมดไม่ได้ล็อกอิน
-            document.getElementById('mainAuthBtn').style.display = 'block';
-            document.getElementById('userAvatar').style.display = 'none';
-        }
-    });
-
-    // 2. ฟังก์ชันจัดการเมื่อ Google ส่งข้อมูลกลับมา
-    window.handleGoogleResponse = async (response) => {
-        try {
-            // ส่ง Token ไปบอก Firebase ว่านี่คือการล็อกอินที่ถูกต้อง
-            const credential = GoogleAuthProvider.credential(response.credential);
-            const result = await signInWithCredential(auth, credential);
-            const user = result.user;
-
-            // บันทึกข้อมูลลง Firestore
-            await setDoc(doc(db, "users", user.uid), {
-                name: user.displayName,
-                email: user.email,
-                photo: user.photoURL,
-                lastLogin: new Date()
-            }, { merge: true });
-
-            closeLogin();
-            alert('ยินดีต้อนรับคุณ ' + user.displayName + ' ค่ะ!');
-        } catch (error) {
-            console.error("Login Error:", error);
-            alert("เกิดข้อผิดพลาดในการล็อกอินค่ะ");
-        }
-    };
-
-    function updateUI(user) {
-        document.getElementById('mainAuthBtn').style.display = 'none';
-        const userAvatar = document.getElementById('userAvatar');
-        userAvatar.style.display = 'block';
-        userAvatar.querySelector('img').src = user.photoURL;
-    }
-
-    // สร้างปุ่ม Google
-    window.onload = function () {
-        google.accounts.id.initialize({
-            client_id: "825175930096-4k5jq84g2p42dok27kk9v4v7035ns93n.apps.googleusercontent.com",
-            callback: window.handleGoogleResponse
-        });
-        google.accounts.id.renderButton(
-            document.getElementById("googleBtn"),
-            { theme: "outline", size: "large", width: "240" }
-        );
-    }
-</script>
-
-<script>
-    // ส่วนควบคุม UI ทั่วไป (ห้ามใส่ import ที่นี่)
-    function openLogin() {
-        document.getElementById('loginModal').style.display = 'flex';
-    }
-    function closeLogin() {
-        document.getElementById('loginModal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('loginModal')) {
-            closeLogin();
-        }
-    }
-</script>
-</body>
-</html>
-
-    
-
-
-
-
-
-
 
 
