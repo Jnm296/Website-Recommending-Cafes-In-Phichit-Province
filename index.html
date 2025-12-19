@@ -235,27 +235,17 @@ function decodeJwtResponse(token) {
     }).join(''));
     return JSON.parse(jsonPayload);
 }
-    import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// หลังจากที่ user ล็อกอินสำเร็จแล้ว
-const user = result.user; // ได้มาจาก signInWithPopup
-
-// บันทึกลง Collection ชื่อ 'users' โดยใช้ UID เป็นชื่อเอกสาร
-await setDoc(doc(db, "users", user.uid), {
-  name: user.displayName,
-  email: user.email,
-  photo: user.photoURL,
-  lastLogin: new Date()
-}, { merge: true }); // merge: true คือถ้ามีข้อมูลเดิมอยู่แล้วให้แค่อัปเดต ไม่ต้องลบของเก่า
-
-        window.openLogin = openLogin;
-  window.closeLogin = closeLogin;
-  window.handleLogin = handleLogin;
+    
+        window.handleGoogleResponse = handleGoogleResponse;
+window.openLogin = openLogin;
+window.closeLogin = closeLogin;
+window.handleLogin = handleLogin;
         </script>
 </body>
 </html>
 
     
+
 
 
 
