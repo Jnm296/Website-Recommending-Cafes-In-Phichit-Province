@@ -129,131 +129,109 @@
     </div>
 
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { 
+        getAuth, 
+        signInWithCredential, 
+        GoogleAuthProvider, 
+        onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { 
+        getFirestore, 
+        doc, 
+        setDoc, 
+        collection, 
+        getDocs 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-  apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
-  authDomain: "phichit-cafe.firebaseapp.com",
-  databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
-  projectId: "phichit-cafe",
-  storageBucket: "phichit-cafe.firebasestorage.app",
-  messagingSenderId: "825175930096",
-  appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
-  measurementId: "G-SNG4GZ50C0"
-};
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
+        projectId: "phichit-cafe",
+        storageBucket: "phichit-cafe.firebasestorage.app",
+        messagingSenderId: "825175930096",
+        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  // ฟังก์ชันดึงข้อมูลมาโชว์
-  async function getCafes() {
-    const querySnapshot = await getDocs(collection(db, "cafes"));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data().name); // ข้อมูลจะไปโชว์ใน Console ของเว็บค่ะ
-      alert("เจอร้าน: " + doc.data().name); // ลองให้มันเด้งเตือนดูว่าเชื่อมติดไหม
-    });
-  }
-  getCafes();
-</script>
-    
-    <script>
-        function openLogin() {
-            document.getElementById('loginModal').style.display = 'flex';
+    // 1. ตรวจสอบสถานะการล็อกอิน (เมื่อหน้าเว็บโหลด)
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            updateUI(user);
+        } else {
+            // โหมดไม่ได้ล็อกอิน
+            document.getElementById('mainAuthBtn').style.display = 'block';
+            document.getElementById('userAvatar').style.display = 'none';
         }
+    });
 
-        function closeLogin() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
+    // 2. ฟังก์ชันจัดการเมื่อ Google ส่งข้อมูลกลับมา
+    window.handleGoogleResponse = async (response) => {
+        try {
+            // ส่ง Token ไปบอก Firebase ว่านี่คือการล็อกอินที่ถูกต้อง
+            const credential = GoogleAuthProvider.credential(response.credential);
+            const result = await signInWithCredential(auth, credential);
+            const user = result.user;
 
-        function handleLogin(e) {
-            e.preventDefault();
-            // จำลองการล็อกอินสำเร็จ
+            // บันทึกข้อมูลลง Firestore
+            await setDoc(doc(db, "users", user.uid), {
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+                lastLogin: new Date()
+            }, { merge: true });
+
             closeLogin();
-            document.getElementById('mainAuthBtn').style.display = 'none';
-            document.getElementById('userAvatar').style.display = 'block';
-            alert('ยินดีต้อนรับ! ล็อกอินสำเร็จแล้วค่ะ');
+            alert('ยินดีต้อนรับคุณ ' + user.displayName + ' ค่ะ!');
+        } catch (error) {
+            console.error("Login Error:", error);
+            alert("เกิดข้อผิดพลาดในการล็อกอินค่ะ");
         }
+    };
 
-        // คลิกพื้นที่ว่างข้างนอก Pop-up เพื่อปิด
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('loginModal')) {
-                closeLogin();
-            }
+    function updateUI(user) {
+        document.getElementById('mainAuthBtn').style.display = 'none';
+        const userAvatar = document.getElementById('userAvatar');
+        userAvatar.style.display = 'block';
+        userAvatar.querySelector('img').src = user.photoURL;
+    }
+
+    // สร้างปุ่ม Google
+    window.onload = function () {
+        google.accounts.id.initialize({
+            client_id: "33280567312-hrdbjnk3g9guqsfe21coqn0mfpv3n6np.apps.googleusercontent.com",
+            callback: window.handleGoogleResponse
+        });
+        google.accounts.id.renderButton(
+            document.getElementById("googleBtn"),
+            { theme: "outline", size: "large", width: "240" }
+        );
+    }
+</script>
+
+<script>
+    // ส่วนควบคุม UI ทั่วไป (ห้ามใส่ import ที่นี่)
+    function openLogin() {
+        document.getElementById('loginModal').style.display = 'flex';
+    }
+    function closeLogin() {
+        document.getElementById('loginModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('loginModal')) {
+            closeLogin();
         }
-
-        window.onload = function () {
-    google.accounts.id.initialize({
-        // ใส่ Client ID ของคุณที่ได้จาก Google Cloud
-        client_id: "33280567312-hrdbjnk3g9guqsfe21coqn0mfpv3n6np.apps.googleusercontent.com",
-        callback: handleGoogleResponse
-    });
-    
-    // สร้างปุ่มล็อกอินใน div ที่เราเตรียมไว้
-    google.accounts.id.renderButton(
-        document.getElementById("googleBtn"),
-        { theme: "outline", size: "large", width: "240" }
-    );
-}
-
-// ฟังก์ชันรับข้อมูลเมื่อล็อกอิน Google สำเร็จ
-function handleGoogleResponse(response) {
-    // ถอดรหัสข้อมูลผู้ใช้จาก Google (JWT Token)
-    const responsePayload = decodeJwtResponse(response.credential);
-
-    database.ref('users/' + responsePayload.sub).set({
-        name: responsePayload.name,
-        email: responsePayload.email,
-        picture: responsePayload.picture,
-        last_login: new Date().toLocaleString()
-    });
-
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Email: ' + responsePayload.email);
-
-    // ปิดหน้าต่างล็อกอิน
-    closeLogin();
-
-    // เปลี่ยนปุ่ม "เข้าสู่ระบบ" เป็น "รูปโปรไฟล์จริง"
-    document.getElementById('mainAuthBtn').style.display = 'none';
-    const userAvatar = document.getElementById('userAvatar');
-    userAvatar.style.display = 'block';
-    userAvatar.querySelector('img').src = responsePayload.picture; // ใช้รูปจาก Google
-
-    alert('ยินดีต้อนรับคุณ ' + responsePayload.name + ' เข้าสู่ Phichit Cafe ค่ะ!');
-}
-
-// ฟังก์ชันสำหรับแกะข้อมูล Token (ใช้แบบง่ายๆ)
-function decodeJwtResponse(token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
-}
-    </script>
-
-    <script>
-    import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// หลังจากที่ user ล็อกอินสำเร็จแล้ว
-const user = result.user; // ได้มาจาก signInWithPopup
-
-// บันทึกลง Collection ชื่อ 'users' โดยใช้ UID เป็นชื่อเอกสาร
-await setDoc(doc(db, "users", user.uid), {
-  name: user.displayName,
-  email: user.email,
-  photo: user.photoURL,
-  lastLogin: new Date()
-}, { merge: true }); // merge: true คือถ้ามีข้อมูลเดิมอยู่แล้วให้แค่อัปเดต ไม่ต้องลบของเก่า
-
-        </script>
+    }
+</script>
 </body>
 </html>
 
     
+
 
 
 
