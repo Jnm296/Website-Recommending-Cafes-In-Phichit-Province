@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+        <meta charset="utf-8">
+        <title>เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    </head>
+
+    <body>
+        <div class="header-container">
+            <header class="navbar-header">
+                <div class="content-container">
+                    <div class="logo">
+                        เว็บไซต์แนะนำคาเฟ่ <br> ในจังหวัดพิจิตร
+                    </div>
+        
+                    <nav class="nav-links">
+                        <ul>
+                            <li><a href="#">หน้าแรก</a></li>
+                            <li><a href="#">รวมคาเฟ่</a></li>
+                            <li><a href="#">แนะนำทริป</a></li>
+                            <li><a href="#">รีวิว</a></li>
+                            <li><a href="#">ติดต่อเรา</a></li>
+                        </ul>
+                    </nav>
+        
+                    <header class="header-pink-background"> 
+                        <div class="expandable-search-container">
+                            <form id="searchForm" class="expandable-search-form" action="/search" method="GET">
+            
+                                <div id="searchIcon" class="search-icon-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </div>
+            
+                                <input id="searchInput" type="text" name="q" placeholder="ค้นหาสถานที่เที่ยว ที่กิน ที่พักและกิจกรรม" class="expandable-search-input">
+            
+                            </form>
+                        </div>
+                    </header> 
+                </div>
+            </header>        
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('searchForm');
+            const icon = document.getElementById('searchIcon');
+            const input = document.getElementById('searchInput');
+
+            // 1. เมื่อคลิกที่ไอคอน ให้เปิดช่องค้นหา
+            icon.addEventListener('click', function() {
+            // เพิ่ม class 'is-active' เพื่อให้ CSS ขยายความกว้าง
+            form.classList.add('is-active');
+            // ทำให้ focus ไปที่ช่องพิมพ์ทันที เพื่อให้พิมพ์ได้เลย
+            input.focus(); 
+            });
+
+            // 2. เมื่อคลิกที่อื่นนอกเหนือจากช่องค้นหา ให้ปิด
+            document.addEventListener('click', function(event) {
+            // ตรวจสอบว่าจุดที่คลิกอยู่ภายนอก form หรือไม่
+            const isClickInside = form.contains(event.target);
+            
+            if (!isClickInside && form.classList.contains('is-active')) {
+                // ถ้าคลิกข้างนอกและช่องกำลังเปิดอยู่ ให้ปิดช่อง
+                form.classList.remove('is-active');
+                // ล้างค่าในช่องพิมพ์ (ถ้าต้องการ)
+                // input.value = ''; 
+            }
+            });
+
+            // 3. ป้องกันการปิดเมื่อคลิกภายใน form แต่ไม่ใช่ input (เช่น คลิกพื้นที่ว่าง)
+            form.addEventListener('click', function(event) {
+            // ถ้าคลิกภายใน form ให้ focus ไปที่ input เสมอ
+            input.focus();
+            }); });
+        </script>
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-grid">
+            
+            <aside class="profile-sidebar">
+                <div class="user-avatar">👤</div>
+                <h2>ยินดีต้อนรับ</h2>
+                <p id="user-email">user.cafe@example.com</p>
+                
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                
+                <a href="login.html" class="logout-btn">ออกจากระบบ (Logout)</a>
+            </aside>
+
+            <main class="profile-main">
+                
+                <section class="card">
+                    <div class="card-header">
+                        <h3>รายการที่ฉันชอบ (My Favorites)</h3>
+                    </div>
+                    <div class="list-items">
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>11:25 Hours Cafe</span>
+                        </div>
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>ชาละวัน คาเฟ่</span>
+                        </div>
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>บึงสีไฟ คอฟฟี่</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>รีวิวของฉัน (My Reviews)</h3>
+                    </div>
+                    <div class="review-box">
+                        <strong>📍 11:25 Hours Cafe</strong>
+                        <p>"บรรยากาศดีมากค่ะ เค้กอร่อย มุมถ่ายรูปเยอะมาก"</p>
+                    </div>
+                    <div class="review-box">
+                        <strong>📍 Phichit River Side</strong>
+                        <p>"กาแฟรสชาติเข้มข้น วิวแม่น้ำสวยนั่งเพลินเลย"</p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>การตั้งค่าบัญชี</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        • แก้ไขข้อมูลส่วนตัว<br>
+                        • เปลี่ยนรหัสผ่าน<br>
+                        • จัดการการแจ้งเตือน
+                    </p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

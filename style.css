@@ -1,0 +1,340 @@
+/* ่ส่วนหัว */
+:root {
+            --primary-pink: #f8c0cf; /* สีชมพูจาก Header ในรูป */
+            --dark-green: #4a6352;   /* สีเขียว Sage Green จากผนังร้าน */
+            --soft-white: #fdfdfd;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #444;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--primary-pink); /* คุมโทนชมพูตามรูป */
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 600; }
+        
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 300; transition: 0.3s; }
+        .nav-links a:hover { opacity: 0.7; }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: linear-gradient(to bottom, var(--primary-pink) 0%, #fff 100%);
+            min-height: 60vh;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; color: var(--dark-green); margin-bottom: 10px; line-height: 1.2; }
+        .hero-text p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
+
+        .btn-main {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+            transition: 0.3s;
+        }
+
+        .btn-main:hover { transform: translateY(-3px); background-color: #384d3f; }
+
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .hero-image img { 
+            width: 100%; 
+            max-width: 500px; 
+            border-radius: 30px; /* ความโค้งมนตามแบบซุ้มประตูในรูป */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: #fff;
+            border-radius: 25px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover { border-color: var(--primary-pink); transform: translateY(-10px); }
+        .feature-card i { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .feature-card h3 { color: var(--dark-green); margin-bottom: 15px; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+
+/* ----------------------- */
+/* ส่วนล่าง */
+:root {
+            --primary-pink: #f8c0cf;
+            --dark-green: #4a6352; /* สีเขียว Sage Green จากรูป */
+            --soft-cream: #fffafb;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            background-color: var(--soft-cream);
+            color: #444;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background-color: var(--primary-pink);
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 80px;
+            border-bottom-right-radius: 80px;
+        }
+
+        .hero-banner h1 { font-size: 3rem; margin: 0; }
+        .hero-banner p { font-size: 1.2rem; opacity: 0.9; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-green);
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        /* สไตล์การป้ายยา (Highlight Card) */
+        .highlight-card {
+            display: flex;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #fefefe;
+        }
+
+        .highlight-card:nth-child(even) { flex-direction: row-reverse; }
+
+        .highlight-img { flex: 1; min-height: 400px; overflow: hidden; }
+        .highlight-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .highlight-info {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .highlight-info .tag {
+            color: var(--primary-pink);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-info h2 { color: var(--dark-green); font-size: 2.2rem; margin: 10px 0; }
+        .highlight-info p { color: #777; line-height: 1.8; margin-bottom: 25px; }
+
+        .read-more {
+            display: inline-block;
+            color: var(--dark-green);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid var(--primary-pink);
+            width: fit-content;
+        }
+
+        /* Footer ส่วนปิดท้าย */
+        footer {
+            background: white;
+            padding: 80px 20px 40px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-logo { font-size: 1.8rem; color: var(--dark-green); font-weight: bold; margin-bottom: 15px; }
+        
+        .social-links { margin: 25px 0; }
+        .social-links a { 
+            margin: 0 15px; 
+            text-decoration: none; 
+            color: var(--primary-pink); 
+            font-size: 1.2rem; 
+        }
+
+        .copyright { font-size: 0.8rem; color: #aaa; margin-top: 40px; }
+
+        @media (max-width: 768px) {
+            .highlight-card, .highlight-card:nth-child(even) { flex-direction: column; }
+            .highlight-info { padding: 30px; }
+        }
+
+/* ------------------------ */
+/* ลงชื่อเข้าใช้ */
+:root {
+            --primary-pink: #f8c0cf;
+            --dark-green: #4a6352;
+            --soft-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body { font-family: 'Kanit', sans-serif; margin: 0; background: #fffcfd; }
+
+        /* 1. ปุ่มลอย (Floating Button) */
+        .floating-auth {
+            position: fixed;
+            top:  570px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .btn-open-login {
+            background: var(--dark-green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-open-login:hover { transform: scale(1.05); background: #3d5244; }
+
+        /* 2. Pop-up (Modal) Overlay */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 99, 82, 0.4); /* สีเขียวจางๆ */
+            backdrop-filter: blur(5px);
+            display: none; /* ซ่อนไว้เริ่มต้น */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        /* 3. กล่องล็อกอิน */
+        .login-box {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: popUp 0.4s ease-out;
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .login-box h2 { color: var(--dark-green); margin-bottom: 30px; }
+
+        /* Input & Social Buttons */
+        .login-box input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            box-sizing: border-box;
+            background: #fafafa;
+            font-family: 'Kanit';
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-pink);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .social-login-mini {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .social-icon:hover { background: #f9f9f9; transform: translateY(-3px); }
+
+        /* 4. สถานะหลังล็อกอิน (Avatar) */
+        .user-profile-float {
+            display: none; /* ซ่อนไว้ก่อน */
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid var(--primary-pink);
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .user-profile-float img { width: 100%; height: 100%; object-fit: cover; }

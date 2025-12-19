@@ -1,0 +1,990 @@
+/* ใส่ !important เพื่อให้มั่นใจว่าเบราว์เซอร์ต้องใช้ค่านี้จริงๆ */
+html, body {
+    margin: 0 !important; 
+    padding: 0 !important;
+}
+
+/* ล้าง Margin ของ Container ที่ครอบเมนู */
+.header-container {
+    margin: 0;
+    padding: 0;
+}
+
+/* การกำหนดฟอนต์หลักของทั้งเว็บไซต์ (Kanit) */
+body {
+    background-color: #FBF9F1; 
+    color: #000000; 
+    font-family: 'Arial', 'Kanit';
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------------------------------------------------- */
+
+/* เมนู */
+/* เปลี่ยนสี */
+:root {
+    --navbar-bg-color: #FFC0CB; 
+    --link-color: #ffffff;
+    --logo-font: 'Kanit' ; /* หรือฟอนต์ที่มีลักษณะคล้ายลายมือที่คุณต้องการใช้ */
+}
+
+/* การตั้งค่าพื้นฐาน */
+body {
+    margin: 0;
+    font-family: 'Arial', 'Kanit';
+}
+
+/* ระยะห่างด้านบนและล่าง */
+.navbar-header {
+    background-color: var(--navbar-bg-color); 
+    padding: 25px 0; 
+}
+
+/* จัดข้อความ */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* จัดเรียงองค์ประกอบให้ห่างกัน */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+}
+
+/* ส่วนโลโก้ */
+.logo {
+    font-family: var(--logo-font);
+    font-size: 20px;
+    line-height: 1; /* ระยะห่างระหว่างบรรทัดสำหรับโลโก้ที่มีสองบรรทัด */
+    color: var(--link-color);
+    text-align: center;
+}
+
+/* แนวทางเมนู */
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* ระยะห่างระหว่างรายการเมนู */
+}
+
+/* จัดฟอนต์อะไรสักอย่าง */
+.nav-links a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+/* -------------------------------------- */
+/* หน้าค้นหา */
+/* กล่องห่อหุ้มช่องค้นหา - **แก้ไขตรงนี้** */
+.expandable-search-container {
+    display: flex;
+    justify-content: flex-start; /* จัดไปด้านซ้าย */
+
+}
+
+/* ฟอร์มการค้นหา - ทำให้เป็นวงกลมและมีเงา */
+.expandable-search-form {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #ffffff; /* พื้นหลังสีขาวของวงกลม */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* เงาอ่อนๆ */
+    
+    /* ตั้งค่าเริ่มต้นให้มีขนาดเท่ากับไอคอนเท่านั้น */
+    width: 45px; /* ความกว้างเริ่มต้น */
+    height: 45px; /* ความสูงเริ่มต้น เพื่อให้เป็นวงกลม */
+    padding: 0; /* ลบ padding ภายในฟอร์ม */
+    
+    /* จัดไอคอนให้อยู่ตรงกลางของวงกลมเมื่อย่อ */
+    justify-content: center; 
+    
+    /* การเปลี่ยนผ่าน (Transition) สำหรับการขยาย */
+    transition: width 0.4s ease-in-out, background-color 0.3s, padding 0.4s ease-in-out;
+}
+
+/* คลาสที่จะถูกเพิ่มเมื่อช่องค้นหาถูก "เปิด" ด้วย JS */
+.expandable-search-form.is-active {
+    width: 350px; /* ความกว้างเป้าหมายเมื่อขยาย */
+    height: 47px; /* ความสูงยังคงเท่าเดิม */
+    justify-content: flex-start; /* จัดไปด้านซ้ายเมื่อขยาย */
+}
+
+/* Wrapper สำหรับไอคอน */
+.search-icon-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0; 
+    /* ไม่ต้องมี padding-right ตั้งแต่แรก จะถูกจัดการเมื่อฟอร์มขยาย */
+}
+
+/* ช่องพิมพ์ (Input Field) */
+.expandable-search-input {
+    width: 0; 
+    padding: 0;
+    margin-left: 0;
+    
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    opacity: 0;
+    
+    transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out 0.1s, margin 0.4s ease-in-out;
+}
+
+/* เมื่อฟอร์มถูกเปิด (active) ให้แสดงช่องพิมพ์ */
+.expandable-search-form.is-active .expandable-search-input {
+    width: 100%; 
+    margin-left: 10px; /* เว้นระยะห่างจากไอคอนเมื่อขยาย */
+    opacity: 1; 
+
+}
+
+/* กล่องคุมระดับนอก */
+.search-wrapper {
+    position: relative; /* สำคัญมาก: เพื่อให้รายการอ้างอิงตำแหน่งกับช่องพิมพ์ */
+    max-width: 400px; /* ปรับตามความกว้างหน้าเว็บคุณ */
+}
+
+/* กล่องรายการแนะนำ */
+.suggestion-container {
+    position: absolute;
+    top: 100%; /* ให้เริ่มแสดงที่ขอบล่างของ input พอดี */
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: none; /* ซ่อนไว้ก่อน */
+    margin-top: 2px;
+}
+
+/* แต่ละรายการที่โชว์ */
+.suggestion-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    font-family: sans-serif;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.suggestion-item:hover {
+    background-color: #fcf0f5; /* สีชมพูอ่อนๆ */
+    color: #ff4d94;
+}
+
+/* เพิ่มไอคอนแว่นขยายหน้าข้อความ (ถ้าชอบ) */
+.suggestion-item::before {
+    content: '🔍';
+    margin-right: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+/* -------------------------- */
+/* รีวิวคาเฟ่ */
+/* ตัวหลัก */
+body {
+    font-family: 'Kanit', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0; /* ตรวจสอบให้แน่ใจว่า padding เป็น 0 เพื่อไม่ให้เกิดขอบขาวรอบหน้า */
+}
+
+/* 🏠 คอนเทนเนอร์หลักของหน้า: จำเป็นต้องมีเพื่อจำกัดความกว้างและจัดกึ่งกลาง */
+.container {
+    max-width: 1000px; /* ขยายความกว้างให้ใหญ่ขึ้นเล็กน้อย (จาก 800px) เพื่อรองรับ Gallery */
+    margin: 0 auto; /* จัดกึ่งกลางหน้าจอ */
+    background-color: #fff;
+    padding: 30px; /* เพิ่ม padding ภายในคอนเทนเนอร์ */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+
+/* --------------------------------------------------------------------------------------- */
+
+/* ส่วน Gallery Layout (นำโค้ดเดิมที่ใช้ได้มาใส่ที่นี่) */
+/* จัดเรียงภาพหลักและภาพย่อให้อยู่ในแถวเดียวกัน */
+.gallery-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px; 
+}
+
+.main-image {
+    flex: 2;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.side-thumbnails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* จัดสไตล์รูปภาพ */
+.main-image img,
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3 ; 
+    object-fit: cover;
+    display: block;
+}
+
+.thumbnail-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; 
+}
+
+/* สไตล์ปุ่มดูรูปภาพเพิ่มเติม */
+.view-more-btn {
+    display: block; 
+    text-align: center;
+    padding: 10px 5px;
+    background-color: #FFC0CB;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-top: 5px;
+    transition: background-color 0.3s;
+}
+
+.view-more-btn:hover {
+    background-color: #f7a8b6;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* ลด padding บนมือถือ */
+    }
+    
+    .gallery-wrapper {
+        flex-direction: column; 
+    }
+
+    .main-image,
+    .side-thumbnails {
+        flex: auto;
+    }
+
+    .side-thumbnails {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .thumbnail-item {
+        width: calc(50% - 7.5px); 
+    }
+    
+    .view-more-btn {
+        width: 100%; 
+    }
+}
+
+/* จัดกลาง*/
+.button-group {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* บับเบิ้ลข้อความ */
+.btn {
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 0 10px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+/* สีพื้นหลัง */
+.btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* จัดบรรทัด */
+.review-header {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+ 
+/* เส้นแบ่งข้อความ */
+.quote {
+    text-align: center;
+    font-style: italic;
+    margin: 20px auto;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* ตัวหนา */
+.highlight {
+    font-weight: bold;
+}
+ 
+/* จัดกึ่งกลาง */
+.info {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+ 
+/* ข้อความเล็กด้านล่าง */
+.info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* ------------------------------------ */
+/* หน้าลอย แกลโลลี่ */
+.view-more-btn {
+    /* เพิ่มโค้ดนี้ */
+    position: relative; 
+    z-index: 5; /* กำหนดให้มีค่าที่สูงพอสมควร */
+    
+    /* โค้ด CSS อื่นๆ ของปุ่ม */
+    background-color: #ffe5e5; 
+    /* ... */
+}
+/* รูปแบบสำหรับลิงก์ของคุณ */
+.view-more-btn {
+    /* นี่คือการทำให้ลิงก์มีลักษณะเหมือนปุ่มสีชมพูอ่อน */
+    background-color: #ffe5e5; /* สีชมพูอ่อน */
+    color: #333;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none; /* ลบขีดเส้นใต้ลิงก์ */
+    display: inline-block; /* ทำให้กำหนด padding ได้ */
+    transition: background-color 0.3s;
+}
+
+.view-more-btn:hover {
+    background-color: #ffcccc;
+}
+
+/* --- ต้องเพิ่ม CSS ส่วนนี้เข้าไป --- */
+
+/* ตัว Modal หลัก (ซ่อนไว้ตั้งแต่แรก) */
+.modal {
+    display: none; /* <<-- สำคัญที่สุด: ซ่อน Modal ไว้ก่อน */
+    position: fixed; /* ให้อยู่กับที่บนหน้าจอ */
+    z-index: 1000; /* ให้อยู่บนสุด เหนือทุกอย่าง */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); /* พื้นหลังดำโปร่งแสง */
+}
+
+/* เนื้อหาใน Modal (เพื่อให้มีขนาดและอยู่ตรงกลาง) */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* จัดกึ่งกลางแนวตั้งและแนวนอน */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ปุ่มปิด (X) */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* แกลเลอรี่รูปภาพย่อย */
+.image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+.image-gallery-grid {
+    /* จัดเรียงรูปภาพให้เป็นตารางยืดหยุ่น */
+    display: grid;
+    /* คำสั่งสำคัญ: จัดคอลัมน์ให้มีขนาดเหมาะสมและยืดหยุ่นตามความกว้างของหน้าจอ */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 10px; /* ระยะห่างระหว่างรูปภาพ */
+    margin-top: 20px;
+}
+
+.image-gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ทำให้รูปภาพครอบคลุมพื้นที่โดยไม่บิดเบี้ยว */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ---------------------------------- */
+
+/* แนะนำเมนู */
+/* ส่วนรีวิว */
+
+/* 1. การจัดเรียงหลัก (ใช้ Flexbox) */
+.review-item {
+    display: flex;
+    align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    gap: 40px; /* ระยะห่างระหว่างรูปภาพกับข้อความ */
+    margin-bottom: 70px; /* ระยะห่างระหว่างบล็อกรีวิว */
+}
+
+/* 2. สลับตำแหน่งรูปภาพ (Review 2) */
+.review-item.reverse {
+    flex-direction: row-reverse; /* สลับให้รูปภาพมาอยู่ด้านซ้าย */
+}
+
+
+/* 3. คอลัมน์เนื้อหา (ข้อความ) */
+.review-content {
+    flex: 1; /* ให้ใช้พื้นที่ที่เหลืออย่างยืดหยุ่น */
+    max-width: 50%; /* จำกัดความกว้างไม่ให้ยืดจนเกินไป */
+}
+
+.review-content h2 {
+    font-family: 'Kanit', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tag-location {
+    font-size: 14px;
+    color: #FFC0CB; /* ใช้สีชมพูที่ดูน่ารัก */
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.review-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* 4. คอลัมน์รูปภาพ */
+.review-image {
+    flex: 1; 
+    max-width: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 10; /* กำหนดอัตราส่วนภาพ */
+}
+
+/* 5. ปุ่มอ่านต่อ */
+.read-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333; /* สีเข้มสำหรับปุ่ม */
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.read-more-btn:hover {
+    background-color: #FFC0CB; /* เปลี่ยนเป็นสีชมพูเมื่อเมาส์ชี้ */
+    color: #333;
+}
+
+/* 6. การปรับ Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .review-item,
+    .review-item.reverse {
+        flex-direction: column; /* เปลี่ยนให้ซ้อนกันเป็นแนวตั้ง */
+        gap: 25px;
+        text-align: center;
+    }
+
+    .review-content,
+    .review-image {
+        max-width: 100%; /* ให้ใช้เต็มความกว้าง */
+    }
+
+    .review-content {
+        order: 2; /* ให้ข้อความอยู่ด้านล่างรูปภาพเสมอ */
+    }
+
+    .review-image {
+        order: 1; /* ให้รูปภาพอยู่ด้านบนเสมอ */
+    }
+    
+    .review-content h2,
+    .tag-location {
+        text-align: center;
+    }
+}
+
+/* ------------------------*/
+/* แมพ เส้นทาง */
+
+/* คอนเทนเนอร์สำหรับแผนที่ */
+.map-container {
+    max-width: 100%; /* ให้ใช้ความกว้างเต็มที่ของคอนเทนเนอร์หลัก (.container) */
+    margin: 20px auto;
+    border-radius: 10px; /* ทำให้ขอบแผนที่มนขึ้น */
+    overflow: hidden; /* ซ่อนขอบของ iframe ที่เกินออกมา */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อยให้แผนที่ดูนูนขึ้น */
+}
+
+/* 2. ตัว iframe แผนที่ */
+.map-container iframe {
+    display: block;
+    width: 100%;
+    /* กำหนดความสูงตามความเหมาะสม (450px ใน HTML ก็พอดีแล้ว) */
+}
+
+/* 3. ปรับขนาดบนมือถือ (Optional) */
+@media (max-width: 600px) {
+    .map-container iframe {
+        height: 300px; /* ลดความสูงลงเล็กน้อยเพื่อให้ดูดีบนมือถือ */
+    }
+}
+
+/* --------------------------- */
+
+/* ช่องทางการติดต่อ */
+.store-contact-info {
+    margin: 60px auto 40px auto;
+    padding: 30px;
+    background-color: #f8f8f8; /* สีพื้นหลังอ่อน ๆ ให้ดูแตกต่าง */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.store-contact-info h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #FFC0CB; /* ใช้สีชมพูเป็นสีเน้น */
+}
+
+/* การจัดเรียง 2 คอลัมน์ */
+.contact-details-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-column {
+    flex: 1; /* แบ่งพื้นที่เท่ากัน */
+    padding: 0 15px;
+}
+
+.contact-column h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.basic-info p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* ------------------ ไอคอนโซเชียล ------------------ */
+
+.social-icons-contact {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.icon-btn-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%; /* ทำให้เป็นทรงกลม */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.follow-text {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+}
+
+.icon-btn-contact img {
+    width: 40px; /* ปรับขนาดรูปภาพไอคอนข้างในตามความเหมาะสม */
+    height: auto;
+}
+
+/* ------------------ Responsive Design ------------------ */
+
+@media (max-width: 768px) {
+    .contact-details-wrapper {
+        flex-direction: column; /* เรียงเป็นแนวตั้งบนมือถือ */
+    }
+    
+    .store-contact-info {
+        padding: 20px;
+    }
+
+    .contact-column {
+        padding: 0;
+        text-align: center; /* จัดให้อยู่ตรงกลางบนมือถือ */
+    }
+    
+    .social-links {
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+    
+    .social-icons-contact {
+        justify-content: center; /* จัดไอคอนให้อยู่กึ่งกลาง */
+    }
+}
+
+/* ------------------------------------------*/
+
+/* ปุ่มย้้อนกลับ */
+/* 1. สไตล์สำหรับคอนเทนเนอร์ที่ครอบปุ่มนำทาง */
+.direction-container {
+    text-align: center;
+    /* เว้นระยะห่างด้านบนและล่างจากส่วนอื่น ๆ */
+    margin: 25px auto 40px auto; 
+}
+
+/* 2. สไตล์สำหรับปุ่มนำทางขนาดใหญ่และเด่น */
+.direction-btn-large {
+    /* ทำให้ปุ่มมีขนาดใหญ่ขึ้น */
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 1.1em; 
+    font-weight: 700; /* ตัวหนามาก */
+    
+    /* ใช้สีที่คุณชอบให้โดดเด่น เช่น สีชมพู */
+    background-color: #FFC0CB; 
+    color: #333; 
+    text-decoration: none;
+    
+    /* ทำให้เป็นทรงรีสวยงาม */
+    border-radius: 30px; 
+    
+    /* เพิ่มเงาให้ดูเป็นปุ่มที่กดได้จริง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    
+    /* เพิ่ม Transition เพื่อให้มีชีวิตชีวา */
+    transition: all 0.3s ease;
+}
+
+.direction-btn-large:hover {
+    background-color: #e5a7b3; /* เปลี่ยนสีเมื่อเมาส์ชี้ */
+    transform: translateY(-2px); /* ยกตัวปุ่มขึ้นเล็กน้อย */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.direction-btn-large .emoji {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* 3. ปรับขนาดบนมือถือ (Optional) */
+@media (max-width: 600px) {
+    .direction-btn-large {
+        /* บนมือถือ ให้ปุ่มขยายเกือบเต็มความกว้าง */
+        width: 90%; 
+        box-sizing: border-box; 
+    }
+}
+
+/* ติดต่อ */ 
+/* ส่วน Footer */
+footer {
+    background-color: #FFC0CB; 
+    color: #fff; /* ข้อความสีขาว */
+    padding: 60px 40px;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1; /* ให้แต่ละคอลัมน์ขยายเท่ากันเบื้องต้น */
+    padding: 0 20px;
+}
+
+/* --- คอลัมน์ที่ 1: Info & Social --- */
+.footer-info p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 250px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: #e5a74e; /* สีไอคอนเป็นสีพื้นหลัง Footer */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- คอลัมน์ที่ 2: Links --- */
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- คอลัมน์ที่ 3: Contact --- */
+.footer-contact {
+    /* กำหนดความกว้างเฉพาะสำหรับคอลัมน์นี้เพื่อให้ปุ่มมีพื้นที่ */
+    flex: 1.5; 
+    max-width: 300px;
+}
+
+.contact-email {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-email .email-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.newsletter-btn {
+    background-color: white;
+    color: #e5a74e; /* สีปุ่มเป็นสีพื้นหลัง Footer */
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.newsletter-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* เรียงคอลัมน์เป็นแนวตั้ง */
+        gap: 40px;
+    }
+
+    .footer-col {
+        padding: 0;
+    }
+    
+    .footer-info p {
+        max-width: 100%;
+    }
+    
+    .footer-contact {
+        max-width: 100%;
+    }
+}
+
+/* ------------------------ */ 
+/* ลอย */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #fefefe; 
+    margin: 5% auto; 
+    padding: 20px; 
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 700px; 
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+    position: relative;
+}
+        
+.close-btn { 
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+        
+.close-btn:hover, .close-btn:focus { 
+    color: #000; 
+    text-decoration: none; 
+}
+
+/* ปุ่มลอย */
+.floating-review-btn {
+    position: fixed; 
+    right: 20px; 
+    padding: 15px 25px; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 16px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    z-index: 999;
+}
+        
+/* ปุ่มลอย 1: รีวิว */
+#openModalBtn {
+    bottom: 20px; 
+    background-color: #F1F8E9; 
+    color: #2E3436; 
+}
+
+/* ปุ่มลอย 2: เมนู */
+#openMenuModalBtn { 
+    bottom: 80px; 
+    background-color: #FFF5F5; 
+    color:#5D4037; 
+}
+
+/* ======================== 2. สไตล์ของเนื้อหารีวิว (CSS เดิม) ======================== */
+body { font-family: Tahoma, sans-serif; }
+h1 { font-size: 24px; margin-bottom: 20px; }
+.review-form-section { border: 1px solid #eee; padding: 15px; border-radius: 6px; margin-bottom: 20px; background-color: #fcfcfc; }
+.review-form-section h2 { font-size: 20px; margin-top: 0; padding-bottom: 5px; margin-bottom: 15px; }
+.star-rating-input input[type="radio"] { display: none; }
+.star-rating-input label { font-size: 32px; color: #ccc; cursor: pointer; transition: color 0.2s; }
+.star-rating-input label:hover, .star-rating-input label:hover ~ label { color: #fcc419; }
+.star-rating-input input[type="radio"]:checked ~ label { color: #fcc419; }
+
+.modal-content input[type="text"], 
+.modal-content textarea { 
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+    
+.submit-btn { background-color: #1a73e8; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+.existing-reviews-section h2 { font-size: 20px; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-bottom: 15px; }
+.review-card { border: 1px solid #ddd; padding: 10px; border-radius: 6px; margin-bottom: 10px; background: #fff; }
+
+/* สไตล์สำหรับรูปภาพเมนู */
+.menu-image-container { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 15px; 
+    margin-top: 20px;
+}
+
+.menu-image-container img {
+    width: 100%; 
+    height: auto; 
+    border: 1px solid #ddd; 
+    border-radius: 4px;
+    object-fit: cover; /* ทำให้รูปภาพเต็มพื้นที่โดยไม่เสียสัดส่วน */
+}
+
+/* ----------------------- */

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - Cafe Phichit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Cafe Phichit</div>
+        <ul class="nav-links">
+            <li><a href="#">หน้าแรก</a></li>
+            <li><a href="#">รวมคาเฟ่</a></li>
+            <li><a href="#">จัดทริป</a></li>
+            <li><a href="#">รีวิว</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>ค้นพบเสน่ห์<br>คาเฟ่ในพิจิตร</h1>
+            <p>สัมผัสบรรยากาศ Minimal และรสชาติกาแฟที่อบอุ่น<br>รวบรวม 12 คาเฟ่ยอดฮิตที่คุณต้องไปเช็คอิน</p>
+            <a href="#" class="btn-main">เริ่มสำรวจเลย</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/500x600" alt="Cafe in Phichit">
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <i>☕</i>
+            <h3>12 คาเฟ่แนะนำ</h3>
+            <p>คัดมาแล้วว่าดี ทั้งรสชาติและมุมถ่ายรูปสวยๆ</p>
+        </div>
+        <div class="feature-card">
+            <i>🗺️</i>
+            <h3>จัดทริปง่ายๆ</h3>
+            <p>วางแผนเส้นทางเที่ยวพิจิตรได้ในวันเดียว</p>
+        </div>
+        <div class="feature-card">
+            <i>⭐</i>
+            <h3>รีวิวจากเพื่อนๆ</h3>
+            <p>อ่านประสบการณ์จริงจากเหล่า Cafe Hopping</p>
+        </div>
+    </section>
+        
+    <div class="container">
+        <h2 class="section-title">Editor's Pick: คาเฟ่แนะนำประจำเดือน</h2>
+
+        <div class="highlight-card">
+            <div class="highlight-img">
+                <img src="https://via.placeholder.com/600x800" alt="Cafe 1">
+            </div>
+            <div class="highlight-info">
+                <span class="tag">#Minimal #Cozy</span>
+                <h2>11:25 Hours Cafe</h2>
+                <p>ร้านกาแฟโทนขาว-เขียวสุดละมุน มีมุมซุ้มประตูโค้งที่ใครมาก็ต้องถ่ายรูป พร้อมเมนูเค้กโฮมเมดที่หน้าตาน่ารักและรสชาติกลมกล่อมมากค่ะ</p>
+                <a href="#" class="read-more">ไปดูรีวิวฉบับเต็ม →</a>
+            </div>
+        </div>
+
+        <div class="highlight-card">
+            <div class="highlight-img">
+                <img src="https://via.placeholder.com/600x800" alt="Cafe 2">
+            </div>
+            <div class="highlight-info">
+                <span class="tag">#Vintage #RiverSide</span>
+                <h2>Riverside Phichit</h2>
+                <p>คาเฟ่ริมน้ำรับลมเย็นๆ ตกแต่งสไตล์วินเทจ เหมาะกับการมานั่งชิลล์อ่านหนังสือหรือจิบกาแฟยามบ่าย บรรยากาศเงียบสงบเหมือนย้อนเวลากลับไปในอดีต</p>
+                <a href="#" class="read-more">ไปดูรีวิวฉบับเต็ม →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">CAFE PHICHIT</div>
+        <p>คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทางที่ครบที่สุด</p>
+        
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Line</a>
+        </div>
+
+        <p style="font-size: 0.9rem; color: #888;">อยากให้เราไปรีวิวร้านไหน? <a href="#" style="color: var(--primary-pink);">ส่งข้อความหาเราได้เลย</a></p>
+        
+        <div class="copyright">
+            &copy; 2025 Cafe Phichit. Created with ❤️ for Cafe Lovers.
+        </div>
+    </footer>
+
+    <div class="floating-auth">
+        <button id="mainAuthBtn" class="btn-open-login" onclick="openLogin()">
+            <span>👤</span> เข้าสู่ระบบ
+        </button>
+        
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='profile.html'">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi" alt="Avatar">
+        </div>
+    </div>
+
+    <div id="loginModal" class="login-overlay">
+        <div class="login-box">
+            <span class="close-btn" onclick="closeLogin()">&times;</span>
+            <h2>Welcome Back!</h2>
+            <p style="color:#888; font-size: 0.9rem; margin-top:-20px; margin-bottom: 25px;">ล็อกอินเพื่อบันทึกคาเฟ่โปรดของคุณ</p>
+            
+            <form onsubmit="handleLogin(event)">
+                <input type="email" placeholder="อีเมลของคุณ" required>
+                <input type="password" placeholder="รหัสผ่าน" required>
+                <button type="submit" class="btn-login-submit">เข้าสู่ระบบ</button>
+            </form>
+
+            <div style="margin: 20px 0; color: #ddd; font-size: 0.8rem;">หรือเชื่อมต่อด้วย</div>
+
+            <div class="social-login-mini">
+                <div id="googleBtn" style="display: flex; justify-content: center; margin-top: 10px;"></div>
+                <div class="social-icon" style="color:#1877f2">f</div>
+                <div class="social-icon" style="color:#00b900">L</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLogin() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            // จำลองการล็อกอินสำเร็จ
+            closeLogin();
+            document.getElementById('mainAuthBtn').style.display = 'none';
+            document.getElementById('userAvatar').style.display = 'block';
+            alert('ยินดีต้อนรับ! ล็อกอินสำเร็จแล้วค่ะ');
+        }
+
+        // คลิกพื้นที่ว่างข้างนอก Pop-up เพื่อปิด
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                closeLogin();
+            }
+        }
+
+        window.onload = function () {
+    google.accounts.id.initialize({
+        // ใส่ Client ID ของคุณที่ได้จาก Google Cloud
+        client_id: "33280567312-hrdbjnk3g9guqsfe21coqn0mfpv3n6np.apps.googleusercontent.com",
+        callback: handleGoogleResponse
+    });
+    
+    // สร้างปุ่มล็อกอินใน div ที่เราเตรียมไว้
+    google.accounts.id.renderButton(
+        document.getElementById("googleBtn"),
+        { theme: "outline", size: "large", width: "240" }
+    );
+}
+
+// ฟังก์ชันรับข้อมูลเมื่อล็อกอิน Google สำเร็จ
+function handleGoogleResponse(response) {
+    // ถอดรหัสข้อมูลผู้ใช้จาก Google (JWT Token)
+    const responsePayload = decodeJwtResponse(response.credential);
+
+    console.log("ID: " + responsePayload.sub);
+    console.log('Full Name: ' + responsePayload.name);
+    console.log('Email: ' + responsePayload.email);
+
+    // ปิดหน้าต่างล็อกอิน
+    closeLogin();
+
+    // เปลี่ยนปุ่ม "เข้าสู่ระบบ" เป็น "รูปโปรไฟล์จริง"
+    document.getElementById('mainAuthBtn').style.display = 'none';
+    const userAvatar = document.getElementById('userAvatar');
+    userAvatar.style.display = 'block';
+    userAvatar.querySelector('img').src = responsePayload.picture; // ใช้รูปจาก Google
+
+    alert('ยินดีต้อนรับคุณ ' + responsePayload.name + ' เข้าสู่ Phichit Cafe ค่ะ!');
+}
+
+// ฟังก์ชันสำหรับแกะข้อมูล Token (ใช้แบบง่ายๆ)
+function decodeJwtResponse(token) {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+}
+    </script>
+
+</body>
+</html>
+    

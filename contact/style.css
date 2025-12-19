@@ -1,0 +1,396 @@
+/* การกำหนดฟอนต์หลักของทั้งเว็บไซต์ (Kanit) */
+body {
+    background-color: #FBF9F1; 
+    color: #000000; 
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------------------------------------------------- */
+
+/* เมนู */
+/* เปลี่ยนสี */
+:root {
+    --navbar-bg-color: #FFC0CB; 
+    --link-color: #ffffff;
+    --logo-font: 'Kanit' ; /* หรือฟอนต์ที่มีลักษณะคล้ายลายมือที่คุณต้องการใช้ */
+}
+
+/* การตั้งค่าพื้นฐาน */
+body {
+    margin: 0;
+    font-family: 'Arial', 'Kanit';
+}
+
+/* ระยะห่างด้านบนและล่าง */
+.navbar-header {
+    background-color: var(--navbar-bg-color); 
+    padding: 25px 0; 
+}
+
+/* จัดข้อความ */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* จัดเรียงองค์ประกอบให้ห่างกัน */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+}
+
+/* ส่วนโลโก้ */
+.logo {
+    font-family: var(--logo-font);
+    font-size: 20px;
+    line-height: 1; /* ระยะห่างระหว่างบรรทัดสำหรับโลโก้ที่มีสองบรรทัด */
+    color: var(--link-color);
+    text-align: center;
+}
+
+/* แนวทางเมนู */
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* ระยะห่างระหว่างรายการเมนู */
+}
+
+/* จัดฟอนต์อะไรสักอย่าง */
+.nav-links a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+/* ไอคอนค้นหา */
+.search-icon {
+    cursor: pointer;
+    color: var(--link-color);
+}
+
+/* ------------------------------------- */
+/* หน้าค้นหา */
+/* กล่องห่อหุ้มช่องค้นหา - **แก้ไขตรงนี้** */
+.expandable-search-container {
+    display: flex;
+    justify-content: flex-start; /* จัดไปด้านซ้าย */
+
+}
+
+/* ฟอร์มการค้นหา - ทำให้เป็นวงกลมและมีเงา */
+.expandable-search-form {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #ffffff; /* พื้นหลังสีขาวของวงกลม */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* เงาอ่อนๆ */
+    
+    /* ตั้งค่าเริ่มต้นให้มีขนาดเท่ากับไอคอนเท่านั้น */
+    width: 45px; /* ความกว้างเริ่มต้น */
+    height: 45px; /* ความสูงเริ่มต้น เพื่อให้เป็นวงกลม */
+    padding: 0; /* ลบ padding ภายในฟอร์ม */
+    
+    /* จัดไอคอนให้อยู่ตรงกลางของวงกลมเมื่อย่อ */
+    justify-content: center; 
+    
+    /* การเปลี่ยนผ่าน (Transition) สำหรับการขยาย */
+    transition: width 0.4s ease-in-out, background-color 0.3s, padding 0.4s ease-in-out;
+}
+
+/* คลาสที่จะถูกเพิ่มเมื่อช่องค้นหาถูก "เปิด" ด้วย JS */
+.expandable-search-form.is-active {
+    width: 350px; /* ความกว้างเป้าหมายเมื่อขยาย */
+    height: 47px; /* ความสูงยังคงเท่าเดิม */
+    justify-content: flex-start; /* จัดไปด้านซ้ายเมื่อขยาย */
+}
+
+/* Wrapper สำหรับไอคอน */
+.search-icon-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0; 
+    /* ไม่ต้องมี padding-right ตั้งแต่แรก จะถูกจัดการเมื่อฟอร์มขยาย */
+}
+
+/* ช่องพิมพ์ (Input Field) */
+.expandable-search-input {
+    width: 0; 
+    padding: 0;
+    margin-left: 0;
+    
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    opacity: 0;
+    
+    transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out 0.1s, margin 0.4s ease-in-out;
+}
+
+/* เมื่อฟอร์มถูกเปิด (active) ให้แสดงช่องพิมพ์ */
+.expandable-search-form.is-active .expandable-search-input {
+    width: 100%; 
+    margin-left: 10px; /* เว้นระยะห่างจากไอคอนเมื่อขยาย */
+    opacity: 1; 
+}
+
+/* --------*/ 
+/* ช่องทางการติดต่อ */
+:root {
+            --primary-pink: #f8c0cf; /* สีชมพูจาก Header */
+            --dark-green: #4a6352;   /* สีเขียวจากผนังคาเฟ่ */
+            --soft-white: #fdfdfd;
+            --text-color: #555;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #fff5f7;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-header h1 {
+            color: var(--dark-green);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            padding: 15หpx;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* ส่วนข้อมูลติดต่อ */
+        .info-section h3 {
+            color: var(--dark-green);
+            border-left: 5px solid var(--primary-pink);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-item .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* ส่วนแบบฟอร์ม */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            background: #fafafa;
+            font-family: 'Kanit', sans-serif;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            background: white;
+        }
+
+        .submit-btn {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #384d3f;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+/* ------------------------------------------------------*/
+
+/* ด้านล่างสุด */
+/* ส่วน Footer */
+footer {
+    background-color: #FFC0CB; 
+    color: #fff; /* ข้อความสีขาว */
+    padding: 60px 40px;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1; /* ให้แต่ละคอลัมน์ขยายเท่ากันเบื้องต้น */
+    padding: 0 20px;
+}
+
+/* --- คอลัมน์ที่ 1: Info & Social --- */
+.footer-info p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 250px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: #e5a74e; /* สีไอคอนเป็นสีพื้นหลัง Footer */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- คอลัมน์ที่ 2: Links --- */
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- คอลัมน์ที่ 3: Contact --- */
+.footer-contact {
+    /* กำหนดความกว้างเฉพาะสำหรับคอลัมน์นี้เพื่อให้ปุ่มมีพื้นที่ */
+    flex: 1.5; 
+    max-width: 300px;
+}
+
+.contact-email {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-email .email-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.newsletter-btn {
+    background-color: white;
+    color: #e5a74e; /* สีปุ่มเป็นสีพื้นหลัง Footer */
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.newsletter-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* เรียงคอลัมน์เป็นแนวตั้ง */
+        gap: 40px;
+    }
+
+    .footer-col {
+        padding: 0;
+    }
+    
+    .footer-info p {
+        max-width: 100%;
+    }
+    
+    .footer-contact {
+        max-width: 100%;
+    }
+}

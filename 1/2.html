@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Google Login</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <h1>ยินดีต้อนรับสู่ Phichit Cafe</h1>
+    
+    <div id="g_id_onload"
+         data-client_id="33280567312-hrdbjnk3g9guqsfe21coqn0mfpv3n6np.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("ล็อกอินสำเร็จ! นี่คือข้อมูลที่ Google ส่งมา:");
+            console.log(response.credential);
+            alert("เย้! ล็อกอินสำเร็จแล้ว ดูข้อมูลใน Console (F12) นะครับ");
+        }
+    </script>
+</body>
+</html>
