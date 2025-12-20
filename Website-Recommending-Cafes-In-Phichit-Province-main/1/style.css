@@ -1,0 +1,790 @@
+/* การกำหนดฟอนต์หลักของทั้งเว็บไซต์ (Kanit) */
+body {
+    background-color: #FBF9F1; 
+    color: #000000; 
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------------------------------------------------- */
+
+/* เมนู */
+/* เปลี่ยนสี */
+:root {
+    --navbar-bg-color: #FFC0CB; 
+    --link-color: #ffffff;
+    --logo-font: 'Kanit' ; /* หรือฟอนต์ที่มีลักษณะคล้ายลายมือที่คุณต้องการใช้ */
+}
+
+/* การตั้งค่าพื้นฐาน */
+body {
+    margin: 0;
+    font-family: 'Arial', 'Kanit';
+}
+
+/* ระยะห่างด้านบนและล่าง */
+.navbar-header {
+    background-color: var(--navbar-bg-color); 
+    padding: 25px 0; 
+}
+
+/* จัดข้อความ */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* จัดเรียงองค์ประกอบให้ห่างกัน */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+}
+
+/* ส่วนโลโก้ */
+.logo {
+    font-family: var(--logo-font);
+    font-size: 20px;
+    line-height: 1; /* ระยะห่างระหว่างบรรทัดสำหรับโลโก้ที่มีสองบรรทัด */
+    color: var(--link-color);
+    text-align: center;
+}
+
+/* แนวทางเมนู */
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* ระยะห่างระหว่างรายการเมนู */
+}
+
+/* จัดฟอนต์อะไรสักอย่าง */
+.nav-links a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+/* ไอคอนค้นหา */
+.search-icon {
+    cursor: pointer;
+    color: var(--link-color);
+}
+
+/* ------------------------------------- */
+
+/* ภาพแนะนำ สไลด์ */    
+ /* ภาพแนะนำ */
+.mySwiper {
+    width: 100%;
+    height: 500px; /* ความสูงของสไลด์ */
+    padding: 0px 0; /* เพิ่ม Padding บน/ล่าง เล็กน้อย */
+    margin: 0px 0;
+}
+
+/* Style ของแต่ละภาพสไลด์ */
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* ทำให้มีขอบมนตามที่ต้องการ */
+    overflow: hidden; /* ซ่อนส่วนเกิน */
+    position: relative;
+    /* การซ้อนภาพ: ให้ภาพอยู่ด้านล่างข้อความ */
+    background-size: cover;
+    background-position: center;
+}
+
+/* ให้ภาพอยู่ชั้นที่ 1 */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+
+/* Style สำหรับข้อความและปุ่มบนภาพ */
+.slide-content {
+    position: relative;
+    z-index: 2; /* ให้ข้อความอยู่ชั้นที่ 2 (ทับรูปภาพ) */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    /* ทำให้ข้อความอ่านง่ายขึ้นเมื่ออยู่บนภาพ */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+}
+
+.slide-content h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.slide-content p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* ปรับสีของ Dot และปุ่ม Navigation */
+.swiper-pagination-bullet-active {
+    background: #ffffff; /* สีเขียวเดียวกับ Read More */
+}
+
+/* ------------------------------------------------------ */
+
+/* ไฮไลท์ */
+/* ด้านล่าง */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+    background-color: #fff;
+}
+
+/* คอนเทนเนอร์หลักของทั้งส่วน */
+.review-section-container {
+    max-width: 1200px;
+    margin: 80px auto; /* ระยะห่างด้านบนและล่าง */
+    padding: 20px;
+    text-align: center; /* จัดกึ่งกลางสำหรับหัวข้อและปุ่ม */
+}
+
+/* "Our Review Highlights" */
+.section-header {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* เส้นคั่นใต้หัวข้อ */
+.section-header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #000;
+    margin: 10px auto 50px; 
+}
+
+              /* การจัดเรียงการ์ดด้วย CSS Grid */
+    .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; /* ระยะห่างระหว่างการ์ด */
+    margin-bottom: 50px;
+}
+
+        /* ปรับให้ responsive */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                /* เมื่อหน้าจอเล็กลง ให้แสดง 2 คอลัมน์ */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+        @media (max-width: 600px) {
+            .cards-grid {
+                /* เมื่อหน้าจอเล็กสุด ให้แสดง 1 คอลัมน์ */
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 4. สไตล์ของการ์ดแต่ละใบ */
+        .card {
+            text-align: left;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .card-image-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1 / 0.7; /* กำหนดอัตราส่วนภาพเพื่อให้สม่ำเสมอ */
+            object-fit: cover;
+        }
+        
+        /* แท็กที่มุมขวาบน (สีเข้ม) */
+        .card-tag {
+            position: absolute;
+            top: 15px;
+            right: 0;
+            background-color: #000; 
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 0 5px; /* เพิ่ม padding เล็กน้อย */
+        }
+
+        .card-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        
+                   .card-content p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ปุ่มดูทั้งหมด */
+.view-all-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+
+/* ------------------------------------------------------- */
+
+/* แผนที่ */
+/* กำหนดขนาดของแผนที่ให้เต็มพื้นที่ที่ต้องการ */
+#map {
+    height: 600px; /* สามารถปรับความสูงตามที่ต้องการได้ */
+    width: 100%;
+}
+        
+/* จัดรูปแบบข้อความด้านล่างแผนที่ */
+.controls {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* ตัวอักษร */
+h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* แต่ง */
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* อะไรก็ไม่รู้ แต่ห้ามลบ */
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* --------------------------------------------- */ 
+
+/*หน้ารีวิวล่าสุด/
+ /* --- ส่วน Review Highlights Section (ตั้งค่าคล้ายเดิม) --- */
+.latest-reviews-section {
+    padding: 80px 40px;
+    text-align: center;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section-header .underline {
+    width: 60px;
+    height: 2px;
+    background-color: #333;
+    margin: 0 auto;
+}
+
+/* --- ส่วน Grid Layout หลัก --- */
+.review-layout-grid {
+    display: grid;
+    /* สร้าง 4 คอลัมน์ แต่เราจะให้การ์ดใหญ่กินพื้นที่ 2 คอลัมน์ */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* ระยะห่างระหว่างการ์ด */
+}
+
+/* --- การ์ดทั่วไป --- */
+.review-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-container {
+    position: relative;
+    overflow: hidden;
+    /* กำหนดอัตราส่วนภาพสำหรับภาพแนวนอน */
+    padding-top: 66.66%; /* อัตราส่วน 3:2 */
+}
+
+.card-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* สไตล์สำหรับข้อความในการ์ด */
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* --- การตั้งค่า Grid สำหรับการ์ดขนาดใหญ่ (แถวที่ 1) --- */
+.large-card {
+    /* ทำให้การ์ดขนาดใหญ่กินพื้นที่ 2 คอลัมน์ */
+    grid-column: span 2; 
+}
+
+/* การปรับอัตราส่วนภาพของการ์ดใหญ่ให้สอดคล้องกับภาพต้นฉบับมากขึ้น */
+.large-card .card-image-container {
+    padding-top: 60%; 
+}
+
+
+/* --- สไตล์ของ Tag (ป้ายบอกจังหวัด/พื้นที่) --- */
+.tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6); /* พื้นหลังดำโปร่งแสง */
+}
+
+/* สี Tag ตัวอย่าง */
+.tag-yellow { background-color: #ffc107; color: #333; }
+.tag-black { background-color: #333; }
+.tag-pink { background-color: #e91e63; }
+.tag-green { background-color: #4caf50; }
+.tag-blue { background-color: #2196f3; }
+.tag-gray { background-color: #607d8b; }
+
+
+/* --- Responsive Design สำหรับมือถือ/แท็บเล็ต --- */
+@media (max-width: 992px) {
+    .review-layout-grid {
+        /* บนแท็บเล็ตแสดง 2 คอลัมน์ */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .large-card {
+        /* การ์ดใหญ่ก็ยังกิน 2 คอลัมน์ */
+        grid-column: span 2; 
+    }
+    
+    .small-card {
+        /* การ์ดเล็กกิน 1 คอลัมน์ */
+        grid-column: span 1; 
+    }
+}
+
+@media (max-width: 576px) {
+    .review-layout-grid {
+        /* บนมือถือแสดง 1 คอลัมน์เท่านั้น */
+        grid-template-columns: 1fr; 
+    }
+    
+    .large-card, .small-card {
+        /* ทุกการ์ดกินพื้นที่เต็มความกว้าง */
+        grid-column: span 1; 
+    }
+}
+
+/* -------------------------------------------------- */
+
+/* ส่วนหน้ารวม */
+/* ภาพรวม */ 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Sukhumvit Set', sans-serif; /* ใช้ฟอนต์ที่อ่านง่าย */
+    background-color: #fff;
+}
+
+/* คอนเทนเนอร์หลักของทั้งส่วน */
+.cafe-section-container {
+    max-width: 1200px;
+    margin: 50px auto; /* ระยะห่างด้านบนและล่าง */
+    padding: 20px;
+    text-align: center; /* จัดกึ่งกลางสำหรับหัวข้อ */
+}
+
+/* 2. หัวข้อ "รวมคาเฟ่" */
+        .section-header {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #000;
+            margin: 10px auto 30px; /* เส้นคั่นใต้หัวข้อ */
+        }
+
+        /* 3. การจัดเรียงการ์ดด้วย CSS Grid */
+        .cards-grid {
+            display: grid;
+            /* สร้าง 3 คอลัมน์ที่มีความกว้างเท่ากัน */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; /* ระยะห่างระหว่างการ์ด */
+        }
+
+        /* ปรับให้ responsive เมื่อหน้าจอเล็ก */
+        @media (max-width: 992px) {
+            .cards-grid {
+                /* เมื่อหน้าจอเล็กลง ให้แสดง 2 คอลัมน์ */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+        @media (max-width: 600px) {
+            .cards-grid {
+                /* เมื่อหน้าจอเล็กสุด ให้แสดง 1 คอลัมน์ */
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 4. สไตล์ของการ์ดแต่ละใบ */
+        .card {
+            text-align: left;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 0; /* ไม่มีขอบมนตามภาพ */
+        }
+
+        .card-image-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16 / 9; /* กำหนดอัตราส่วนภาพเพื่อให้สม่ำเสมอ */
+            object-fit: cover;
+        }
+        
+        /* แท็กที่มุมขวาบน (สีเข้มและสีเขียว) */
+        .card-tag {
+            position: absolute;
+            top: 15px;
+            right: 0;
+            background-color: #000; /* สีพื้นหลังดำ */
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* ตัวอย่างแท็กสีอื่น */
+        .card-tag.green {
+            background-color: #4CAF50; /* สีเขียว */
+        }
+        .card-tag.white {
+            background-color: #fff;
+            color: #000;
+        }
+
+
+        .card-content {
+            padding: 10px 0;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* 5. ปุ่มดูเพิ่มเติม */
+        .load-more-btn {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 50px;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+/* ------------------------------------------------------*/
+
+/* ด้านล่างสุด */
+/* ส่วน Footer */
+footer {
+    background-color: #FFC0CB; 
+    color: #fff; /* ข้อความสีขาว */
+    padding: 60px 40px;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1; /* ให้แต่ละคอลัมน์ขยายเท่ากันเบื้องต้น */
+    padding: 0 20px;
+}
+
+/* --- คอลัมน์ที่ 1: Info & Social --- */
+.footer-info p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 250px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: #e5a74e; /* สีไอคอนเป็นสีพื้นหลัง Footer */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- คอลัมน์ที่ 2: Links --- */
+.footer-links h4,
+.footer-contact h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- คอลัมน์ที่ 3: Contact --- */
+.footer-contact {
+    /* กำหนดความกว้างเฉพาะสำหรับคอลัมน์นี้เพื่อให้ปุ่มมีพื้นที่ */
+    flex: 1.5; 
+    max-width: 300px;
+}
+
+.contact-email {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-email .email-icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.newsletter-btn {
+    background-color: white;
+    color: #e5a74e; /* สีปุ่มเป็นสีพื้นหลัง Footer */
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.newsletter-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* เรียงคอลัมน์เป็นแนวตั้ง */
+        gap: 40px;
+    }
+
+    .footer-col {
+        padding: 0;
+    }
+    
+    .footer-info p {
+        max-width: 100%;
+    }
+    
+    .footer-contact {
+        max-width: 100%;
+    }
+}
+
+/* -------------------------------------- */
+/* หน้าค้นหา */
+/* กล่องห่อหุ้มช่องค้นหา - **แก้ไขตรงนี้** */
+.expandable-search-container {
+    display: flex;
+    justify-content: flex-start; /* จัดไปด้านซ้าย */
+
+}
+
+/* ฟอร์มการค้นหา - ทำให้เป็นวงกลมและมีเงา */
+.expandable-search-form {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #ffffff; /* พื้นหลังสีขาวของวงกลม */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* เงาอ่อนๆ */
+    
+    /* ตั้งค่าเริ่มต้นให้มีขนาดเท่ากับไอคอนเท่านั้น */
+    width: 45px; /* ความกว้างเริ่มต้น */
+    height: 45px; /* ความสูงเริ่มต้น เพื่อให้เป็นวงกลม */
+    padding: 0; /* ลบ padding ภายในฟอร์ม */
+    
+    /* จัดไอคอนให้อยู่ตรงกลางของวงกลมเมื่อย่อ */
+    justify-content: center; 
+    
+    /* การเปลี่ยนผ่าน (Transition) สำหรับการขยาย */
+    transition: width 0.4s ease-in-out, background-color 0.3s, padding 0.4s ease-in-out;
+}
+
+/* คลาสที่จะถูกเพิ่มเมื่อช่องค้นหาถูก "เปิด" ด้วย JS */
+.expandable-search-form.is-active {
+    width: 350px; /* ความกว้างเป้าหมายเมื่อขยาย */
+    height: 47px; /* ความสูงยังคงเท่าเดิม */
+    justify-content: flex-start; /* จัดไปด้านซ้ายเมื่อขยาย */
+}
+
+/* Wrapper สำหรับไอคอน */
+.search-icon-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0; 
+    /* ไม่ต้องมี padding-right ตั้งแต่แรก จะถูกจัดการเมื่อฟอร์มขยาย */
+}
+
+/* ช่องพิมพ์ (Input Field) */
+.expandable-search-input {
+    width: 0; 
+    padding: 0;
+    margin-left: 0;
+    
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    opacity: 0;
+    
+    transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out 0.1s, margin 0.4s ease-in-out;
+}
+
+/* เมื่อฟอร์มถูกเปิด (active) ให้แสดงช่องพิมพ์ */
+.expandable-search-form.is-active .expandable-search-input {
+    width: 100%; 
+    margin-left: 10px; /* เว้นระยะห่างจากไอคอนเมื่อขยาย */
+    opacity: 1; 
+}

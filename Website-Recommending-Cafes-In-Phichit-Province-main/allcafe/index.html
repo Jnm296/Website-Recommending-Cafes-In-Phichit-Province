@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - Cafe Phichit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+        <ul class="nav-links">
+            <li><a href="https://jnm296.github.io/Website-Recommending-Cafes-In-Phichit-Province" target="_blank" rel="noopener noreferrer">หน้าแรก</a></li>
+            <li><a href="allcafe/index.html" target="_blank" rel="noopener noreferrer">รวมคาเฟ่</a></li>
+            <li><a href="map/index.html" target="_blank" rel="noopener noreferrer">แนะนำทริป</a></li>
+            <li><a href="reviews/index.html" target="_blank" rel="noopener noreferrer">รีวิว</a></li>
+            <li><a href="contact/index.html" target="_blank" rel="noopener noreferrer">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Cafe Collection</h1>
+        <p>ค้นพบ 12 คาเฟ่ยอดฮิตในจังหวัดพิจิตรที่คุณไม่ควรพลาด</p>
+    </header>
+
+    <div class="container">
+        <div class="cafe-grid">
+            
+            <a href="../cafe/1425_Cafe.html" class="cafe-item" data-cafe-id="1425_Cafe.html">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_01">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_02">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_03">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_04">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_05">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_06">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_07">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_08">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_09">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_10">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe-detail-1.html" class="cafe-item" data-cafe-id="cafe_11">
+                <div class="img-container">
+                <div class="cafe-number">01</div>
+                <img src="..." alt="...">
+                </div>
+                <div class="cafe-info">
+                <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                <h3>11:25 Hours Cafe</h3>
+                <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            
+            </div>
+    </div>
+    
+    <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+    authDomain: "phichit-cafe.firebaseapp.com",
+    projectId: "phichit-cafe",
+    storageBucket: "phichit-cafe.appspot.com",
+    messagingSenderId: "825175930096",
+    appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+  };
+
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+
+  const db = firebase.firestore();
+
+  function checkVisitedStatus() {
+      db.collection("visited_cafes") 
+          .get()
+          .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                  const cafeId = doc.id; 
+                  const data = doc.data();
+
+                  if (data.visited === true) {
+                      const cafeItem = document.querySelector(`[data-cafe-id="${cafeId}"]`);
+                      if (cafeItem) {
+                          const btn = cafeItem.querySelector('.view-btn');
+                          if (btn) {
+                              btn.innerText = "เสร็จสิ้น";
+                              btn.style.backgroundColor = "#28a745";
+                              btn.style.color = "white";
+                          }
+                      }
+                  }
+              });
+          })
+          .catch((error) => {
+              console.error("Firebase Error:", error);
+          });
+  }
+
+  window.onload = function() {
+      checkVisitedStatus();
+  };
+</script>
