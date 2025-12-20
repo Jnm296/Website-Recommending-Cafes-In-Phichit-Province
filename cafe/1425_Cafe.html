@@ -328,6 +328,10 @@ document.addEventListener('click', function(e) {
             ⭐️ รวมรีวิว (เปิด)
         </button>
 
+        <button id="checkin-btn" class="btn-checkin floating-review-btn" style="background-color: #28a745;">
+    📍 เช็คอินร้านนี้
+</button>
+
         <div id="reviewModal" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="reviewModal.style.display='none'">&times;</span>
@@ -375,6 +379,21 @@ document.addEventListener('click', function(e) {
         </div>
     </div>
 
+    <div id="checkinModal" class="modal">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <span class="close-btn" onclick="checkinModal.style.display='none'">&times;</span>
+        
+        <h2>📍 เช็คอิน</h2>
+        <p>ยืนยันการเช็คอินที่ บาว คาเฟ่ CJ ซุปเปอร์มาร์เก็ต</p>
+        
+        <div id="checkin-area">
+            <button id="confirmCheckin" class="submit-btn" style="width: 100%;">กดเพื่อเช็คอิน</button>
+        </div>
+        
+        <p id="status-msg" style="margin-top: 15px; font-weight: bold; color: #28a745;"></p>
+    </div>
+</div>
+
     <script>
     document.querySelectorAll('.popup-image').forEach(image => {
     image.onclick = () => {
@@ -416,8 +435,7 @@ document.addEventListener('click', function(e) {
         });
     </script>
 
-    
-    
+   
 
         <footer>
             <div class="footer-container">
@@ -451,5 +469,52 @@ document.addEventListener('click', function(e) {
                 </div>
             </div>
         </footer>
+
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+    // ใช้ Config เดียวกับหน้าแรกของคุณ
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
+        projectId: "phichit-cafe",
+        storageBucket: "phichit-cafe.appspot.com",
+        messagingSenderId: "825175930096",
+        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+    };
+
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    const db = firebase.firestore();
+    
+    // กำหนด ID ของร้านนี้ (ต้องตรงกับในหน้าแรก)
+    const cafeId = "1425_Cafe.html"; 
+    const checkinBtn = document.getElementById('checkin-btn');
+    const statusMsg = document.getElementById('status-msg');
+
+    checkinBtn.addEventListener('click', () => {
+        checkinBtn.innerText = "กำลังบันทึก...";
+        checkinBtn.disabled = true;
+
+        // บันทึกลงคอลเลกชัน visited_cafes
+        db.collection("visited_cafes").doc(cafeId).set({
+            visited: true,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+            checkinBtn.innerText = "เช็คอินแล้ว!";
+            checkinBtn.style.backgroundColor = "#28a745";
+            statusMsg.innerText = "บันทึกข้อมูลเรียบร้อย! หน้าแรกจะเปลี่ยนเป็นสีเขียวแล้วค่ะ";
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            checkinBtn.disabled = false;
+            checkinBtn.innerText = "ลองใหม่อีกครั้ง";
+        });
+    });
+</script>
     </body>
 </html>

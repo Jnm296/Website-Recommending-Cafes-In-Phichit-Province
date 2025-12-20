@@ -1,138 +1,99 @@
-/* การกำหนดฟอนต์หลักของทั้งเว็บไซต์ (Kanit) */
-body {
-    background-color: #f7f6f5; 
-    color: #000000; 
-    font-family: 'Arial', 'Kanit';
-    margin: 0;
-    padding: 0;
-}
 
-/* ----------------------------------------------------- */
-
-/* เมนู */
-/* เปลี่ยนสี */
+/* ่ส่วนหัว */
 :root {
-    --navbar-bg-color: #FFC0CB; 
-    --link-color: #ffffff;
-    --logo-font: 'Kanit' ; /* หรือฟอนต์ที่มีลักษณะคล้ายลายมือที่คุณต้องการใช้ */
-}
+            --primary-pink: #f8c0cf; /* สีชมพูจาก Header ในรูป */
+            --dark-green: #4a6352;   /* สีเขียว Sage Green จากผนังร้าน */
+            --soft-white: #fdfdfd;
+        }
 
-/* การตั้งค่าพื้นฐาน */
-body {
-    margin: 0;
-    font-family: 'Arial', 'Kanit';
-}
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #444;
+        }
 
-/* ระยะห่างด้านบนและล่าง */
-.navbar-header {
-    background-color: var(--navbar-bg-color); 
-    padding: 25px 0; 
-}
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--primary-pink); /* คุมโทนชมพูตามรูป */
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-/* จัดข้อความ */
-.content-container {
-    max-width: 1200px;
-    margin: 0 auto; /* จัดกึ่งกลาง */
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between; /* จัดเรียงองค์ประกอบให้ห่างกัน */
-    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
-}
+        .logo { font-size: 1.5rem; font-weight: 600; }
+        
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 300; transition: 0.3s; }
+        .nav-links a:hover { opacity: 0.7; }
 
-/* ส่วนโลโก้ */
-.logo {
-    font-family: var(--logo-font);
-    font-size: 20px;
-    line-height: 1; /* ระยะห่างระหว่างบรรทัดสำหรับโลโก้ที่มีสองบรรทัด */
-    color: var(--link-color);
-    text-align: center;
-}
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: linear-gradient(to bottom, var(--primary-pink) 0%, #fff 100%);
+            min-height: 60vh;
+        }
 
-/* แนวทางเมนู */
-.nav-links ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px; /* ระยะห่างระหว่างรายการเมนู */
-}
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; color: var(--dark-green); margin-bottom: 10px; line-height: 1.2; }
+        .hero-text p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
 
-/* จัดฟอนต์อะไรสักอย่าง */
-.nav-links a {
-    text-decoration: none;
-    color: var(--link-color);
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.3s;
-}
+        .btn-main {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+            transition: 0.3s;
+        }
 
-/* -------------------------------------- */
-/* หน้าค้นหา */
-/* กล่องห่อหุ้มช่องค้นหา - **แก้ไขตรงนี้** */
-.expandable-search-container {
-    display: flex;
-    justify-content: flex-start; /* จัดไปด้านซ้าย */
+        .btn-main:hover { transform: translateY(-3px); background-color: #384d3f; }
 
-}
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .hero-image img { 
+            width: 100%; 
+            max-width: 500px; 
+            border-radius: 30px; /* ความโค้งมนตามแบบซุ้มประตูในรูป */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-/* ฟอร์มการค้นหา - ทำให้เป็นวงกลมและมีเงา */
-.expandable-search-form {
-    display: flex;
-    align-items: center;
-    border-radius: 50px;
-    background-color: #ffffff; /* พื้นหลังสีขาวของวงกลม */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* เงาอ่อนๆ */
-    
-    /* ตั้งค่าเริ่มต้นให้มีขนาดเท่ากับไอคอนเท่านั้น */
-    width: 45px; /* ความกว้างเริ่มต้น */
-    height: 45px; /* ความสูงเริ่มต้น เพื่อให้เป็นวงกลม */
-    padding: 0; /* ลบ padding ภายในฟอร์ม */
-    
-    /* จัดไอคอนให้อยู่ตรงกลางของวงกลมเมื่อย่อ */
-    justify-content: center; 
-    
-    /* การเปลี่ยนผ่าน (Transition) สำหรับการขยาย */
-    transition: width 0.4s ease-in-out, background-color 0.3s, padding 0.4s ease-in-out;
-}
+        /* Features Section */
+        .features {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
 
-/* คลาสที่จะถูกเพิ่มเมื่อช่องค้นหาถูก "เปิด" ด้วย JS */
-.expandable-search-form.is-active {
-    width: 350px; /* ความกว้างเป้าหมายเมื่อขยาย */
-    height: 47px; /* ความสูงยังคงเท่าเดิม */
-    justify-content: flex-start; /* จัดไปด้านซ้ายเมื่อขยาย */
-}
+        .feature-card {
+            padding: 40px;
+            background: #fff;
+            border-radius: 25px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
 
-/* Wrapper สำหรับไอคอน */
-.search-icon-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    flex-shrink: 0; 
-    /* ไม่ต้องมี padding-right ตั้งแต่แรก จะถูกจัดการเมื่อฟอร์มขยาย */
-}
+        .feature-card:hover { border-color: var(--primary-pink); transform: translateY(-10px); }
+        .feature-card i { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .feature-card h3 { color: var(--dark-green); margin-bottom: 15px; }
 
-/* ช่องพิมพ์ (Input Field) */
-.expandable-search-input {
-    width: 0; 
-    padding: 0;
-    margin-left: 0;
-    
-    border: none;
-    outline: none;
-    font-size: 16px;
-    background: transparent;
-    opacity: 0;
-    
-    transition: width 0.4s ease-in-out, opacity 0.3s ease-in-out 0.1s, margin 0.4s ease-in-out;
-}
-
-/* เมื่อฟอร์มถูกเปิด (active) ให้แสดงช่องพิมพ์ */
-.expandable-search-form.is-active .expandable-search-input {
-    width: 100%; 
-    margin-left: 10px; /* เว้นระยะห่างจากไอคอนเมื่อขยาย */
-    opacity: 1; 
-}
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .features { grid-template-columns: 1fr; }
+        }
 
 /* -------------------- */
 /* หน้ารวม */

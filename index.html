@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-<!DOCTYPE html>
-<html lang="th">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าแรก - Cafe Phichit</title>
@@ -15,15 +12,14 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 </head>
 <body>
-
     <nav>
-        <div class="logo">Cafe Phichit</div>
+        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
         <ul class="nav-links">
             <li><a href="https://jnm296.github.io/Website-Recommending-Cafes-In-Phichit-Province" target="_blank" rel="noopener noreferrer">หน้าแรก</a></li>
-            <li><a href="#">รวมคาเฟ่</a></li>
-            <li><a href="#">จัดทริป</a></li>
-            <li><a href="#">รีวิว</a></li>
-            <li><a href="#">ติดต่อเรา</a></li>
+            <li><a href="allcafe/index.html" target="_blank" rel="noopener noreferrer">รวมคาเฟ่</a></li>
+            <li><a href="map/index.html" target="_blank" rel="noopener noreferrer">แนะนำทริป</a></li>
+            <li><a href="reviews/index.html" target="_blank" rel="noopener noreferrer">รีวิว</a></li>
+            <li><a href="contact/index.html" target="_blank" rel="noopener noreferrer">ติดต่อเรา</a></li>
         </ul>
     </nav>
 
@@ -102,143 +98,54 @@
     </footer>
 
     <div class="floating-auth">
-        <button id="mainAuthBtn" class="btn-open-login" onclick="openLogin()">
-            <span>👤</span> เข้าสู่ระบบ
-        </button>
-        
-        <div id="userAvatar" class="user-profile-float" onclick="location.href='profile.html'">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi" alt="Avatar">
-        </div>
+    <a href="login.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+        <span>👤</span> เข้าสู่ระบบ
+    </a>
+    
+    <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi" alt="Avatar">
     </div>
-
-    <div id="loginModal" class="login-overlay">
-        <div class="login-box">
-            <span class="close-btn" onclick="closeLogin()">&times;</span>
-            <h2>Welcome Back!</h2>
-            <p style="color:#888; font-size: 0.9rem; margin-top:-20px; margin-bottom: 25px;">ล็อกอินเพื่อบันทึกคาเฟ่โปรดของคุณ</p>
-            
-            <form onsubmit="handleLogin(event)">
-                <input type="email" placeholder="อีเมลของคุณ" required>
-                <input type="password" placeholder="รหัสผ่าน" required>
-                <button type="submit" class="btn-login-submit">เข้าสู่ระบบ</button>
-            </form>
-
-            <div style="margin: 20px 0; color: #ddd; font-size: 0.8rem;">หรือเชื่อมต่อด้วย</div>
-
-            <div class="social-login-mini">
-                <div id="googleBtn" style="display: flex; justify-content: center; margin-top: 10px;"></div>
-            </div>
-        </div>
-    </div>
+</div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        
-        const firebaseConfig = {
-        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
-        authDomain: "phichit-cafe.firebaseapp.com",
-        databaseURL: "https://phichit-cafe-default-rtdb.firebaseio.com",
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
         projectId: "phichit-cafe",
         storageBucket: "phichit-cafe.firebasestorage.app",
         messagingSenderId: "825175930096",
         appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
-        measurementId: "G-SNG4GZ50C0" };
+        measurementId: "G-SNG4GZ50C0" 
+    };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-  // ฟังก์ชันดึงข้อมูลมาโชว์
-  async function getCafes() {
-    const querySnapshot = await getDocs(collection(db, "cafes"));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data().name); // ข้อมูลจะไปโชว์ใน Console ของเว็บค่ะ
-      alert("เจอร้าน: " + doc.data().name); // ลองให้มันเด้งเตือนดูว่าเชื่อมติดไหม
-    });
-  }
-  getCafes();
+    // 1. ดึงข้อมูลคาเฟ่มาโชว์ (ถ้าจำเป็นต้องใช้ในหน้านี้)
+    async function getCafes() {
+        const querySnapshot = await getDocs(collection(db, "cafes"));
+        // จัดการแสดงผลข้อมูลที่นี่...
+    }
+    getCafes();
 
-        function openLogin() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        function closeLogin() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            // จำลองการล็อกอินสำเร็จ
-            closeLogin();
-            document.getElementById('mainAuthBtn').style.display = 'none';
-            document.getElementById('userAvatar').style.display = 'block';
-            alert('ยินดีต้อนรับ! ล็อกอินสำเร็จแล้วค่ะ');
-        }
-
-        // คลิกพื้นที่ว่างข้างนอก Pop-up เพื่อปิด
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('loginModal')) {
-                closeLogin();
+    // 2. ตรวจสอบสถานะการเข้าสู่ระบบเมื่อโหลดหน้า
+    window.onload = function () {
+        const user = localStorage.getItem('userProfile');
+        
+        if (user) {
+            const userData = JSON.parse(user);
+            // ซ่อนปุ่ม "เข้าสู่ระบบ" และแสดงรูป Avatar
+            const loginBtn = document.getElementById('mainAuthBtn');
+            const userAvatar = document.getElementById('userAvatar');
+            
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (userAvatar) {
+                userAvatar.style.display = 'block';
+                userAvatar.querySelector('img').src = userData.picture || userData.photo;
             }
         }
-
-        window.onload = function () {
-    google.accounts.id.initialize({
-        // ใส่ Client ID ของคุณที่ได้จาก Google Cloud
-        client_id: "33280567312-hrdbjnk3g9guqsfe21coqn0mfpv3n6np.apps.googleusercontent.com",
-        callback: handleGoogleResponse
-    });
-    
-    // สร้างปุ่มล็อกอินใน div ที่เราเตรียมไว้
-    google.accounts.id.renderButton(
-        document.getElementById("googleBtn"),
-        { theme: "outline", size: "large", width: "240" }
-    );
-}
-
-// เพิ่ม async เข้าไปข้างหน้าเพื่อให้ใช้ await บันทึกข้อมูลได้
-async function handleGoogleResponse(response) {
-    // 1. ถอดรหัสข้อมูลผู้ใช้จาก Google
-    const responsePayload = decodeJwtResponse(response.credential);
-
-    // 2. บันทึกลง Firestore (ใช้ db และ setDoc ที่เรา import มา)
-    try {
-        await setDoc(doc(db, "users", responsePayload.sub), {
-            name: responsePayload.name,
-            email: responsePayload.email,
-            photo: responsePayload.picture,
-            lastLogin: new Date()
-        }, { merge: true });
-        console.log("บันทึกข้อมูลลง Firestore สำเร็จ!");
-    } catch (e) {
-        console.error("เกิดข้อผิดพลาดในการบันทึกข้อมูล: ", e);
     }
-
-    // 3. ส่วนการแสดงผลบนหน้าเว็บเหมือนเดิม
-    closeLogin();
-    document.getElementById('mainAuthBtn').style.display = 'none';
-    const userAvatar = document.getElementById('userAvatar');
-    userAvatar.style.display = 'block';
-    userAvatar.querySelector('img').src = responsePayload.picture;
-
-    alert('ยินดีต้อนรับคุณ ' + responsePayload.name + ' เข้าสู่ Phichit Cafe ค่ะ!');
-}
-
-        
-// ฟังก์ชันสำหรับแกะข้อมูล Token (ใช้แบบง่ายๆ)
-function decodeJwtResponse(token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
-}
-    
-        window.handleGoogleResponse = handleGoogleResponse;
-window.openLogin = openLogin;
-window.closeLogin = closeLogin;
-window.handleLogin = handleLogin;
-        </script>
-    </body>
-</html>
+</script>

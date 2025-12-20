@@ -988,3 +988,23 @@ h1 { font-size: 24px; margin-bottom: 20px; }
 }
 
 /* ----------------------- */
+/* ตกแต่งปุ่มเช็คอินเพิ่มเติม (ถ้ายังไม่มีในไฟล์ CSS) */
+.btn-checkin {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 10px;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

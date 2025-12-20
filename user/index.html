@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - Cafe Phichit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">Cafe Phichit</div>
+        <ul class="nav-links">
+            <li><a href="https://jnm296.github.io/Website-Recommending-Cafes-In-Phichit-Province" target="_blank" rel="noopener noreferrer">หน้าแรก</a></li>
+            <li><a href="#">รวมคาเฟ่</a></li>
+            <li><a href="#">จัดทริป</a></li>
+            <li><a href="#">รีวิว</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <div class="profile-grid">
+            
+            <aside class="profile-sidebar">
+                <div class="user-avatar">👤</div>
+                <h2>ยินดีต้อนรับ</h2>
+                <p id="user-email">user.cafe@example.com</p>
+                
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                
+                <a href="login.html" class="logout-btn">ออกจากระบบ (Logout)</a>
+            </aside>
+
+            <main class="profile-main">
+                
+                <section class="card">
+                    <div class="card-header">
+                        <h3>คาเฟ่ที่ฉันชอบ (My Favorites)</h3>
+                    </div>
+                    <div class="list-items">
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>11:25 Hours Cafe</span>
+                        </div>
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>ชาละวัน คาเฟ่</span>
+                        </div>
+                        <div class="item">
+                            <img src="https://via.placeholder.com/150x100" alt="cafe">
+                            <span>บึงสีไฟ คอฟฟี่</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+    <div class="card-header">
+        <h3>คาเฟ่ที่เคยไป (Visited Places)</h3>
+    </div>
+    <div class="list-items">
+        <div class="item">
+            <img src="https://via.placeholder.com/150x100" alt="cafe">
+            <span>Cafe Phichit River</span>
+        </div>
+        <div class="item">
+            <img src="https://via.placeholder.com/150x100" alt="cafe">
+            <span>The Forest Cafe</span>
+        </div>
+        </div>
+</section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>รีวิวของฉัน (My Reviews)</h3>
+                    </div>
+                    <div class="review-box">
+                        <strong>📍 11:25 Hours Cafe</strong>
+                        <p>"บรรยากาศดีมากค่ะ เค้กอร่อย มุมถ่ายรูปเยอะมาก"</p>
+                    </div>
+                    <div class="review-box">
+                        <strong>📍 Phichit River Side</strong>
+                        <p>"กาแฟรสชาติเข้มข้น วิวแม่น้ำสวยนั่งเพลินเลย"</p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3>การตั้งค่าบัญชี</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666;">
+                        • แก้ไขข้อมูลส่วนตัว<br>
+                        • เปลี่ยนรหัสผ่าน<br>
+                        • จัดการการแจ้งเตือน
+                    </p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
