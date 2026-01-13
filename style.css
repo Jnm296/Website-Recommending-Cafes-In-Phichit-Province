@@ -1,0 +1,491 @@
+/* ่ส่วนหัว */
+:root {
+    --primary-pink: #1a1113;
+    --dark-green: #4a6352;
+    --soft-white: #fdfdfd;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #444;
+    overflow-x: hidden; /* ป้องกันหน้าจอสไลด์ออกด้านข้าง */
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    background-color: var(--primary-pink);
+    color: #fdfdfd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo { font-size: 1.2rem; font-weight: 600; } /* ปรับขนาดโลโก้ลงเล็กน้อย */
+
+.nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+.nav-links a { color: #fdfdfd; text-decoration: none; font-weight: 300; transition: 0.3s; font-size: 0.9rem; }
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 10%;
+    background: linear-gradient(to bottom, var(--primary-pink) 0%, #fffafb 100%);
+    min-height: 60vh;
+}
+
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 3rem; color: var(--dark-green); margin-bottom: 10px; line-height: 1.2; }
+.hero-text p { font-size: 1.1rem; color: #666; margin-bottom: 30px; }
+
+.btn-main {
+    display: inline-block;
+    background-color: var(--dark-green);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+    transition: 0.3s;
+}
+
+.hero-image { flex: 1; display: flex; justify-content: center; }
+.hero-image img { 
+    width: 100%; 
+    max-width: 450px; 
+    border-radius: 30px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Features Section */
+.features {
+    padding: 60px 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.feature-card {
+    padding: 30px;
+    background: #fff;
+    border-radius: 25px;
+    border: 1px solid #eee;
+}
+
+.feature-card-link {
+    text-decoration: none; /* ลบเส้นใต้ */
+    color: inherit; /* ให้ใช้สีตามที่ตั้งไว้ใน feature-card */
+    display: block; /* เพื่อให้คลุมพื้นที่ทั้งหมด */
+}
+
+/* 1. ลบเส้นใต้ลิงก์ออกทั้งหมด */
+.feature-card a, 
+.feature-card-link {
+    text-decoration: none !important; /* ลบเส้นใต้ */
+    color: #333; /* สีปกติที่คุณต้องการ (เปลี่ยนรหัสสีได้ค่ะ) */
+    transition: color 0.3s ease; /* ให้เวลาเปลี่ยนสีดูนุ่มนวลขึ้น */
+}
+
+/* 1. ตั้งค่าพื้นฐานและลดระยะห่าง */
+.feature-card h3 {
+    margin-bottom: 5px; /* ลดระยะห่างด้านล่างหัวข้อ */
+    transition: color 0.3s ease;
+}
+
+.feature-card p {
+    margin-top: 0;      /* เอาขอบด้านบนของย่อหน้าออก */
+    line-height: 1.4;   /* ปรับระยะห่างระหว่างบรรทัดตัวหนังสือให้กระชับขึ้น */
+    transition: color 0.3s ease;
+}
+
+.feature-card i {
+    transition: color 0.3s ease;
+    margin-bottom: 15px; /* ระยะห่างระหว่างไอคอนกับหัวข้อ */
+}
+
+/* 2. ตั้งค่าตอนเมาส์ไปโดน (Hover) ตามที่คุณต้องการ */
+.feature-card:hover h3, 
+.feature-card:hover p,
+.feature-card:hover i {
+    color: #5f3333; /* สีน้ำตาลเข้มตามที่คุณเลือก */
+    text-decoration: none; /* ไม่มีเส้นใต้แน่นอน */
+}
+
+/* แถม: ถ้าอยากให้ card ดูมีมิติขึ้นเวลา hover */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* ยกตัวขึ้นนิดนึงเวลาเม้าส์ไปโดน */
+}
+
+/* 3. กันเหนียวสำหรับตัว Link เอง */
+.feature-card a:hover {
+    text-decoration: none;
+}
+
+/* รูปเลี่ยน */
+/* 1. ล้างพื้นหลังกรอบหลัก */
+.hero-image {
+    width: 100%;
+    max-width: 450px; 
+    overflow: hidden;
+    border-radius: 40px; 
+    margin-left: auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    aspect-ratio: 4 / 3;
+}
+
+/* 2. ล้างสีขาวที่ Link (ตัวแสบที่สุด) */
+.hero-swiper .swiper-slide a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 4. จัดการรูปภาพ (ขยายนวลๆ) */
+.hero-swiper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease-in-out; 
+    /* ป้องกันการกะพริบเวลาขยาย */
+    backface-visibility: hidden;
+    -webkit-user-drag: none;
+}
+
+/* 5. เอฟเฟกต์ตอน Hover (ขยายอย่างเดียว) */
+.hero-swiper .swiper-slide a:hover img {
+    transform: scale(1.1); 
+}
+
+/* ปรับสีจุด Pagination ให้เข้ากับธีมชมพูของคุณ */
+.swiper-pagination-bullet-active {
+    background: var(--primary-pink) !important;
+}
+/* --- ส่วนที่ปรับปรุงสำหรับมือถือ (Mobile Responsive) --- */
+@media (max-width: 768px) {
+nav {
+    flex-direction: column; /* จัดโลโก้กับเมนูให้อยู่คนละบรรทัด */
+    gap: 10px;
+    padding: 15px;
+}
+
+.logo { font-size: 1rem; text-align: center; }
+
+.nav-links {
+    gap: 10px;
+    font-size: 0.8rem;
+}
+
+.hero {
+    flex-direction: column-reverse; /* เอารูปขึ้นก่อน หรือข้อความขึ้นก่อน (ปรับตามชอบ) */
+    text-align: center;
+    padding: 40px 5%;
+}
+
+.hero-text h1 { 
+    font-size: 1.8rem; /* ลดขนาดหัวข้อใหญ่ในมือถือ */
+    margin-top: 20px;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    padding: 0 10px;
+}
+
+.hero-image img {
+    max-width: 80%; /* ให้รูปเล็กลงในมือถือ */
+}
+
+.features {
+    grid-template-columns: 1fr; /* ปรับให้การ์ดเรียงต่อกันเป็นแถวเดียว */
+    padding: 40px 10%;
+}
+
+.feature-card {
+    padding: 20px;
+}
+}
+
+/* --- ส่วนที่ปรับปรุงสำหรับมือถือ (Mobile Responsive) --- */
+@media (max-width: 768px) {
+    /* ... (โค้ด nav และ hero-text เดิมของคุณ) ... */
+
+    /* แก้ไขเฉพาะตรงกรอบรูป Hero ด้านล่างนี้ค่ะ */
+    .hero-image {
+        width: 100% !important; /* ขยายกรอบให้กว้างขึ้น */
+        max-width: 320px;       /* คุมขนาดไม่ให้ใหญ่ล้นจอเกินไป */
+        margin: 0 auto;
+        display: block !important; /* ยกเลิก flex เพื่อให้ข้างในขยายเต็ม */
+        aspect-ratio: 1 / 1;    /* ปรับเป็นสี่เหลี่ยมจัตุรัสให้ภาพดูเต็มตา */
+        border-radius: 40px; 
+        overflow: hidden;
+    }
+
+    /* บังคับให้ Swiper และทุกอย่างข้างในขยายเต็มกรอบ 100% */
+    .hero-swiper,
+    .hero-swiper .swiper-wrapper,
+    .hero-swiper .swiper-slide,
+    .hero-swiper .swiper-slide a {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+    }
+
+    .hero-swiper img {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important; /* ปลดล็อก 80% ที่เคยตั้งไว้ */
+        object-fit: cover !important; /* หัวใจหลัก: ทำให้ภาพเต็มกรอบโดยไม่เบี้ยว */
+        border-radius: 0; /* ให้รูปเป็นสี่เหลี่ยมเพื่อไปเต็มกรอบมนของชั้นนอก */
+    }
+
+    /* ขยับจุด Pagination ขึ้นมานิดนึงให้อยู่บนรูป */
+    .hero-swiper .swiper-pagination {
+        bottom: 15px !important;
+    }
+
+    /* ... (โค้ด features เดิมของคุณ) ... */
+}
+
+/* ----------------------- */
+/* ส่วนล่าง */
+a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352; /* สีเขียว Sage Green จากรูป */
+    --soft-cream: #fffafb;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    background-color: var(--soft-cream);
+    color: #444;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background-color: var(--primary-pink);
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+}
+
+.hero-banner h1 { font-size: 3rem; margin: 0; }
+.hero-banner p { font-size: 1.2rem; opacity: 0.9; }
+
+.container { max-width: 1000px; margin: 0 auto; padding: 10px 20px; }
+
+.section-title {
+    text-align: center;
+    color: var(--dark-green);
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+/* สไตล์การป้ายยา (Highlight Card) */
+.highlight-card {
+    display: flex;
+    background: white;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #fefefe;
+}
+
+.highlight-card:nth-child(even) { flex-direction: row-reverse; }
+
+.highlight-img { flex: 1; min-height: 400px; overflow: hidden; }
+.highlight-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.highlight-info {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.highlight-info .tag {
+    color: var(--primary-pink);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.highlight-info h2 { color: var(--dark-green); font-size: 2.2rem; margin: 10px 0; }
+        .highlight-info p { color: #777; line-height: 1.8; margin-bottom: 25px; }
+
+.read-more {
+    display: inline-block;
+    color: var(--dark-green);
+    text-decoration: none;
+    font-weight: 500;
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+/* ปรับตัวการ์ดโดยรวม */
+.highlight-card, 
+.highlight-card:nth-child(even) { 
+    flex-direction: column; 
+    margin-bottom: 40px; /* ลดระยะห่างระหว่างการ์ด */
+    border-radius: 30px; /* ลดความโค้งลงเล็กน้อยให้รับกับจอมือถือ */
+}
+
+/* ปรับขนาดกรอบรูปภาพ */
+.highlight-img { 
+    flex: none;
+    width: 100%;
+    height: 250px; /* กำหนดความสูงตายตัวเพื่อให้รูปไม่ยาวจนเกินหน้าจอ */
+    min-height: auto; 
+}
+
+/* ปรับเนื้อหาด้านล่างรูป */
+.highlight-info { 
+    padding: 25px; 
+    text-align: left; /* หรือเปลี่ยนเป็น center ถ้าต้องการให้ดูเป็นระเบียบกลางจอ */
+}
+
+.highlight-info h2 {
+    font-size: 1.6rem; /* ลดขนาดหัวข้อลงเพื่อให้พอดีจอ */
+    margin: 5px 0;
+}
+
+.highlight-info p {
+    font-size: 0.95rem; /* ลดขนาดตัวอักษรเนื้อหา */
+    margin-bottom: 20px;
+}
+}
+
+/* ------------------------ */
+/* Footer ส่วนปิดท้าย */
+footer {
+    background: white;
+    padding: 80px 20px 40px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.footer-logo { font-size: 1.8rem; color: var(--dark-green); font-weight: bold; margin-bottom: 15px; }
+        
+.social-links { margin: 25px 0; }
+.social-links a { 
+    margin: 0 15px; 
+    text-decoration: none; 
+    color: var(--primary-pink); 
+    font-size: 1.2rem; 
+}
+
+.copyright { font-size: 0.8rem; color: #aaa; margin-top: 40px; }
+
+@media (max-width: 768px) {
+    .highlight-card, .highlight-card:nth-child(even) { flex-direction: column; }
+    .highlight-info { padding: 30px; }
+}
+
+/* การจัดรูปแบบ Footer สำหรับโทรศัพท์ */
+@media (max-width: 768px) {
+footer {
+    padding: 40px 20px; /* เพิ่มพื้นที่ว่างด้านบนและล่าง */
+    text-align: center; /* จัดตัวอักษรให้อยู่กึ่งกลางทั้งหมด */
+}
+
+.footer-logo {
+    font-size: 1.4rem; /* ปรับขนาดโลโก้ให้พอดีหน้าจอ */
+    margin-bottom: 15px;
+}
+
+footer p {
+    font-size: 0.95rem; /* ปรับขนาดตัวอักษรให้อ่านง่ายขึ้นในมือถือ */
+    line-height: 1.6; /* เพิ่มระยะห่างระหว่างบรรทัด */
+    margin-bottom: 20px;
+    padding: 0 10px; /* กันข้อความชิดขอบจอเกินไป */
+}
+
+.copyright {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* เพิ่มเส้นแบ่งจางๆ ให้ดูเป็นระเบียบ */
+    font-size: 0.85rem;
+}
+}
+
+/* ----------------- */
+/* ลงชื่อเข้าใช้ */
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+}
+
+/* ปุ่มลอยด้านขวาล่าง */
+.floating-auth {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+/* ปรับแต่งปุ่มให้เป็นรูปทรงเดิม */
+.btn-open-login {
+    background: var(--dark-green);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+    transition: 0.3s;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.btn-open-login:hover {
+    transform: scale(1.05);
+    background: #3d5244;
+    color: white; /* กันสีเปลี่ยนเมื่อเป็นลิงก์ */
+}
+
+/* ส่วนแสดงผลรูปโปรไฟล์ (Avatar) */
+.user-profile-float {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden; /* ตัดส่วนเกินออก */
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    align-items: center; /* จัดกลางแนวตั้ง */
+    justify-content: center; /* จัดกลางแนวนอน */
+    background: white;
+    border: 3px solid var(--primary-pink);
+}
+
+.user-profile-float img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover; /* สำคัญมาก: ป้องกันรูปยืดหรือเบี้ยว */
+}
