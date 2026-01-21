@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - Cafe Phichit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="floating-auth">
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mimi" alt="Avatar">
+        </div>
+    </div>
+
+    <div id="loginModal" class="login-full-page">
+        <div class="login-box">
+            <h2>เข้าสู่ระบบ</h2>
+            <p style="color:#888; font-size: 0.9rem; margin-top:-20px; margin-bottom: 25px;">ล็อกอินเพื่อบันทึกคาเฟ่โปรดของคุณ</p>
+            
+            <form onsubmit="handleLogin(event)">
+    <input type="email" id="loginEmail" placeholder="อีเมลของคุณ" required>
+    <input type="password" id="loginPassword" placeholder="รหัสผ่าน" required>
+    <button type="submit" class="btn-login-submit">เข้าสู่ระบบ</button>
+</form>
+
+            <div style="margin-top: 25px; text-align: center; font-size: 14px; color: #666;">
+                <span>ยังไม่มีบัญชีใช่ไหม?</span>
+                <a href="../newuser/index.html" style="color: #4A6741; font-weight: bold; text-decoration: none; margin-left: 5px;">สมัครสมาชิกเลย</a>
+            </div>
+        </div>
+    </div>
+
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
+        projectId: "phichit-cafe",
+        storageBucket: "phichit-cafe.firebasestorage.app",
+        messagingSenderId: "825175930096",
+        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // --- 1. ฟังก์ชัน Login ด้วย Email และ Password ---
+    window.handleLogin = async (e) => {
+        e.preventDefault();
+        
+        // ดึงค่าจาก input (ใช้ลำดับ index หรือตั้ง id ให้ input ก็ได้)
+        const email = e.target.querySelectorAll('input')[0].value;
+        const password = e.target.querySelectorAll('input')[1].value;
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            alert("ยินดีต้อนรับกลับมาค่ะ!");
+            
+            // กลับไปหน้าก่อนหน้า หรือหน้าหลัก
+            window.location.href = document.referrer || '../index.html';
+        } catch (error) {
+            console.error("Login Error:", error.code);
+            let message = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
+            if (error.code === 'auth/user-not-found') message = "ไม่พบผู้ใช้นี้ในระบบ";
+            alert(message);
+        }
+    };
+
+    // --- 2. ตรวจสอบสถานะล็อกอิน เพื่อแสดง/ซ่อนรูปโปรไฟล์ ---
+    onAuthStateChanged(auth, async (user) => {
+        const avatarDiv = document.getElementById('userAvatar');
+        if (user) {
+            if (avatarDiv) {
+                avatarDiv.style.display = 'block';
+                // ดึงรูปโปรไฟล์จาก Firestore (ถ้ามี)
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists() && userDoc.data().photo) {
+                    avatarDiv.querySelector('img').src = userDoc.data().photo;
+                }
+            }
+        } else {
+            if (avatarDiv) avatarDiv.style.display = 'none';
+        }
+    });
+
+</script>                                                                                                                                                                

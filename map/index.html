@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำทริป</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="#">แนะนำทริป</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>📌 เลือกสไตล์ที่เหมาะสมกับคุณ</h1>
+        <p>เราคัดสรรสไตล์ที่ดีที่สุดมาให้คุณแล้ว</p>
+        <div class="tab-buttons">
+            <button onclick="openTab('1')">มินิมอล</button>
+            <button onclick="openTab('2')">วินเทจ</button>
+            <button onclick="openTab('3')">ธรรมชาติ</button>
+        </div>
+    </header>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div id="1" class="tab-content">
+    <div class="suggested-trips-container">
+        <div class="trip-slots">
+            <div class="trip-card">
+                <div class="trip-info">
+                    <h3>🕒 ทริปที่ 1</h3>
+                    <h4>โซนบึงสีไฟ มินิมอล</h4>
+                    <p>เน้นความชิลล์ริมบึง ถ่ายรูปสวย แสงดี</p>
+                    <ul class="mini-list">
+                        <li>📍 Bali กำนันเต่า</li>
+                        <li>📍 Lark Cafe</li>
+                        <li>📍 Intense coffee house</li>
+                    </ul>
+                    <button class="btn-view-map" onclick="autoCreateTrip(1)" style="margin-top:15px; padding:8px 15px; border-radius:20px; border:none; background:#ff85a2; color:white; cursor:pointer;">ดูแผนที่เส้นทาง</button>
+                </div>
+
+                <div class="trip-photo-slider">
+                    <a href="../cafe/cafe011.html" class="photo-item">
+                        <img src="../imagas/กำนันเต่า/billcafe1.jpg" alt="Bali">
+                        <span>Bali กำนันเต่า</span>
+                    </a>
+                    <a href="../cafe/cafe007.html" class="photo-item">
+                        <img src="../imagas/LarkCafe/Lark1.webp" alt="Kanvela">
+                        <span>Lark Cafe</span>
+                    </a>
+                    <a href="../cafe/cafe006.html" class="photo-item">
+                        <img src="../imagas/Intensecoffeehouse/Intense1.webp" alt="Intense">
+                        <span>Intense Coffee</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="trip-card">
+                <div class="trip-info">
+                    <h3>🕒 ทริปที่ 2</h3>
+<h4>Slow Life ในวันพักผ่อน</h4>
+<p>หลีกหนีความวุ่นวาย มาเอนกายรับลมชมวิว กับคาเฟ่ดีไซน์อบอุ่นที่ทำให้เวลาเดินช้าลง</p>
+                    <ul class="mini-list">
+                        <li>📍 14:25 Hours.</li>
+                        <li>📍 FAAMSUK CAFE’ </li>
+                        <li>📍 For You Coffee Lake View Resort</li>
+                    </ul>
+                    <button class="btn-view-map" onclick="autoCreateTrip(4)" style="margin-top:15px; padding:8px 15px; border-radius:20px; border:none; background:#ff85a2; color:white; cursor:pointer;">ดูแผนที่เส้นทาง</button>
+                </div>
+
+                <div class="trip-photo-slider">
+                    <a href="../cafe/cafe001.html" class="photo-item">
+                        <img src="../imagas/1425/1425cafe1.jpg" alt="Bali">
+                        <span>14:25 Hours.</span>
+                    </a>
+                    <a href="../cafe/cafe007.html" class="photo-item">
+                        <img src="../imagas/FAAMSUK/FAA1.webp" alt="Kanvela">
+                        <span>FAAMSUK CAFE’</span>
+                    </a>
+                    <a href="../cafe/cafe006.html" class="photo-item">
+                        <img src="../imagas/foryoucoffee/foryou2.webp" alt="Intense">
+                        <span>For You Coffee Lake View Resort</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="2" class="tab-content" style="display:none;">
+    <div class="suggested-trips-container">
+        <div class="trip-slots">
+            <div class="trip-card">
+                <div class="trip-info">
+                    <h3>🌿 ทริปที่ 1</h3>
+                    <h4>โซนตัวเมือง วินเทจ</h4>
+                    <p>เอาใจสายกินและสายถ่ายรูปแนวคลาสสิกใจกลางเมือง</p>
+                    <ul class="mini-list">
+                        <li>📍 Kanvela Art Space</li>
+                        <li>📍 Chim Niyom Cafe</li>
+                        <li>📍 Chim Hong Cafe</li>
+                    </ul>
+                    <button class="btn-view-map" onclick="autoCreateTrip(2)" style="margin-top:15px; padding:8px 15px; border-radius:20px; border:none; background:#ff85a2; color:white; cursor:pointer;">ดูแผนที่เส้นทาง</button>
+                </div>
+
+                <div class="trip-photo-slider">
+                    <a href="../cafe/cafe009.html" class="photo-item">
+                        <img src="../imagas/กาลเวฬา/k1.webp" alt="Bonnie Cafe">
+                        <span>Kanvela Art Space</span>
+                    </a>
+                    <a href="../cafe/cafe003.html" class="photo-item">
+                        <img src="../imagas/chim/chimcafe1.jpg" alt="Chim Niyom">
+                        <span>Chim Niyom</span>
+                    </a>
+                    <a href="../cafe/cafe012.html" class="photo-item">
+                        <img src="../imagas/ชิมฮง/ชิมฮง1.webp" alt="Chim Hong">
+                        <span>Chim Hong Cafe</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="3" class="tab-content" style="display:none;">
+    <div class="suggested-trips-container">
+        <div class="trip-slots">
+            <div class="trip-card">
+                <div class="trip-info">
+                    <h3>☁️ ทริปที่ 1 </h3>
+                    <h4>โซนรอบนอก ธรรมชาติ</h4>
+                    <p>เปลี่ยนบรรยากาศไปหาพื้นที่กว้างๆ รับลมเย็นๆ สบายตา</p>
+                    <ul class="mini-list">
+                        <li>📍 Black Ground Cafe & Dining</li>
+                        <li>📍 Make Sense</li>
+                        <li>📍 Siam2C</li>
+                    </ul>
+                    <button class="btn-view-map" onclick="autoCreateTrip(3)" style="margin-top:15px; padding:8px 15px; border-radius:20px; border:none; background:#ff85a2; color:white; cursor:pointer;">ดูแผนที่เส้นทาง</button>
+                </div>
+
+                <div class="trip-photo-slider">
+                    <a href="../cafe/cafe002.html" class="photo-item">
+                        <img src="../imagas/Black Ground Cafe & Dining/Black1.webp" alt="For you coffee">
+                        <span>Black Ground Cafe & Dining</span>
+                    </a>
+                    <a href="../cafe/cafe008.html" class="photo-item">
+                        <img src="../imagas/Make​Sense/Makesense1.webp" alt="Make Sense">
+                        <span>Make Sense</span>
+                    </a>
+                    <a href="../cafe/cafe009.html" class="photo-item">
+                        <img src="../imagas/SIAM2C/SIAM2C1.webp" alt="Make Sense">
+                        <span>Siam2C</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="planner-view" style="display:none;"> <div class="planner-layout">
+        <div class="route-list">
+            <h2 id="selected-trip-title"></h2>
+            <div id="route-items"></div>
+            <button class="btn-reset" onclick="window.location.reload()">🔙 กลับไปเลือกทริปอื่น</button>
+        </div>
+        
+        <div id="map-container">
+    <iframe id="main-map" src="" allowfullscreen></iframe>
+</div>
+    </div>
+</div>
+
+<div class="floating-auth">
+        <a href="login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+        <img src="../imagas/coffee-beans.png" alt="Avatar">
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+    // ฟังก์ชันหลักที่ใช้ "จำ" สถานะการล็อกอิน
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+            // --- กรณี Login แล้ว ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'none', 'important');
+            }
+            if (avatarDiv) {
+                // สั่งให้โชว์เป็น flex และใช้ important เพื่อชนะ CSS ที่เราเขียนดักไว้
+                avatarDiv.style.setProperty('display', 'flex', 'important');
+                
+                // ดึงรูปโปรไฟล์มาใส่
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.photo) {
+                            avatarDiv.querySelector('img').src = userData.photo;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        } else {
+            // --- กรณีไม่ได้ Login ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'flex', 'important');
+            }
+            if (avatarDiv) {
+                avatarDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+    });
+
+    //รูปเลื่อน
+    // ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = '../user/index.html';
+        });
+        }
+
+        </script>
+
+        <script>
+    const mapLinks = {
+        1: "https://www.google.com/maps/d/embed?mid=1AIBAtEMM-p0penUnom18F8-8oqFn55o&ehbc=2E312F&noprof=1",
+        2: "https://www.google.com/maps/d/embed?mid=1z6IL6z46NDE4xjGBQUSINPY4gnpbkdc&ehbc=2E312F",
+        3: "https://www.google.com/maps/d/embed?mid=1NUIj1AKmECwbsoBa-_pWEN79WTSCwHk&ehbc=2E312F&noprof=1" ,
+        4: "https://www.google.com/maps/d/embed?mid=1I8G5kq0_80wmkZ8Mlhi4GlRhT4Zqho0&usp=sharing"
+    };
+
+    // ข้อมูลรายชื่อร้าน (เอาไว้โชว์ด้านซ้ายของแผนที่)
+    const tripData = {
+        1: { title: "โซนบึงสีไฟ มินิมอล & อาร์ต", locations: ["Bali กำนันเต่า", "Lark Cafe", "Intense coffee house"] },
+        2: { title: "โซนตัวเมือง วินเทจ & ขนมหวาน", locations: ["Kanvela Art Space", "Chim Niyom Cafe", "Chim Hong Cafe"] },
+        3: { title: "โซนรอบนอก รับลมชมวิวธรรมชาติ", locations: ["Black Ground Cafe & Dining" , "Make Sense", "Siam2C"] } ,
+        4: { title: "โซน Slow Life ในวันพักผ่อน", locations: ["14:25 Hours." , "FAAMSUK CAFE’" , "For You Coffee Lake View Resort"] }
+    };
+
+    function autoCreateTrip(num) {
+        // ดึงข้อมูลทริปตามหมายเลขที่กด
+        const trip = tripData[num];
+
+        // 1. ซ่อนหน้าเลือกทริป และโชว์หน้าแสดงผลแผนที่ (Planner View)
+        document.querySelector('.suggested-trips-container').style.display = 'none';
+        document.querySelector('.page-header').style.display = 'none';
+        document.getElementById('planner-view').style.display = 'block';
+
+        // 2. เปลี่ยนชื่อหัวข้อทริป
+        document.getElementById('selected-trip-title').innerText = trip.title;
+
+        // 3. เปลี่ยนแผนที่ใน iframe ตามลิงก์ที่ตั้งไว้
+        const mapFrame = document.getElementById('main-map');
+        mapFrame.src = mapLinks[num];
+
+        // 4. แสดงรายชื่อร้านค้าด้านซ้าย
+        const routeDiv = document.getElementById('route-items');
+        routeDiv.innerHTML = ""; // ล้างข้อมูลเก่าก่อน
+        trip.locations.forEach((name, i) => {
+            routeDiv.innerHTML += `
+                <div class="itinerary-item">
+                    <span><b>${i + 1}.</b> ${name}</span>
+                    <span>📍</span>
+                </div>
+            `;
+        });
+    }
+
+    function openTab(tabName) {
+  // 1. ซ่อนเนื้อหาทั้งหมด
+  var content = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < content.length; i++) {
+    content[i].style.display = "none";  
+  }
+  
+  // 2. เอาสีเข้ม (class active) ออกจากปุ่มทั้งหมด
+  var buttons = document.querySelectorAll(".tab-buttons button");
+  buttons.forEach(btn => btn.classList.remove("active"));
+
+  // 3. แสดงเนื้อหาที่เลือก
+  document.getElementById(tabName).style.display = "block";  
+  
+  // 4. ใส่สีเข้มให้ปุ่มที่เพิ่งกด (หาปุ่มที่มีคำสั่งตรงกับ tabName)
+  event.currentTarget.className += " active";
+}
+</script>

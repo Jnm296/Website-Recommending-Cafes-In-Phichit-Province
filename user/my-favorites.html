@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้ใช้งาน</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<body>
+    <nav>
+        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="../map/index.html">แนะนำทริป</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container" style="margin-top: 30px;">
+        <h2>รายการคาเฟ่ที่คุณถูกใจ ❤️</h2>
+        <div id="favorites-container" class="favorite-grid">
+            <p>กำลังโหลดรายการโปรด...</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = "../index.html";
+                return;
+            }
+
+            const container = document.getElementById("favorites-container");
+
+            try {
+                // ดึงข้อมูลจากคอลเลกชันย่อย favorites ภายใต้ user
+                const favRef = collection(db, "users", user.uid, "favorites");
+                const favSnapshot = await getDocs(favRef);
+
+                if (favSnapshot.empty) {
+                    container.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 50px;">
+                            <p style="color: #888;">คุณยังไม่มีคาเฟ่ที่ถูกใจในขณะนี้</p>
+                            <a href="../allcafe/index.html" style="color: #4a5d4d;">ไปดูคาเฟ่แนะนำกัน!</a>
+                        </div>`;
+                    return;
+                }
+
+                let html = "";
+                favSnapshot.forEach((doc) => {
+                    const cafe = doc.data();
+                    // ตรวจสอบเส้นทางรูปภาพ (ถ้าใน DB เก็บเป็น /images/... ให้เติม .. ข้างหน้า)
+                    const imageSrc = cafe.image.startsWith('http') ? cafe.image : `..${cafe.image}`;
+                    
+                    html += `
+                        <a href="../cafe/${doc.id}.html" class="fav-card">
+                            <img src="${imageSrc}" onerror="this.src='../imagas/coffee-beans.png'">
+                            <div class="fav-card-info">
+                                <h4>${cafe.name}</h4>
+                                <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">คลิกเพื่อดูรายละเอียด</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                container.innerHTML = html;
+
+            } catch (error) {
+                console.error("Error:", error);
+                container.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+            }
+        });
+    </script>
+</body>
+</html>
