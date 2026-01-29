@@ -1,0 +1,985 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('imagas/BeautyPlus-IMAGE-ENHANCER-1769578795741.jpg'); /* เปลี่ยนเป็น path รูปของคุณ */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+    color: white;
+}
+
+.navbar {
+    position: absolute;
+    display: flex;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Navigation Bar */
+nav {
+    
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 25px; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* เมนูส่วนหน้า - เปลี่ยนเป็นสีเขียวตามที่คุณต้องการ */
+.nav-links a { 
+    color: var(--dark-green); /* ใช้สีเขียวเข้ม #4a6352 */
+    text-decoration: none; 
+    font-weight: 600; /* ปรับให้ตัวหนาขึ้นหน่อยเพื่อให้อ่านง่าย */
+    transition: 0.3s; 
+    font-size: 1.15rem;
+}
+
+/* เมื่อเอาเมาส์ชี้เมนู ให้สีส้มวิ่งมาที่เมนูด้วยเพื่อให้ดูเป็นธีมเดียวกัน */
+.nav-links a:hover { 
+    color: #ffffff; 
+    transform: translateY(-2px); /* เพิ่มลูกเล่นให้เมนูขยับขึ้นเล็กน้อย */
+}
+
+/* ปรับแต่งวงกลม */
+.logo-circle {
+    width: 50px;             /* ปรับขนาดความกว้างตามชอบ */
+    height: 50px;            /* ต้องเท่ากับ width เพื่อให้กลมเป๊ะ */
+    border-radius: 50%;      /* ทำให้เป็นวงกลม */
+    border: 3px solid var(--soft-white); /* เส้นขอบสีเขียว */
+    overflow: hidden;        /* ตัดส่วนเกินของรูปที่หลุดขอบวงกลม */
+    background: white;       /* พื้นหลังขาวเผื่อรูปโลโก้เป็นพื้นหลังใส */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ปรับขนาดรูปในวงกลม */
+.logo-circle img {
+    width: 80%;              /* ให้รูปเล็กลงหน่อยไม่ให้ชนขอบ */
+    height: 80%;
+    object-fit: contain;     /* รักษาอัตราส่วนรูปภาพ */
+}
+
+/* ปรับให้ Logo เดิมขยับมาตรงกลางแนวเดียวกับรูป */
+.logo {
+    margin: 0;
+    line-height: 1;
+}
+
+.logo { font-size: 24px; font-weight: bold; }
+.logo span { color: #ff8c00; }
+
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { text-decoration: none; color: white; font-weight: 300; }
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.btn-plan {
+    background: #ff8c00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.view-toggle {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.8);
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.view-toggle button {
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-toggle button.active {
+    background: #ff8c00;
+    color: white;
+}
+
+.btn-login {
+    /* รูปแบบพื้นฐาน */
+    background-color: #4a5d4d; /* สีเขียวเข้มโทนเดียวกับปุ่มค้นหาของคุณ */
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px; /* ทำให้ปุ่มมนสวย */
+    
+    /* ข้อความ */
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    
+    /* เอฟเฟกต์ */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* เมื่อเอาเมาส์ไปวาง (Hover) */
+.btn-login:hover {
+    background-color: #ff8c00; /* เปลี่ยนเป็นสีส้มเมื่อชี้ เหมือนปุ่มหลักของ Gethergo */
+    transform: translateY(-2px); /* ขยับขึ้นเล็กน้อยให้ดูมีมิติ */
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+}
+
+/* เมื่อกดปุ่ม (Active) */
+.btn-login:active {
+    transform: translateY(0);
+}
+
+
+
+/*---------------*/
+/* ่ส่วนหัว */
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+    --soft-white: #fdfdfd;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #444;
+    overflow-x: hidden; /* ป้องกันหน้าจอสไลด์ออกด้านข้าง */
+}
+
+/* คอนเทนเนอร์หลักของโลโก้ */
+.logo-container {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ปรับแต่งวงกลม */
+.logo-circle {
+    width: 50px;             /* ปรับขนาดความกว้างตามชอบ */
+    height: 50px;            /* ต้องเท่ากับ width เพื่อให้กลมเป๊ะ */
+    border-radius: 50%;      /* ทำให้เป็นวงกลม */
+    border: 3px solid var(--soft-white); /* เส้นขอบสีเขียว */
+    overflow: hidden;        /* ตัดส่วนเกินของรูปที่หลุดขอบวงกลม */
+    background: white;       /* พื้นหลังขาวเผื่อรูปโลโก้เป็นพื้นหลังใส */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ปรับขนาดรูปในวงกลม */
+.logo-circle img {
+    width: 80%;              /* ให้รูปเล็กลงหน่อยไม่ให้ชนขอบ */
+    height: 80%;
+    object-fit: contain;     /* รักษาอัตราส่วนรูปภาพ */
+}
+
+/* ปรับให้ Logo เดิมขยับมาตรงกลางแนวเดียวกับรูป */
+.logo {
+    margin: 0;
+    line-height: 1;
+}
+
+/* ---------------------------- */
+/* คลุมเนื้อหาทั้งหมดให้กว้าง 1500px */
+.gallery-wrapper-1500 {
+    max-width: 1500px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* ตั้งค่า Grid ให้มีความสูงคงที่ 500px */
+.grid-container-custom {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* ปรับสัดส่วนซ้ายขวา */
+    gap: 15px;
+    height: 500px; /* ความสูงตามที่คุณต้องการ */
+    margin-bottom: 20px;
+}
+
+.main-item-custom, .sub-item-custom {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+}
+
+.main-item-custom img, .sub-item-custom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* จัดการรูปเล็ก 4 รูปให้แบ่งช่องเท่าๆ กัน */
+.sub-grid-custom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* แถบบาร์ด้านล่าง */
+.view-all-bar-long {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px;
+    background-color: #4a5d4d; /* สีเขียวเข้มตามธีม */
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.view-all-bar-long:hover {
+    background-color: #5d7d67; /* เปลี่ยนเป็นสีชมพูเวลาเอาเมาส์วาง */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* เอฟเฟกต์รูปภาพเวลา Hover */
+.main-item-custom:hover img, .sub-item-custom:hover img {
+    transform: scale(1.08);
+}
+
+/* ป้าย Tag มุมซ้ายล่างของรูปใหญ่ */
+.overlay-tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+/* ------------------------*/
+/* หน้ารวม */
+:root {
+            --primary-pink: #f8c0cf;
+            --dark-green: #4a6352;
+            --soft-bg: #fffcfd;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--soft-bg);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* การจัดเลย์เอาต์ 12 ช่อง */
+        .cafe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* สไตล์ Card คาเฟ่ */
+        .cafe-item {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #f0f0f0;
+        }
+
+        .cafe-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(74, 99, 82, 0.1);
+            border-color: var(--primary-pink);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cafe-item:hover .img-container img {
+            transform: scale(1.1);
+        }
+
+        .cafe-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .cafe-info h3 {
+            margin: 0 0 10px 0;
+            color: var(--dark-green);
+            font-size: 1.4rem;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background-color: #f1f8f4;
+            color: var(--dark-green);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-pink);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+
+        .cafe-item:hover .view-btn {
+            color: var(--dark-green);
+            border-color: var(--dark-green);
+        }
+
+        /* ตกแต่งตัวเลขลำดับ (ถ้าต้องการ) */
+        .cafe-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-green);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .cafe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        /* ---------------- */
+
+        .gallery-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: 'Kanit', sans-serif;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.grid-wrapper {
+  display: grid;
+  /* แบ่งเป็น 10 ส่วน: ซ้ายเอาไป 6 ขวาเอาไป 4 */
+  grid-template-columns: 6fr 4fr; 
+  gap: 12px; /* ระยะห่างระหว่างรูป */
+  height: 450px; /* กำหนดความสูงรวม */
+}
+
+/* ตั้งค่าให้ทุกลิงก์ใน Grid */
+.grid-wrapper a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.grid-wrapper a:hover {
+  transform: scale(1.02); /* เอฟเฟกต์ซูมเวลาเอาเมาส์ชี้ */
+}
+
+.grid-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ให้รูปเต็มช่องโดยไม่เสียสัดส่วน */
+}
+
+/* จัดการฝั่งขวาให้แบ่งเป็น 4 ช่อง (2x2) */
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ข้อความ Overlay (ถ้ามี) */
+.overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.footer-caption {
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* ทำให้รองรับมือถือ */
+@media (max-width: 768px) {
+  .grid-wrapper {
+    grid-template-columns: 1fr; /* กลายเป็นแถวเดียว */
+    height: auto;
+  }
+  .main-item { height: 250px; }
+  .sub-grid { height: 300px; }
+}
+
+/* ----------------------- */
+/* ส่วนล่าง */
+a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352; /* สีเขียว Sage Green จากรูป */
+    --soft-cream: #fffafb;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    background-color: var(--soft-cream);
+    color: #444;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background-color: var(--primary-pink);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+}
+
+.hero-banner h1 { font-size: 3rem; margin: 0; }
+.hero-banner p { font-size: 1.2rem; opacity: 0.9; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 10px 20px; }
+
+.section-title {
+    text-align: center;
+    color: var(--dark-green);
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+/* สไตล์การป้ายยา (Highlight Card) */
+.highlight-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #fefefe;
+}
+
+.highlight-card:nth-child(even) { flex-direction: row-reverse; }
+
+.highlight-img {
+    flex: 0 0 50%;    /* ล็อกความกว้างของรูปไว้ที่ 45% (ปรับลด-เพิ่มได้) */
+    display: flex;
+    justify-content: flex-end;
+    height: 500px;    /* กำหนดความสูงที่คุณต้องการจริงๆ */
+    min-height: auto; /* ลบค่า min-height 400px เดิมออก */
+    border-radius: 30px; /* เพิ่มความโค้งให้รูปดูละมุนเข้ากับสไตล์คุณ */
+    margin: 20px;     /* เว้นระยะห่างขอบให้รูปดูเล็กลงและมีพื้นที่หายใจ */
+}
+
+.highlight-img { flex: 1; min-height: 200px; overflow: hidden; }
+.highlight-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.highlight-info {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.highlight-info .tag {
+    color: var(--primary-pink);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.highlight-info h2 { color: var(--dark-green); font-size: 2.2rem; margin: 10px 0; }
+        .highlight-info p { color: #777; line-height: 1.8; margin-bottom: 25px; }
+
+.read-more {
+    display: inline-block;
+    color: var(--dark-green);
+    text-decoration: none;
+    font-weight: 500;
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+/* ปรับตัวการ์ดโดยรวม */
+.highlight-card, 
+.highlight-card:nth-child(even) { 
+    flex-direction: column; 
+    margin-bottom: 40px; /* ลดระยะห่างระหว่างการ์ด */
+    border-radius: 30px; /* ลดความโค้งลงเล็กน้อยให้รับกับจอมือถือ */
+}
+/* ปรับสไตล์รูปภาพให้เล็กลงและสมดุล */
+.highlight-img {
+    flex: 0 0 40%;      /* ลดความกว้างจาก 50% เหลือ 40% เพื่อให้รูปดูเล็กลง */
+    height: 300px;      /* ลดความสูงลงตามความเหมาะสม (จากเดิม 500px) */
+    margin: 30px;       /* เพิ่ม margin เพื่อให้รูปมีพื้นที่หายใจและดูเล็กลงในกรอบ */
+    border-radius: 25px; /* ความโค้งของมุมรูป */
+    overflow: hidden;   /* ตัดส่วนรูปที่เกินจากความโค้ง */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* เพิ่มเงาเบาๆ ให้รูปดูมีมิติ */
+}
+
+.highlight-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ให้รูปเต็มกรอบโดยไม่เสียสัดส่วน */
+}
+
+/* ปรับส่วนข้อมูลให้กว้างขึ้นเพื่อความสมดุล */
+.highlight-info {
+    flex: 1;
+    padding: 40px 60px 40px 20px; /* เพิ่ม padding ฝั่งขวาให้ข้อความดูโปร่ง */
+}
+
+/* กรณีสลับข้าง (Even) ให้ปรับ padding สลับกัน */
+.highlight-card:nth-child(even) .highlight-info {
+    padding: 40px 20px 40px 60px;
+}
+
+.highlight-info h2 {
+    font-size: 1.6rem; /* ลดขนาดหัวข้อลงเพื่อให้พอดีจอ */
+    margin: 5px 0;
+}
+
+.highlight-info p {
+    font-size: 0.95rem; /* ลดขนาดตัวอักษรเนื้อหา */
+    margin-bottom: 20px;
+}
+}
+
+/* ------------------------*/
+/* หน้ารวม */
+:root {
+            --primary-pink: #f8c0cf;
+            --dark-green: #4a6352;
+            --soft-bg: #fffcfd;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--soft-bg);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* การจัดเลย์เอาต์ 12 ช่อง */
+        .cafe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* สไตล์ Card คาเฟ่ */
+        .cafe-item {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #f0f0f0;
+        }
+
+        .cafe-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(74, 99, 82, 0.1);
+            border-color: var(--primary-pink);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cafe-item:hover .img-container img {
+            transform: scale(1.1);
+        }
+
+        .cafe-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .cafe-info h3 {
+            margin: 0 0 10px 0;
+            color: var(--dark-green);
+            font-size: 1.4rem;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background-color: #f1f8f4;
+            color: var(--dark-green);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-pink);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+
+        .cafe-item:hover .view-btn {
+            color: var(--dark-green);
+            border-color: var(--dark-green);
+        }
+
+        /* ตกแต่งตัวเลขลำดับ (ถ้าต้องการ) */
+        .cafe-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark-green);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .cafe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+
+/* ------------------------- */
+@media (max-width: 768px) {
+    /* 1. ปรับ Container ให้ยืดหยุ่นและกึ่งกลาง */
+    .search-box {
+        display: flex !important;
+        flex-direction: row !important; /* บังคับให้อยู่แถวเดียวกัน */
+        justify-content: center !important;
+        align-items: stretch !important; /* ให้ความสูงเท่ากัน */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;    /* เว้นขอบจอนิดเดียว */
+        gap: 5px !important;            /* ระยะห่างระหว่างช่องกับปุ่ม */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. ตัวหุ้ม Input ต้องยืดหยุ่น (Flex: 1) */
+    .search-box > div:first-child {
+        flex: 1 !important; /* ให้ช่องพิมพ์กินพื้นที่ที่เหลือทั้งหมด */
+        min-width: 0 !important; /* ป้องกัน Input ดันจนเบี้ยว */
+    }
+
+    /* 3. ปรับช่อง Input ให้เต็มพื้นที่ตัวหุ้ม */
+    #searchInput {
+        width: 100% !important;
+        padding: 12px 15px !important;
+        font-size: 16px !important;   /* กันจอซูมใน iPhone */
+        border-radius: 30px 0 0 30px !important; /* มนแค่ฝั่งซ้าย */
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. ปรับปุ่มค้นหาให้พอดี */
+    #searchButton {
+        width: auto !important;       /* ให้กว้างตามตัวอักษร "ค้นหา" */
+        padding: 0 20px !important;
+        border-radius: 0 30px 30px 0 !important; /* มนแค่ฝั่งขวา */
+        font-size: 0.9rem !important;
+        white-space: nowrap !important; /* กันตัวหนังสือตกบรรทัด */
+        margin: 0 !important;
+    }
+
+    /* 5. รายการแนะนำ (Suggestions) */
+    #suggestionList {
+        width: 100% !important;
+        left: 0 !important;
+    }
+}
+
+/* ------------------------------------------------------*/
+/* Footer ส่วนปิดท้าย */
+
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+    --deep-pink: #d88a9d;
+    --text-gray: #5d6d66;
+}
+
+.main-footer {
+    background-color: var(--dark-green);
+    padding: 60px 0 30px;
+    font-family: 'Kanit', sans-serif;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* ปัดซ้าย-ขวาออกจากกัน */
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: left; /* ปัดข้อความชิดซ้าย */
+}
+
+/* ฝั่งซ้าย */
+.footer-brand-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 15px;
+}
+
+.footer-description {
+    color: var(--deep-pink);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-invitation a {
+    color: var(--primary-pink);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-pink);
+}
+
+/* ฝั่งขวา (Grid) */
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    flex: 1.5;
+}
+
+.footer-column h4 {
+    color: var(--primary-pink);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: var(--deep-pink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--deep-pink);
+    padding-left: 5px;
+}
+
+/* Copyright */
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    color: var(--deep-pink);
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-links-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand-section { text-align: center; }
+}
+/* ---------------------- */
+.rating-bar-container { margin: 10px 0; }
+.rating-item { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; font-size: 0.85rem; }
+.bar-bg { flex-grow: 1; height: 8px; background: #eee; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: #4a5d4d; border-radius: 10px; transition: width 0.5s; }
+.num-label { min-width: 25px; text-align: right; font-weight: bold; }
+
+/*------------------------------- */
+/* ลงชื่อเข้าใช้ */
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+}
+
+/* ปุ่มลอยด้านขวาล่าง */
+.floating-auth {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+/* ปรับแต่งปุ่มให้เป็นรูปทรงเดิม */
+.btn-open-login {
+    background: var(--dark-green);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+    transition: 0.3s;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.btn-open-login:hover {
+    transform: scale(1.05);
+    background: #3d5244;
+    color: white; /* กันสีเปลี่ยนเมื่อเป็นลิงก์ */
+}
+
+/* ส่วนแสดงผลรูปโปรไฟล์ (Avatar) */
+.user-profile-float {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden; /* ตัดส่วนเกินออก */
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    align-items: center; /* จัดกลางแนวตั้ง */
+    justify-content: center; /* จัดกลางแนวนอน */
+    background: white;
+    border: 3px solid var(--primary-pink);
+}
+
+.user-profile-float img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover; /* สำคัญมาก: ป้องกันรูปยืดหรือเบี้ยว */
+}

@@ -1,0 +1,817 @@
+/* ่ส่วนหัว */
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+    --soft-white: #fdfdfd;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #444;
+    overflow-x: hidden; /* ป้องกันหน้าจอสไลด์ออกด้านข้าง */
+}
+
+/* คอนเทนเนอร์หลักของโลโก้ */
+.logo-container {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ปรับแต่งวงกลม */
+.logo-circle {
+    width: 50px;             /* ปรับขนาดความกว้างตามชอบ */
+    height: 50px;            /* ต้องเท่ากับ width เพื่อให้กลมเป๊ะ */
+    border-radius: 50%;      /* ทำให้เป็นวงกลม */
+    border: 3px solid var(--soft-white); /* เส้นขอบสีเขียว */
+    overflow: hidden;        /* ตัดส่วนเกินของรูปที่หลุดขอบวงกลม */
+    background: white;       /* พื้นหลังขาวเผื่อรูปโลโก้เป็นพื้นหลังใส */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ปรับขนาดรูปในวงกลม */
+.logo-circle img {
+    width: 80%;              /* ให้รูปเล็กลงหน่อยไม่ให้ชนขอบ */
+    height: 80%;
+    object-fit: contain;     /* รักษาอัตราส่วนรูปภาพ */
+}
+
+/* ปรับให้ Logo เดิมขยับมาตรงกลางแนวเดียวกับรูป */
+.logo {
+    margin: 0;
+    line-height: 1;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--primary-pink); /* สีชมพูพื้นหลังเดิมที่คุณชอบ */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 25px; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* เมนูส่วนหน้า - เปลี่ยนเป็นสีเขียวตามที่คุณต้องการ */
+.nav-links a { 
+    color: var(--dark-green); /* ใช้สีเขียวเข้ม #4a6352 */
+    text-decoration: none; 
+    font-weight: 600; /* ปรับให้ตัวหนาขึ้นหน่อยเพื่อให้อ่านง่าย */
+    transition: 0.3s; 
+    font-size: 1.15rem;
+}
+
+/* เมื่อเอาเมาส์ชี้เมนู ให้สีส้มวิ่งมาที่เมนูด้วยเพื่อให้ดูเป็นธีมเดียวกัน */
+.nav-links a:hover { 
+    color: #ffffff; 
+    transform: translateY(-2px); /* เพิ่มลูกเล่นให้เมนูขยับขึ้นเล็กน้อย */
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 10%;
+    background: linear-gradient(to bottom, var(--primary-pink) 0%, #fffafb 100%);
+    min-height: 60vh;
+}
+
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 3rem; color: var(--dark-green); margin-bottom: 10px; line-height: 1.2; }
+.hero-text p { font-size: 1.1rem; color: #666; margin-bottom: 30px; }
+
+/* --- ส่วนที่ปรับปรุงสำหรับมือถือ (Mobile Responsive) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* จัดโลโก้กับเมนูให้อยู่คนละบรรทัด */
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .logo { font-size: 1rem; text-align: center; }
+
+    .nav-links {
+        gap: 10px;
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        flex-direction: column-reverse; /* เอารูปขึ้นก่อน หรือข้อความขึ้นก่อน (ปรับตามชอบ) */
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .hero-text h1 { 
+        font-size: 1.8rem; /* ลดขนาดหัวข้อใหญ่ในมือถือ */
+        margin-top: 20px;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .hero-image img {
+        max-width: 80%; /* ให้รูปเล็กลงในมือถือ */
+    }
+
+    .features {
+        grid-template-columns: 1fr; /* ปรับให้การ์ดเรียงต่อกันเป็นแถวเดียว */
+        padding: 40px 10%;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+}
+
+/* ------------------------- */
+/* หัว */
+:root {
+            --primary-pink: #f8c0cf;
+            --dark-green: #4a6352;
+            --soft-bg: #fffcfd;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--soft-bg);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* ส่วนหัวของหน้า */
+        .page-header {
+            background-color: #f8c0cf ;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-pink);
+        }
+
+        .page-header h1 {
+            color: var(--text-gray);
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .page-header p {
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+.page-header {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+/* ----------------------- */
+/* ค้นหา */
+/* ตกแต่งปุ่มค้นหาให้ดูนุ่มนวลขึ้น */
+#searchButton:hover {
+    background-color: #3a4a3c !important;
+    transition: 0.3s;
+}
+
+/* จัดระเบียบ Grid ของผลการค้นหา */
+#cafe-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* ทำให้ Card ที่ดึงมาจาก Firebase มีขนาดเท่ากับของเดิม */
+#cafe-list-container .review-card {
+    margin: 0; /* ล้าง margin ที่อาจจะทำให้เบี้ยว */
+    width: 100%;
+}
+
+/* หมวหมู่ */
+.category-tags {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.category-tags span {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+#suggestionList li {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Kanit';
+    font-size: 0.9rem;
+    color: #555;
+    transition: 0.2s;
+}
+
+#suggestionList li:hover {
+    background-color: #f5f5f5;
+    color: #4a5d4d;
+    padding-left: 25px; /* เลื่อนนิดนึงให้ดูมีลูกเล่น */
+}
+
+@media (max-width: 768px) {
+    /* 1. ปรับ Container ให้ยืดหยุ่นและกึ่งกลาง */
+    .search-box {
+        display: flex !important;
+        flex-direction: row !important; /* บังคับให้อยู่แถวเดียวกัน */
+        justify-content: center !important;
+        align-items: stretch !important; /* ให้ความสูงเท่ากัน */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;    /* เว้นขอบจอนิดเดียว */
+        gap: 5px !important;            /* ระยะห่างระหว่างช่องกับปุ่ม */
+        box-sizing: border-box !important;
+    }
+
+    /* 2. ตัวหุ้ม Input ต้องยืดหยุ่น (Flex: 1) */
+    .search-box > div:first-child {
+        flex: 1 !important; /* ให้ช่องพิมพ์กินพื้นที่ที่เหลือทั้งหมด */
+        min-width: 0 !important; /* ป้องกัน Input ดันจนเบี้ยว */
+    }
+
+    /* 3. ปรับช่อง Input ให้เต็มพื้นที่ตัวหุ้ม */
+    #searchInput {
+        width: 100% !important;
+        padding: 12px 15px !important;
+        font-size: 16px !important;   /* กันจอซูมใน iPhone */
+        border-radius: 30px 0 0 30px !important; /* มนแค่ฝั่งซ้าย */
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. ปรับปุ่มค้นหาให้พอดี */
+    #searchButton {
+        width: auto !important;       /* ให้กว้างตามตัวอักษร "ค้นหา" */
+        padding: 0 20px !important;
+        border-radius: 0 30px 30px 0 !important; /* มนแค่ฝั่งขวา */
+        font-size: 0.9rem !important;
+        white-space: nowrap !important; /* กันตัวหนังสือตกบรรทัด */
+        margin: 0 !important;
+    }
+
+    /* 5. รายการแนะนำ (Suggestions) */
+    #suggestionList {
+        width: 100% !important;
+        left: 0 !important;
+    }}
+
+/* ------------------------ */
+/* ปุ่มเขียนรีวิว */
+/* ปุ่มเขียนรีวิว ลอยมุมขวาล่าง */
+.floating-btn {
+    position: fixed;
+    bottom: 100px; /* ระยะจากขอบล่าง */
+    right: 30px;  /* ระยะจากขอบขวา */
+    background-color: #4a5d4d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex; /* แสดงปุ่มไว้ตลอด */
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.floating-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ส่วนของ Login/Avatar ให้ลอยอยู่สูงกว่าปุ่มรีวิวเล็กน้อยเพื่อไม่ให้บังกัน */
+.floating-auth {
+    position: fixed;
+    bottom: 100px; /* อยู่สูงขึ้นมา 100px */
+    right: 30px;
+    z-index: 999;
+}
+
+/* ตั้งค่า Modal ให้ซ่อนไว้เป็นค่าเริ่มต้น (สำคัญมากเพื่อกันหน้าเด้ง) */
+.modal-overlay {
+    display: none; /* ห้ามเปลี่ยนเป็น flex ใน CSS ให้เปลี่ยนด้วย JS เท่านั้น */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------------------- */
+/* เขียนรีวิว */
+/* พื้นหลังมัวๆ เมื่อเปิด Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* กล่องสีขาวตรงกลาง */
+/* กล่องสีขาวตรงกลาง (ฉบับปรับปรุงให้มี Scrollbar) */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+
+    /* --- ส่วนที่เพิ่มใหม่เพื่อให้หดลงและเลื่อนได้ --- */
+    max-height: 85vh;    /* สูงไม่เกิน 85% ของความสูงหน้าจอ */
+    overflow-y: auto;    /* ถ้าเนื้อหายาวเกิน ให้เกิด Scrollbar แนวตั้ง */
+    display: flex;       /* ใช้ flex เพื่อจัดระเบียบข้างใน */
+    flex-direction: column;
+}
+
+/* ปรับแต่งแถบเลื่อน (Scrollbar) ให้ดูสวยเข้ากับธีม (สำหรับ Chrome/Safari) */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-pink); /* ใช้สีชมพูตามธีมของคุณ */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #e0a5b5; /* ชมพูเข้มขึ้นนิดนึงตอนเอาเมาส์ชี้ */
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-button {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #888;
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Kanit';
+}
+
+.btn-submit {
+    width: 100%; padding: 12px; background: #4a5d4d; color: white;
+    border: none; border-radius: 10px; cursor: pointer; font-size: 1rem;
+}
+
+/* รายการคาเฟ่ */
+ฺ.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Kanit';
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    border-color: #4a5d4d;
+    outline: none;
+}
+
+/* ------------------------ */ 
+/* รีวิว */
+/* คอนเทนเนอร์หลักของการ์ด */
+.cafe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* ตัวการ์ดรีวิว */
+.review-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+}
+
+/* รูปภาพในการ์ด */
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ทำให้รูปไม่เบี้ยว */
+}
+
+/* คะแนนดาวบนรูป */
+.card-image .rating-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #4a5d4d;
+}
+
+/* เนื้อหาข้างในการ์ด */
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.review-text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    
+    /* ชุดคำสั่งตัดคำ */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3; /* มาตรฐานใหม่ (เผื่ออนาคต) */
+    overflow: hidden;
+}
+
+/* ส่วนแสดงชื่อผู้รีวิว */
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.reviewer-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f0f0f0;
+}
+
+.reviewer-name {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.review-card {
+    background: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04); /* เงาบางๆ ตอนปกติ */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.review-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(74, 93, 77, 0.15); /* เงาฟุ้งสีเขียวจางๆ */
+}
+
+/* --------- */
+/* การ์ดเลือกชื่อร้าน */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.store-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.store-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: #f9f9f9;
+}
+
+.store-card h3 {
+    margin: 15px 0 5px 0;
+    color: #4a5d4d;
+    font-size: 1.2rem;
+}
+
+.store-card p {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* ปุ่มย้อนกลับแบบ Minimal */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    color: #4a5d4d;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-bottom: 20px;
+}
+
+.btn-back:hover { text-decoration: underline; }
+
+/* -------- */
+.cafe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* ------------------------ */
+/* ------------------------------------------------------*/
+/* Footer ส่วนปิดท้าย */
+
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+    --deep-pink: #d88a9d;
+    --text-gray: #5d6d66;
+}
+
+.main-footer {
+    background-color: var(--dark-green);
+    padding: 60px 0 30px;
+    font-family: 'Kanit', sans-serif;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* ปัดซ้าย-ขวาออกจากกัน */
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: left; /* ปัดข้อความชิดซ้าย */
+}
+
+/* ฝั่งซ้าย */
+.footer-brand-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin-bottom: 15px;
+}
+
+.footer-description {
+    color: var(--deep-pink);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-invitation a {
+    color: var(--primary-pink);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-pink);
+}
+
+/* ฝั่งขวา (Grid) */
+.footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    flex: 1.5;
+}
+
+.footer-column h4 {
+    color: var(--primary-pink);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: var(--deep-pink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--deep-pink);
+    padding-left: 5px;
+}
+
+/* Copyright */
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    color: var(--deep-pink);
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-links-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand-section { text-align: center; }
+}
+
+
+/*------------- */
+
+/* คอนเทนเนอร์หลักของแถบคะแนน */
+.rating-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rating-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 25px; /* จัดวาง ชื่อ | หลอด | เลขคะแนน */
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* พื้นหลังหลอด */
+.bar-bg {
+    background: #f0f0f0;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ตัวหลอดคะแนน (สีเขียวเข้มตามธีม) */
+.bar-fill {
+    background: var(--dark-green);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-in-out; /* เพิ่ม Animation ตอนโหลด */
+}
+
+.rating-item .num {
+    font-weight: 600;
+    color: var(--dark-green);
+    text-align: right;
+}
+
+/* ----------------- */
+/* ลงชื่อเข้าใช้ */
+:root {
+    --primary-pink: #f8c0cf;
+    --dark-green: #4a6352;
+}
+
+/* ปุ่มลอยด้านขวาล่าง */
+.floating-auth {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+/* ปรับแต่งปุ่มให้เป็นรูปทรงเดิม */
+.btn-open-login {
+    background: var(--dark-green);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(74, 99, 82, 0.2);
+    transition: 0.3s;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.btn-open-login:hover {
+    transform: scale(1.05);
+    background: #3d5244;
+    color: white; /* กันสีเปลี่ยนเมื่อเป็นลิงก์ */
+}
+
+/* ส่วนแสดงผลรูปโปรไฟล์ (Avatar) */
+.user-profile-float {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden; /* ตัดส่วนเกินออก */
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    align-items: center; /* จัดกลางแนวตั้ง */
+    justify-content: center; /* จัดกลางแนวนอน */
+    background: white;
+    border: 3px solid var(--primary-pink);
+}
+
+.user-profile-float img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover; /* สำคัญมาก: ป้องกันรูปยืดหรือเบี้ยว */
+}

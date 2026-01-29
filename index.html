@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">หน้าแรก</a></li>
+            <li><a href="allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="reviews/index.html">รีวิว</a></li>
+            <li><a href="contact/index.html">ติดต่อเรา</a></li>
+        </ul>
+
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Website Recommending Cafes In Phichit Province main</h1>
+        <p>เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</p>
+            <a href="allcafe/index.html" style="text-decoration: none;">
+    <button class="btn-plan">คาเฟ่ทั้งหมด</button>
+</a>
+        </div>
+        
+        <div class="view-toggle">
+            <button class="active">โครงงาน</button>
+            <button>ปวช.3</button>
+        </div>
+    </header>
+
+    
+
+    <br>
+        
+    <div class="container">
+        <h2 class="section-title">คาเฟ่น่าสนใจในจังหวัดพิจิตร</h2>
+
+        <div class="cafe-grid">
+            <a href="cafe/cafe002.html" class="cafe-item" data-keywords="Black Ground Cafe & Dining, มินิมอล">
+                <div class="img-container">
+                    <img src="imagas/Black Ground Cafe & Dining/Black1.webp " alt="คาเฟ่บอนนี่">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Black Ground Cafe & Dining</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe/cafe005.html" class="cafe-item" data-keywords="For you coffee Lake view resort,มินิมอล">
+                <div class="img-container">
+
+                    <img src="imagas/foryoucoffee/foryou2.webp" alt="คาเฟ่ฟอลยู">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>For you coffee Lake view resort</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe/cafe008.html" class="cafe-item" data-keywords="Makesense,มินิมอล,ธรรมชาติ">
+                <div class="img-container">
+                    <img src="imagas/Make​Sense/Makesense1.jpg" alt="คาเฟ่เมคเซน">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Makesense</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe/cafe010.html" class="cafe-item" data-keywords="Kanvela Art Space,ธรรมชาติ,วินเทจ">
+                <div class="img-container">
+                    <img src="imagas/กาลเวฬา/k1.webp" alt="คาเฟ่เวฬา">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Kanvela Art Space</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+             <a href="cafe/cafe011.html" class="cafe-item" data-keywords="Bali กำนันเต่า,มินิมอล">
+                <div class="img-container">
+                    <img src="imagas/กำนันเต่า/billcafe1.jpg" alt="คาเฟ่กำนันเต่า">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Bali กำนันเต่า</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="cafe/cafe012.html" class="cafe-item" data-keywords="Chim Hong Cafe,วินเทจ">
+                <div class="img-container">
+                    <img src="imagas/ชิมฮง/ชิมฮง1.webp" alt="คาเฟ่ชิมฮง">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Chim Hong Cafe</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            
+
+        </div>
+        <br>
+        <a href="allcafe/index.html" class="view-all-bar-long">
+        คาเฟ่ทั้งหมด &#10144;
+    </a>
+    </div>
+
+    <br>
+
+       
+        <br>
+
+        <div class="container">
+        <h2 class="section-title">รีวิวล่าสุดจากนักเดินทาง</h2>
+    
+    <div class="featured-reviews-section" style="margin: 20px 0; padding: 0;">
+        <div id="random-reviews-display" class="cafe-grid">
+            </div>
+    </div>
+    <br>
+        <a href="reviews/index.html" class="view-all-bar-long">
+        รีวิวทั้งหมดจากผู้ใช้ &#10144;
+    </a>
+</div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">อยากให้เราไปรีวิวร้านไหน? <a href="contact/index.html">ส่งข้อความหาเราได้เลย</a></p>
+                
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="index.html">หน้าแรก</a></li>
+                        <li><a href="allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="map/index.html">แนะนำทริป</a></li>
+                        <li><a href="reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ช่วยเหลือ</h4>
+                    <ul>
+                        <li><a href="contact/index.html">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <div class="floating-auth">
+        <a href="login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+        <img src="imagas/coffee-beans.png" alt="Avatar">
+        </div>
+    </div>
+
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const cafeFiles = {
+    "14:25 Hours.": "cafe001",
+    "Black Ground Cafe & Dining": "cafe002",
+    "Chim Niyom Cafe": "cafe003",
+    "Faamsuk cafe": "cafe004",
+    "For you coffee Lake view resort": "cafe005",
+    "Intense coffee house.": "cafe006",
+    "Lark Cafe": "cafe007",
+    "Makesense": "cafe008",
+    "Siam2C": "cafe009",
+    "Kanvela Art Space": "cafe010",
+    "Bali กำนันเต่า": "cafe011",
+    "Chim Hong Cafe": "cafe012"
+};
+
+    // ฟังก์ชันหลักที่ใช้ "จำ" สถานะการล็อกอิน
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+            // --- กรณี Login แล้ว ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'none', 'important');
+            }
+            if (avatarDiv) {
+                // สั่งให้โชว์เป็น flex และใช้ important เพื่อชนะ CSS ที่เราเขียนดักไว้
+                avatarDiv.style.setProperty('display', 'flex', 'important');
+                
+                // ดึงรูปโปรไฟล์มาใส่
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.photo) {
+                            avatarDiv.querySelector('img').src = userData.photo;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        } else {
+            // --- กรณีไม่ได้ Login ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'flex', 'important');
+            }
+            if (avatarDiv) {
+                avatarDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+    });
+
+    // ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = 'user/index.html';
+        });
+        }
+
+    window.renderRandomReviews = async function() {
+    const display = document.getElementById("random-reviews-display");
+    display.innerHTML = "<p style='text-align:center;'>กำลังโหลดรีวิวเด็ดๆ...</p>";
+
+    try {
+        // 1. ดึงรีวิวล่าสุด 20 อัน (เพื่อเอามาสุ่ม/เลือก)
+        const q = query(collection(db, "cafes"), orderBy("timestamp", "desc"));
+        const snapshot = await getDocs(q);
+        
+        const allReviews = [];
+        snapshot.forEach(doc => allReviews.push(doc.data()));
+
+        // 2. Logic กรองให้เหลือ 3 ร้านที่ไม่ซ้ำกัน
+        const uniqueStoreReviews = [];
+        const usedStoreNames = new Set();
+
+        for (const review of allReviews) {
+            if (!usedStoreNames.has(review.name) && uniqueStoreReviews.length < 3) {
+                uniqueStoreReviews.push(review);
+                usedStoreNames.add(review.name);
+            }
+        }
+
+        // 3. แสดงผล (ใช้สไตล์เดียวกับหน้า Review)
+        let html = "";
+        uniqueStoreReviews.forEach(data => {
+    const fileName = cafeFiles[data.name.trim()] || "index";
+    const rPhoto = data.ReviewerPhoto || data.reviewerPhoto || 'imagas/coffee-beans.png';
+    const rName = data.ReviewerName || data.reviewerName || 'นักเดินทาง';
+    const rImage = data.imageURL || data.imageUrl || 'https://via.placeholder.com/400x250';
+    
+    // ดึงคะแนนย่อย ถ้าไม่มีให้เป็น 0
+    const dRating = data.detailRating || { atmosphere: 0, food: 0, service: 0 };
+
+    html += `
+        <div class="review-card" style="position:relative; background:white; border-radius:15px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column;">
+            <div style="position:absolute; top:10px; left:10px; z-index:10;">
+                <span style="background:#4a5d4d; color:white; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-family:'Kanit';">
+                    ${data.name}
+                </span>
+            </div>
+            
+            <img src="${rImage}" style="width:100%; height:180px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/400x250'">
+            
+            <div style="padding:15px; flex-grow: 1;">
+                <div style="color:#f1c40f; margin-bottom:8px; font-weight: bold;">⭐ ${data.rating}</div>
+                
+                <div class="rating-bar-container" style="margin-bottom: 12px;">
+                    <div class="rating-item" style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 0.8rem;">
+                        <span style="width:50px; font-family:'Kanit';">รสชาติ</span>
+                        <div style="flex-grow:1; height:6px; background:#eee; border-radius:10px; overflow:hidden;">
+                            <div style="width:${(dRating.food || 0) * 20}%; height:100%; background:#4a5d4d; transition: width 0.5s;"></div>
+                        </div>
+                        <span style="min-width:20px; text-align:right;">${dRating.food || 0}</span>
+                    </div>
+                    <div class="rating-item" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem;">
+                        <span style="width:50px; font-family:'Kanit';">บรรยากาศ</span>
+                        <div style="flex-grow:1; height:6px; background:#eee; border-radius:10px; overflow:hidden;">
+                            <div style="width:${(dRating.atmosphere || 0) * 20}%; height:100%; background:#4a5d4d; transition: width 0.5s;"></div>
+                        </div>
+                        <span style="min-width:20px; text-align:right;">${dRating.atmosphere || 0}</span>
+                    </div>
+                </div>
+
+                <p style="font-family:'Kanit'; font-size:0.85rem; color:#555; height:45px; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin-bottom:10px;">
+                    ${data.reviewText}
+                </p>
+                
+                <div style="display:flex; align-items:center; gap:10px; border-top:1px solid #eee; padding-top:10px;">
+                    <img src="${rPhoto}" style="width:25px; height:25px; border-radius:50%; object-fit:cover;" onerror="this.src='imagas/coffee-beans.png'">
+                    <span style="font-size:0.75rem; color:#888; font-family:'Kanit';">โดย ${rName}</span>
+                </div>
+
+                <button onclick="window.location.href='cafe/${fileName}.html'" 
+                        style="width:100%; margin-top:12px; background:#f9f9f9; border:1px solid #ddd; padding:8px; border-radius:8px; cursor:pointer; font-family:'Kanit'; font-size:0.8rem; transition: 0.3s;">
+                    ดูรายละเอียดร้าน
+                </button>
+            </div>
+        </div>`;
+});
+
+        display.innerHTML = html;
+        display.style.display = "grid";
+        display.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+        display.style.gap = "20px";
+
+    } catch (error) {
+        console.error("Error loading random reviews:", error);
+        display.innerHTML = "<p>ไม่สามารถโหลดรีวิวได้</p>";
+    }
+};
+
+// เรียกใช้งานเมื่อโหลดหน้า
+renderRandomReviews();
+</script>
+</body>
+</html>
