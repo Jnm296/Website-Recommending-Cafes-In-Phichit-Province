@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intense coffee house.</title>
+    <title>หน้าแรก</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
 </head>
 <body>
-     <nav>
-        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+    <nav class="navbar">
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
         <ul class="nav-links">
             <li><a href="../index.html">หน้าแรก</a></li>
             <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
@@ -27,104 +34,166 @@
     
     <br>
     <br>
-    <br>
-    <br>
 
-    <main class="container">
-                
-        <div class="gallery-wrapper">
-            
-            <div class="main-image">
-                <img src="../imagas/Intensecoffeehouse/Intense1.webp" alt="1425cafe" id="main-cafe-image">
-            </div>
+<div class="gallery-wrapper-new">
+    <div class="main-image-container">
+        <img src="../imagas/1425/1425cafe8.webp" alt="Black Ground Cafe" id="main-cafe-image">
+    </div>
 
-            <div class="side-thumbnails">
-                <div class="thumbnail-item">
-                    <img src="../imagas/Intensecoffeehouse/Intense2.jpg" alt="1425cafe">
-                </div>
+    <div class="thumbnail-strip">
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe1.jpg" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe2.jpg" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe3.png" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe4.jpg" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe5.jpg" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe6.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe7.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe9.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe10.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe11.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe12.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe13.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe14.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe8.webp" onclick="changeImage(this.src)"></div>
 
-                <div class="thumbnail-item">
-                    <img src="../imagas/Intensecoffeehouse/Intense3.webp" alt="1425cafe3" >
-                </div>
-            
-                <a href="#" class="view-more-btn">
-                    ดูรูปภาพทั้งหมด (6) &raquo;
+
+        <a href="#" class="view-more-btn">
+                    (0) &raquo;
                 </a>
 
-                <div id="imageModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>แกลเลอรี่รูปภาพทั้งหมด (6 รูป)</h2> 
-        
-                        <div class="image-gallery-grid"> 
-                            <img src="../imagas/Intensecoffeehouse/Intense1.webp" alt="1425cafe1">
-                            <img src="../imagas/Intensecoffeehouse/Intense2.jpg" alt="1425cafe2">
-                            <img src="../imagas/Intensecoffeehouse/Intense3.webp " alt="1425cafe3">
-                            <img src="../imagas/Intensecoffeehouse/Intense4.jpg" alt="1425cafe4">
-                            <img src="../imagas/Intensecoffeehouse/Intense5.jpg " alt="1425cafe5">
-                            <img src="../imagas/Intensecoffeehouse/Intense6.jpg" alt="1425cafe6">
-                        </div>
-                        <div id="fullImageOverlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:pointer; align-items:center; justify-content:center;">
-                            <img id="fullImage" style="max-width:90%; max-height:90%; border-radius:10px;">
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
 
-        <section class="shop-title-card">
-            <h1>Intense coffee house.</h1>
-            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 07.30 น. - 16.30 น.☕️ </p>
+    </div>
+</div>
+
+<br>
+
+<main class="container">
+<section class="shop-title-card">
+            <h1>14:25 Hours.</h1>
+            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 09:00 น. - 14:00 น. </p>
             <p><i class="fas fa-map-marker-alt"></i> อำเภอเมือง, จังหวัดพิจิตร</p>
         </section>
 
-        <section class="card intro-section">
-            <h2 class="section-title">สัมผัสบรรยากาศ</h2>
-            <p>ตัวร้านเน้นสีขาวตัดกับงานไม้และปูนเปลือย มีความมินิมอลแบบเกาหลีเบาๆ แสงธรรมชาติเข้าร้านเยอะมาก (กระจกบานใหญ่) ใครชอบรูปโทนสว่างๆ ละมุนๆ ต้องรักที่นี่ค่ะ
- ด้านนอกมีสนามหญ้าสีเขียวที่กว้างและร่มรื่นมาก มีต้นไม้ใหญ่ให้ร่มเงา ทำให้มองออกมาแล้วสบายตา ไม่รู้สึกอึดอัดเลย</p>
-        </section>
+       <section class="rating-display-card">
+    <h2 class="section-title">คะแนนจากทางเว็บไซต์</h2>
+    
+    <div class="rating-container">
+        <div class="rating-row">
+            <span class="label">รสชาติ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 100%;"></div> </div>
+            <span class="score">5</span> </div>
 
-        <section class="card menu-section">
-            <h2 class="section-title">เมนูแนะนำ </h2>
-            <div class="menu-list">
-        
-                <div class="menu-card clickable-menu-card" 
-                    data-img="../imagas/Intensecoffeehouse/1.webp"
-                    data-name="Black Orange"
-                    data-price="90฿"
-                    data-desc="ใช้น้ำส้มคั้นสด 100% ผสมกาแฟเข้มข้น ได้ความสดชื่นลงตัว เหมาะกับการรีเฟรช 🍋☕">
-                    <div class="menu-img">
-                        <img src="../imagas/Intensecoffeehouse/1.webp" alt="Lime Coffee">
-                    </div>
-                    <div class="menu-info">
-                        <h3>Black Orange 90฿</h3>
-                        <p>สัมผัสความสดชื่นที่ลงตัว</p>
-                    </div>
-                </div>
-
-                <div class="menu-card clickable-menu-card" 
-                    data-img="../imagas/Intensecoffeehouse/2.jpg"
-                    data-name="iced matcha"
-                    data-price="60฿"
-                    data-desc="ทฉะเข้มข้นสไตล์คาเฟ่✨">
-                    <div class="menu-img">
-                        <img src="../imagas/Intensecoffeehouse/2.jpg" alt="Red Velvet">
-                    </div>
-                    <div class="menu-info">
-                        <h3>iced matcha 60฿</h3>
-                        <p>มัทฉะเข้มข้น</p>
-                    </div>
-                </div>
-
+        <div class="rating-row">
+            <span class="label">บรรยากาศ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 100%;"></div>
             </div>
-        </section>
+            <span class="score">5</span>
+        </div>
 
+        <div class="rating-row">
+            <span class="label">การบริการ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 80%;"></div>
+            </div>
+            <span class="score">4</span>
+        </div>
+
+        <div class="rating-row">
+            <span class="label">ราคา</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 90%;"></div>
+            </div>
+            <span class="score">4.5</span>
+        </div>
+
+        <div class="rating-row">
+            <span class="label">การเดินทาง</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 70%;"></div>
+            </div>
+            <span class="score">3.5</span>
+        </div>
+    </div>
+
+    <div class="admin-review-note">
+        <strong>ทำไมถึงให้คะแนนแบบนี้?</strong>
+        <p>รสชาติอาหารเข้มข้นจัดจ้าน บรรยากาศร้านตกแต่งสวยงามมากถ่ายรูปได้ทุกมุม แต่เนื่องจากร้านอยู่ในซอยแคบทำให้ที่จอดรถค่อนข้างจำกัดในช่วงวันหยุดครับ</p>
+    </div>
+</section>  
+
+    <div class="vibes-section">
+        <h2 class="title">#Vibes</h2>
+        <div class="scroll-container">
+    
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@thee.review/video/7413246446670974226" data-video-id="7413246446670974226">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@nontanut68/video/7327152746006596869" data-video-id="7327152746006596869">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@ceo_milada/video/7489751582771285255" data-video-id="7489751582771285255">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+    
+        </div>
+</div>
+
+<br>
+    <section class="card menu-section">
+    <h2 class="section-title">เมนูแนะนำ</h2>
+    <div class="menu-list">
         
+        <div class="menu-card clickable-menu-card" 
+             data-img="../imagas/Black Ground Cafe & Dining/BlackSignature1.jpg"
+             data-name="มัทฉะโฟมมะพร้าว"
+             data-price="100฿"
+             data-desc="ฟินไปกับมัทฉะโฟมมะพร้าว ละมุน หอม หวานกำลังดี ">
+             <div class="menu-img">
+                <img src="../imagas/Black Ground Cafe & Dining/BlackSignature1.jpg" alt="วิปครีมสตอเบอรี่" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+            </div>
+            <div class="menu-info">
+                <h3>มัทฉะโฟมมะพร้าว 100฿</h3>
+                <p>มัทฉะ และ มะพร้าว</p>
+            </div>
+        </div>
+
+        <div class="menu-card clickable-menu-card" 
+             data-img="../imagas/Black Ground Cafe & Dining/BlackSignature2.png"
+             data-name="BLACK YUZU "
+             data-price="130฿"
+             data-desc="ความเข้มข้นระหว่างเอสเพรสโซ่ ช็อตรสเปรี้ยวของน้ำมะนาวและกลิ่นหอมของซอสส้มยูสุลงตัว !">
+             <div class="menu-img">
+                <img src="../imagas/Black Ground Cafe & Dining/BlackSignature2.png " alt="บิงซูชาไทยคอนเฟล็ก" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+            </div>
+            <div class="menu-info">
+                <h3>BLACK YUZU 130฿</h3>
+                <p> ความเข้มข้นระหว่างเอสเพรสโซ่ ช็อตรสเปรี้ยวของน้ำมะนาวและกลิ่นหอมของซอสส้มยูสุลงตัว ...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
         <section class="card gallery-section">
             <h2 class="section-title">เมนูอาหารและเครื่องดื่ม</h2>
             <div class="image-grid">
-                <div class="grid-item" style="background-image: url('../imagas/Intensecoffeehouse/menu1.webp')"></div>
-                <div class="grid-item" style="background-image: url('../imagas/Intensecoffeehouse/menu2.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/Black Ground Cafe & Dining/Blackmenu1.jpg')"></div>   
+                <div class="grid-item" style="background-image: url('../imagas/Black Ground Cafe & Dining/Blackmenu2.jpg')"></div> 
+                <div class="grid-item" style="background-image: url('../imagas/Black Ground Cafe & Dining/Blackmenu3.jpg')"></div> 
+                <div class="grid-item" style="background-image: url('../imagas/Black Ground Cafe & Dining/Blackmenu4.jpg')"></div> 
+
             </div>
         </section>
 
@@ -143,19 +212,18 @@
                 <h2 class="section-title">ติดต่อเรา</h2>
                 <ul class="contact-list">
                     <li>
-                        <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank">
+                        <a href="https://maps.app.goo.gl/6GztgXt9YNV3nmpk6" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> 
-                            <span>64 2 ถ.บึงสีไฟ เมืองพิจิตร 66000</span>
+                            <span>ถนน สระหลวง ตำบล ในเมือง อำเภอเมือง, พิจิตร 66000</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/Intense.coffeehouse/" target="_blank">
-                            <i class="fab fa-facebook-f"></i> Facebook: Intense coffee house. 
-                        </a>
+                        <a href="https://www.facebook.com/blackgroundcafe/?locale=th_TH" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook: Black Ground Cafe & Dining 
                     </li>
                     <li>
-                        <a href="tel:0937954544">
-                            <i class="fas fa-phone"></i> 093 795 4544
+                        <a href="tel:056031177">
+                            <i class="fas fa-phone"></i> 056 031 177
                         </a>
                     </li>
                 </ul>
@@ -164,9 +232,9 @@
             <div class="location-map">
                 <h2 class="section-title">เส้นทาง</h2>
     
-                <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank" class="map-container">
+                <a href="https://maps.app.goo.gl/6GztgXt9YNV3nmpk6" target="_blank" class="map-container">
                     <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.7027190209956!2d100.34410787514383!3d16.439917784294614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe7875d335db1%3A0x6648d076014e65b0!2sIntense%20coffee%20house!5e0!3m2!1sth!2sth!4v1768182591880!5m2!1sth!2sth" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.541529728024!2d100.33362797514401!3d16.448094884287656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe76d0610bee7%3A0xd33b1ec59c913fb5!2sBlack%20Ground%20Cafe%20%26%20Dining!5e0!3m2!1sth!2sth!4v1768195508112!5m2!1sth!2sth" 
                     width="100%" 
                     height="250" 
                     style="border:0;" 
@@ -176,7 +244,7 @@
                 </iframe>
                 </a>
 
-            <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank" class="map-link">
+            <a href="https://maps.app.goo.gl/6GztgXt9YNV3nmpk6" target="_blank" class="map-link">
                 <i class="fas fa-location-arrow"></i> คลิกเพื่อนำทางผ่าน Google Maps
             </a>
         </div>
@@ -300,7 +368,6 @@
         }
     });
 
-    // 2. ฟังก์ชันสำหรับกดหัวใจ
     // ฟังก์ชันสร้างหัวใจดวงน้อยๆ
 function createHeart(e) {
     const heart = document.createElement('i');
@@ -352,6 +419,7 @@ window.toggleFavorite = async function(e) {
         console.error("Error toggling favorite:", error);
     }
 };
+
     // ผูกฟังก์ชันเข้ากับปุ่ม (ถ้าใน HTML มี onclick="toggleFavorite()" อยู่แล้วบรรทัดนี้ไม่ต้องก็ได้)
     if (favBtn) {
         favBtn.addEventListener('click', (e) => {
@@ -360,8 +428,8 @@ window.toggleFavorite = async function(e) {
         });
     }
 
-    // 3 ดึงรีวิว
-    async function fetchCafeReviews(cafeName) {
+    // 3. ดึงรีวิว (ปรับปรุงใหม่ให้เหมือนหน้ารีวิวหลัก)
+async function fetchCafeReviews(cafeName) {
     const reviewContainer = document.getElementById("single-cafe-reviews");
     const loadMoreBtn = document.getElementById("load-more-reviews");
     
@@ -432,10 +500,9 @@ window.toggleFavorite = async function(e) {
 
 };
 
-
     // สั่งให้ทำงานเมื่อโหลดหน้า (อย่าลืมเปลี่ยนชื่อร้านให้ตรงกับหน้านั้นๆ)
     document.addEventListener('DOMContentLoaded', () => {
-        fetchCafeReviews("For you coffee Lake view resort"); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
+        fetchCafeReviews("Black Ground Cafe & Dining"); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
     });
 
         document.querySelectorAll('.grid-item').forEach(item => {
@@ -593,4 +660,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+    function changeImage(src) {
+    const mainImg = document.getElementById('main-cafe-image');
+    mainImg.style.opacity = '0'; // เพิ่ม effect จางลงเล็กน้อย
+    setTimeout(() => {
+        mainImg.src = src;
+        mainImg.style.opacity = '1';
+    }, 200);
+}
+
 </script>
