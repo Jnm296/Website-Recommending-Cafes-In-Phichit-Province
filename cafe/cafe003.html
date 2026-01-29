@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chim Niyom Cafe</title>
+    <title>For you coffee Lake view resort</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -14,8 +14,14 @@
     
 </head>
 <body>
-     <nav>
-        <div class="logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+     <nav class="navbar">
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
         <ul class="nav-links">
             <li><a href="../index.html">หน้าแรก</a></li>
             <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
@@ -27,103 +33,169 @@
     
     <br>
     <br>
-    <br>
-    <br>
 
-    <main class="container">
-                
-        <div class="gallery-wrapper">
-            
-            <div class="main-image">
-                <img src="../imagas/chim/chimcafe1.jpg" alt="บอนนี่" id="main-cafe-image">
-            </div>
+<div class="gallery-wrapper-new">
+    <div class="main-image-container">
+        <img src="../imagas/foryoucoffee/foryou5.webp" alt="Black Ground Cafe" id="main-cafe-image">
+    </div>
 
-            <div class="side-thumbnails">
-                <div class="thumbnail-item">
-                    <img src="../imagas/chim/chimcafe2.webp" alt="บอนนี่">
-                </div>
+    <div class="thumbnail-strip">
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou1.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou2.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou3.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou4.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou9.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou6.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou7.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou8.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou10.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou11.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou12.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou13.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou14.webp" onclick="changeImage(this.src)"></div>
+        <div class="thumbnail-item-new"><img src="../imagas/foryoucoffee/foryou15.webp" onclick="changeImage(this.src)"></div>
 
-                <div class="thumbnail-item">
-                    <img src="../imagas/chim/chimcafe3.webp" alt="บอนนี่" >
-                </div>
-            
-                <a href="#" class="view-more-btn">
-                    ดูรูปภาพทั้งหมด (7) &raquo;
+
+        <a href="#" class="view-more-btn">
+                    (0) &raquo;
                 </a>
 
-                <div id="imageModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>แกลเลอรี่รูปภาพทั้งหมด (7 รูป)</h2> 
-        
-                        <div class="image-gallery-grid"> 
-                            <img src="../imagas/chim/chimcafe1.jpg" alt="">
-                            <img src="../imagas/chim/chimcafe2.webp" alt="">
-                            <img src="../imagas/chim/chimcafe3.webp" alt="">
-                            <img src="../imagas/chim/Chimcafe4.webp" alt="1425cafe4">
-                            <img src="../imagas/chim/chimcafe5.webp" alt="1425cafe7">
-                            <img src="../imagas/chim/chimcafe6.webp" alt="1425cafe7">
-                            <img src="../imagas/chim/chimcafe7.webp" alt="1425cafe7">
-                        </div>
-                        <div id="fullImageOverlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:pointer; align-items:center; justify-content:center;">
-                            <img id="fullImage" style="max-width:90%; max-height:90%; border-radius:10px;">
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
 
-        <section class="shop-title-card">
-            <h1>Chim Niyom Cafe</h1>
-            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 07:30 น. - 16:30 น. </p>
+    </div>
+</div>
+
+<br>
+
+<main class="container">
+    <section class="shop-title-card">
+            <h1>For you coffee Lake view resort</h1>
+            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 08.30 น. - 17.00 น.☕️ </p>
             <p><i class="fas fa-map-marker-alt"></i> อำเภอเมือง, จังหวัดพิจิตร</p>
         </section>
 
-        <section class="card intro-section">
-            <h2 class="section-title">สัมผัสบรรยากาศ</h2>
-                <p>ก้าวแรกที่เดินเข้าไป สิ่งที่สัมผัสได้เลยคือความ "ร่มรื่น" ค่ะ ร้านนี้เขาแต่งสไตล์ Tropical ผสมผสานกับความวินเทจนิดๆ มีต้นไม้สีเขียวเยอะมากจนลืมไปเลยว่าข้างนอกแดดพิจิตรร้อนแค่ไหน ตัวอาคารมีความดิบเท่แบบปูนเปลือยตัดกับเฟอร์นิเจอร์ไม้ ให้ฟีลอบอุ่นและสงบในเวลาเดียวกัน🍃☕️</p>
-         </section>
 
-        <section class="card menu-section">
-    <h2 class="section-title">เมนูแนะนำ</h2>
-    <div class="menu-list">
-        
-        <div class="menu-card clickable-menu-card" 
-             data-img="../imagas/chim/ChimSignature1.jpg"
-             data-name="มัทฉะโฟมมะพร้าว"
-             data-price="100฿"
-             data-desc="ฟินไปกับมัทฉะโฟมมะพร้าว ละมุน หอม หวานกำลังดี ">
-             <div class="menu-img">
-                <img src="../imagas/chim/ChimSignature1.jpg" alt="วิปครีมสตอเบอรี่" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+       <section class="rating-display-card">
+    <h2 class="section-title">คะแนนจากทางเว็บไซต์</h2>
+    
+    <div class="rating-container">
+        <div class="rating-row">
+            <span class="label">รสชาติ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 100%;"></div> </div>
+            <span class="score">5</span> </div>
+
+        <div class="rating-row">
+            <span class="label">บรรยากาศ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 100%;"></div>
             </div>
-            <div class="menu-info">
-                <h3>มัทฉะโฟมมะพร้าว 100฿</h3>
-                <p>มัทฉะ และ มะพร้าว</p>
-            </div>
+            <span class="score">5</span>
         </div>
 
-        <div class="menu-card clickable-menu-card" 
-             data-img="../imagas/Black Ground Cafe & Dining/BlackSignature2.png"
-             data-name="BLACK YUZU "
-             data-price="130฿"
-             data-desc="ความเข้มข้นระหว่างเอสเพรสโซ่ ช็อตรสเปรี้ยวของน้ำมะนาวและกลิ่นหอมของซอสส้มยูสุลงตัว !">
-             <div class="menu-img">
-                <img src="../imagas/chim/chimcafe7.webp " alt="บิงซูชาไทยคอนเฟล็ก" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+        <div class="rating-row">
+            <span class="label">การบริการ</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 100%;"></div>
             </div>
-            <div class="menu-info">
-                <h3>BLACK YUZU 130฿</h3>
-                <p> ความเข้มข้นระหว่างเอสเพรสโซ่ ช็อตรสเปรี้ยวของน้ำมะนาวและกลิ่นหอมของซอสส้มยูสุลงตัว ...</p>
-            </div>
+            <span class="score">5</span>
         </div>
 
+        <div class="rating-row">
+            <span class="label">ราคา</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 80%;"></div>
+            </div>
+            <span class="score">4</span>
+        </div>
+
+        <div class="rating-row">
+            <span class="label">การเดินท4ง</span>
+            <div class="progress-bar">
+                <div class="fill" style="width: 80%;"></div>
+            </div>
+            <span class="score">4</span>
+        </div>
     </div>
-</section>
 
+    <div class="admin-review-note">
+        <strong>ทำไมถึงให้คะแนนแบบนี้?</strong>
+        <p>ส่วนตัวแล้วอยู่ใกล้บ้าน คาเฟ่บรรยากาศดีติดบึงสุดๆ ช่วงเย็นก็เป็นเหมือนร้านอาหาร จัดได้สวยมาก แต่สำหรับคนอยู่ในเมืองอาจจะใกล้ออกมานิด</p>
+    </div>
+</section>  
+
+    <div class="vibes-section">
+        <h2 class="title">#Vibes</h2>
+        <div class="scroll-container">
+    
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@monstermonn/video/7500439651526642962" data-video-id="7500439651526642962">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@happiness1527/video/7364338150593809681" data-video-id="7364338150593809681">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+
+            <div class="card tiktok-card">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@benzju/video/7402256482542079240" data-video-id="7402256482542079240">
+                    <section></section>
+                </blockquote>
+                <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+    
+        </div>
+</div>
+
+<br>
+     <section class="card menu-section">
+            <h2 class="section-title">เมนูแนะนำ </h2>
+            <div class="menu-list">
+        
+                <div class="menu-card clickable-menu-card" 
+                    data-img="../imagas/foryoucoffee/s1.jpg"
+                    data-name="Lime Coffee Refreshing"
+                    data-price="75฿"
+                    data-desc="ชาไทยที่ผสมผสานความสดชื่นของเลม่อน เป็นเครื่องดื่มซิกเนเจอร์ที่ได้รับความนิยม.🍋">
+                    <div class="menu-img">
+                        <img src="../imagas/foryoucoffee/s1.jpg" alt="Lime Coffee">
+                    </div>
+                    <div class="menu-info">
+                        <h3>ชาไทยเลม่อนเชค 75฿</h3>
+                        <p>สัมผัสความสดชื่นที่ลงตัว</p>
+                    </div>
+                </div>
+
+                <div class="menu-card clickable-menu-card" 
+                    data-img="../imagas/foryoucoffee/s2.jpg"
+                    data-name="อกเป็ดซอสส้ม "
+                    data-price="150฿"
+                    data-desc="เมนูแนะนำรสชาติหอมอร่อยกลมกล่ม✨">
+                    <div class="menu-img">
+                        <img src="../imagas/foryoucoffee/s2.jpg" alt="Red Velvet">
+                    </div>
+                    <div class="menu-info">
+                        <h3>อกเป็ดซอสส้ม 150฿</h3>
+                        <p>เมนูแนะนำไม่ซ้ำใคร</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        
         <section class="card gallery-section">
             <h2 class="section-title">เมนูอาหารและเครื่องดื่ม</h2>
             <div class="image-grid">
-                <div class="grid-item" style="background-image: url('../imagas/chim/Chimmenu1.jpg')"></div>   
-                <div class="grid-item" style="background-image: url('../imagas/chim/Chimmenu2.jpg')"></div> 
+                <div class="grid-item" style="background-image: url('../imagas/foryoucoffee/m1.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/foryoucoffee/m2.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/foryoucoffee/m3.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/foryoucoffee/m4.webp')"></div>
+
             </div>
         </section>
 
@@ -142,18 +214,19 @@
                 <h2 class="section-title">ติดต่อเรา</h2>
                 <ul class="contact-list">
                     <li>
-                        <a href="https://maps.app.goo.gl/hZHobxK74kA7vS7XA" target="_blank">
+                        <a href="https://maps.app.goo.gl/wa7gT2SjKSwNrpGz7" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> 
-                            <span>77 16 ถนน ปากทาง ในเมือง อำเภอเมืองพิจิตร พิจิตร 66000</span>
+                            <span>98XP+CWC ท่าหลวง อำเภอเมืองพิจิตร พิจิตร 66000</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/Chimniyomcafe/?locale=th_TH" target="_blank">
-                            <i class="fab fa-facebook-f"></i> Facebook: ชิมนิยม คาเฟ่- Chim Niyom Cafe
+                        <a href="https://www.facebook.com/profile.php?id=100041791731078&locale=en_GB#" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook: For you coffee Lake view resort 
+                        </a>
                     </li>
                     <li>
-                        <a href="tel:0987470449">
-                            <i class="fas fa-phone"></i> 098 747 0449
+                        <a href="tel:0622652699">
+                            <i class="fas fa-phone"></i> 062 265 2699
                         </a>
                     </li>
                 </ul>
@@ -162,9 +235,9 @@
             <div class="location-map">
                 <h2 class="section-title">เส้นทาง</h2>
     
-                <a href="https://maps.app.goo.gl/hZHobxK74kA7vS7XA" target="_blank" class="map-container">
+                <a href="https://maps.app.goo.gl/wa7gT2SjKSwNrpGz7" target="_blank" class="map-container">
                     <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.446507634043!2d100.33237147514414!3d16.452913484283503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe704b2e91455%3A0xccfbaeb75cffd53d!2z4LiK4Li04Lih4LiZ4Li04Lii4LihIOC4hOC4suC5gOC4n-C5iCAoQ2hpbSBOaXlvbSBDYWZlKQ!5e0!3m2!1sth!2sth!4v1769039151638!5m2!1sth!2sth" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.491624495266!2d100.33430927514297!3d16.3998395843286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe7007868c02d%3A0xb4099a1685ee3e1f!2sFor%20You%20Coffee%20Lake%20View%20Resort!5e0!3m2!1sth!2sth!4v1768182220382!5m2!1sth!2sth" 
                     width="100%" 
                     height="250" 
                     style="border:0;" 
@@ -174,23 +247,50 @@
                 </iframe>
                 </a>
 
-            <a href="https://maps.app.goo.gl/hZHobxK74kA7vS7XA" target="_blank" class="map-link">
+            <a href="https://maps.app.goo.gl/wa7gT2SjKSwNrpGz7" target="_blank" class="map-link">
                 <i class="fas fa-location-arrow"></i> คลิกเพื่อนำทางผ่าน Google Maps
             </a>
         </div>
         </section>
     </main> 
 
-    <footer>
-        <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
-        <p>คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทางที่ครบที่สุด</p>
+    
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">อยากให้เราไปรีวิวร้านไหน? <a href="contact/index.html">ส่งข้อความหาเราได้เลย</a></p>
+                
+            </div>
 
-        <p style="font-size: 0.9rem; color: #888;">อยากให้เราไปรีวิวร้านไหน? <a href="../contact/index.html" style="color: var(--primary-pink);">ส่งข้อความหาเราได้เลย</a></p>
-        
-        <div class="copyright">
-            &copy; 2025 Cafe Phichit. Created with ❤️ for Cafe Lovers.
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="../index.html">หน้าแรก</a></li>
+                        <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="../map/index.html">แนะนำทริป</a></li>
+                        <li><a href="../reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="../login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ช่วยเหลือ</h4>
+                    <ul>
+                        <li><a href="../contact/index.html">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <div class="floating-auth">
         <a href="../login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
@@ -207,7 +307,7 @@
     <i class="far fa-heart"></i>
 </button>
 
-    <script type="module">
+<script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc, deleteDoc , collection, getDocs, query, where, orderBy} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -432,7 +532,7 @@ async function fetchCafeReviews(cafeName) {
 
     // สั่งให้ทำงานเมื่อโหลดหน้า (อย่าลืมเปลี่ยนชื่อร้านให้ตรงกับหน้านั้นๆ)
     document.addEventListener('DOMContentLoaded', () => {
-        fetchCafeReviews("Chim Niyom Cafe"); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
+        fetchCafeReviews("For you coffee Lake view resort"); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
     });
 
         document.querySelectorAll('.grid-item').forEach(item => {
@@ -591,4 +691,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+    function changeImage(src) {
+    const mainImg = document.getElementById('main-cafe-image');
+    mainImg.style.opacity = '0'; // เพิ่ม effect จางลงเล็กน้อย
+    setTimeout(() => {
+        mainImg.src = src;
+        mainImg.style.opacity = '1';
+    }, 200);
+}
+
 </script>
+
