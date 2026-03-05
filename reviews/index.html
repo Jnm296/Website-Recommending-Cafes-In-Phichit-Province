@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รีวิว</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>เสียงตอบรับจากนักเดินทาง</h1>
+        <p>แบ่งปันประสบการณ์ความประทับใจคาเฟ่ยอดฮิตในพิจิตร</p>
+
+        <div class="search-box" style="position: relative; display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <div style="position: relative;">
+                <input type="text" id="searchInput" placeholder="พิมพ์ชื่อคาเฟ่ที่ต้องการ..." 
+                       style="padding: 12px 25px; width: 350px; border-radius: 30px; border: 1px solid #ddd; font-family: 'Kanit'; outline: none;">
+                <ul id="suggestionList" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; margin: 5px 0; z-index: 2000; text-align: left; max-height: 375px; overflow-y: auto;"></ul>
+            </div>
+
+            <button id="searchButton" style="padding: 12px 30px; border-radius: 30px; background-color: #4a5d4d; color: white; border: none; cursor: pointer; font-family: 'Kanit'; white-space: nowrap;">
+                ค้นหา
+            </button>
+        </div>  
+    </header>
+
+    <div class="container" style="max-width: 1500px; margin: 0 auto; padding: 20px;">
+    <button id="backToList" style="display:none; margin-bottom: 20px; border:none; background:none; cursor:pointer; font-family:'Kanit'; color:#4a5d4d;">
+        ← ย้อนกลับไปดูร้านทั้งหมด
+    </button>
+
+    <h2 id="view-title" style="text-align: center; margin-bottom: 30px;">คาเฟ่แนะนำในพิจิตร</h2>
+    
+    <div id="main-content-display" class="cafe-grid">
+        </div>
+
+    <div class="floating-auth">
+        <a href="login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+        <img src="../imagas/coffee-beans.png" alt="Avatar">
+        </div>
+    </div>
+
+
+
+</div>
+    <a href="#" class="floating-btn" id="reviewBtn">
+        <span class="icon">✏️</span>
+        <span class="text">เขียนรีวิวของคุณ</span>
+    </a>
+
+    <div id="reviewModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>แชร์ความประทับใจ</h2>
+            <p>บอกเล่าเรื่องราวดีๆ จากคาเฟ่ที่คุณไปมา</p>
+            
+            <div class="form-group">
+                <label>เลือกคาเฟ่</label>
+                <select id="newCafeName" class="form-select" style="width: 100%; padding: 10px; border-radius: 8px; font-family: 'Kanit';">
+                    <option value="" disabled selected>--- เลือกชื่อคาเฟ่ ---</option>
+                    <option value="14:25 Hours.">14:25 Hours.</option>
+                    <option value="Black Ground Cafe & Dining">Black Ground Cafe & Dining</option>
+                    <option value="Chim Niyom Cafe">Chim Niyom Cafe</option>
+                    <option value="Faamsuk cafe">Faamsuk cafe</option>
+                    <option value="For you coffee Lake view resort">For you coffee Lake view resort</option>
+                    <option value="Intense coffee house.">Intense coffee house.</option>
+                    <option value="Lark Cafe">Lark Cafe</option>
+                    <option value="Makesense">Makesense</option>
+                    <option value="Siam2C">Siam2C</option>
+                    <option value="Kanvela Art Space">Kanvela Art Space</option>
+                    <option value="Bali กำนันเต่า">Bali กำนันเต่า</option>
+                    <option value="Chim Hong Cafe">Chim Hong Cafe</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+    <label style="font-weight: 600; display: block; margin-bottom: 10px;">ให้คะแนนแต่ละด้าน (1-5)</label>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div>
+            <label style="font-size: 0.85rem;">บรรยากาศ</label>
+            <input type="number" id="ratingAtmosphere" min="1" max="5" step="0.1" value="5" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+        <div>
+            <label style="font-size: 0.85rem;">การบริการ</label>
+            <input type="number" id="ratingService" min="1" max="5" step="0.1" value="5" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+        <div>
+            <label style="font-size: 0.85rem;">อาหารและเครื่องดื่ม</label>
+            <input type="number" id="ratingFood" min="1" max="5" step="0.1" value="5" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+        <div>
+            <label style="font-size: 0.85rem;">ราคา</label>
+            <input type="number" id="ratingPrice" min="1" max="5" step="0.1" value="5" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+        <div style="grid-column: span 2;">
+            <label style="font-size: 0.85rem;">การเดินทาง</label>
+            <input type="number" id="ratingTravel" min="1" max="5" step="0.1" value="5" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+    </div>
+</div>
+
+            <div class="form-group">
+                <label>รีวิวของคุณ</label>
+                <textarea id="newReviewText" placeholder="กาแฟอร่อย มุมถ่ายรูปสวย..." style="width: 100%; height: 100px; padding: 10px; border-radius: 8px;"></textarea>
+            </div>
+
+
+            <div class="form-group">
+    <label>รูปภาพคาเฟ่ (เลือกไฟล์)</label>
+    <input type="file" id="cafeImageFile" accept="image/*" class="form-select">
+</div>
+
+            <button id="submitReview" class="btn-submit" style="width: 100%; padding: 12px; margin-top: 10px;">ส่งรีวิวเลย</button>
+        </div>
+    </div>
+
+    
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">
+                    อยากให้เราไปรีวิวร้านไหน? 
+                    <a href="../contact/index.html?tab=info" onclick="goToContactForm(event)">ส่งข้อความหาเราได้เลย</a>
+                </p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="../index.html">หน้าแรก</a></li>
+                        <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="../reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="../login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ผู้จัดทำ</h4>
+                    <ul>
+                        <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+        authDomain: "phichit-cafe.firebaseapp.com",
+        projectId: "phichit-cafe",
+        storageBucket: "phichit-cafe.firebasestorage.app",
+        messagingSenderId: "825175930096",
+        appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35",
+        measurementId: "G-SNG4GZ50C0" 
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const cafeList = [
+        { name: "14:25 Hours.", img: "../imagas/1425/1425cafe1.webp"  },
+        { name: "Black Ground Cafe & Dining", img: "../imagas/Black Ground Cafe & Dining/Black7.webp" },
+        { name: "Chim Niyom Cafe", img: "../imagas/chim/chimcafe1.jpg" },
+        { name: "Faamsuk cafe", img: "../imagas/FAAMSUK/FAA1.webp" },
+        { name: "For you coffee Lake view resort", img: "../imagas/foryoucoffee/foryou3.webp" },
+        { name: "Intense coffee house.", img: "../imagas/Intensecoffeehouse/Intense1.webp" },
+        { name: "Lark Cafe", img: "../imagas/LarkCafe/Lark8.webp" },
+        { name: "Makesense", img: "../imagas/Make​Sense/Makesense14.webp" },
+        { name: "Siam2C", img: "../imagas/SIAM2C/Siam2C1.webp" },
+        { name: "Kanvela Art Space", img: "../imagas/กาลเวฬา/k4.webp" },
+        { name: "Bali กำนันเต่า", img: "../imagas/กำนันเต่า/billcafe9.webp" },
+        { name: "Chim Hong Cafe", img: "../imagas/ชิมฮง/ชิมฮง14.webp" }
+    ];
+
+    const cafeFiles = {
+    "14:25 Hours.": "cafe001",
+    "Black Ground Cafe & Dining": "cafe002",
+    "Chim Niyom Cafe": "cafe003",
+    "Faamsuk cafe": "cafe004",
+    "For you coffee Lake view resort": "cafe005",
+    "Intense coffee house.": "cafe006",
+    "Lark Cafe": "cafe007",
+    "Makesense": "cafe008",
+    "Siam2C": "cafe009",
+    "Kanvela Art Space": "cafe010",
+    "Bali กำนันเต่า": "cafe011",
+    "Chim Hong Cafe": "cafe012"
+};
+
+    // --- ฟังก์ชัน 1: แสดงรายชื่อร้านพร้อมคะแนนเฉลี่ย ---
+window.renderCafeList = async function() {
+    const backBtn = document.getElementById("backToList");
+    const viewTitle = document.getElementById("view-title");
+    const mainDisplay = document.getElementById("main-content-display");
+
+    if (backBtn) backBtn.style.display = "none";
+    viewTitle.innerText = "เลือกชมรีวิวรายร้าน";
+    mainDisplay.innerHTML = "<p style='text-align:center; grid-column:1/-1;'>กำลังคำนวณคะแนนรีวิว...</p>";
+
+    try {
+        const q = query(collection(db, "cafes"));
+        const snapshot = await getDocs(q);
+        const allReviews = [];
+        snapshot.forEach(doc => allReviews.push(doc.data()));
+
+        let html = "";
+        cafeList.forEach(cafe => {
+            const storeReviews = allReviews.filter(r => r.name === cafe.name);
+            
+            // --- ส่วนที่เพิ่ม: คำนวณค่าเฉลี่ยแยกหมวด ---
+            let avgRating = 0;
+            let avgDetail = { atmosphere: 0, service: 0, food: 0, price: 0, travel: 0 };
+
+            if (storeReviews.length > 0) {
+                const totalReviews = storeReviews.length;
+                let sums = { atmosphere: 0, service: 0, food: 0, price: 0, travel: 0, total: 0 };
+
+                storeReviews.forEach(r => {
+                    sums.total += parseFloat(r.rating || 0);
+                    sums.atmosphere += parseFloat(r.detailRating?.atmosphere || 0);
+                    sums.service += parseFloat(r.detailRating?.service || 0);
+                    sums.food += parseFloat(r.detailRating?.food || 0);
+                    sums.price += parseFloat(r.detailRating?.price || 0);
+                    sums.travel += parseFloat(r.detailRating?.travel || 0);
+                });
+
+                avgRating = (sums.total / totalReviews).toFixed(1);
+                avgDetail = {
+                    atmosphere: (sums.atmosphere / totalReviews).toFixed(1),
+                    service: (sums.service / totalReviews).toFixed(1),
+                    food: (sums.food / totalReviews).toFixed(1),
+                    price: (sums.price / totalReviews).toFixed(1),
+                    travel: (sums.travel / totalReviews).toFixed(1)
+                };
+            }
+
+            html += `
+                <div class="cafe-card-item" onclick="viewStoreReviews('${cafe.name}')" 
+                     style="background:white; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.05); cursor:pointer; overflow:hidden; transition:0.3s; border:1px solid #eee; position:relative;">
+                    
+                    <div style="position:absolute; top:10px; right:10px; background:rgba(255,255,255,0.9); padding:4px 10px; border-radius:12px; font-weight:bold; color:#4a5d4d; z-index:10; font-size:0.9rem; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+                        ${avgRating > 0 ? '⭐ ' + avgRating : 'ไม่มีรีวิว'}
+                    </div>
+
+                    <div style="width:100%; height:160px; overflow:hidden; background:#f5f5f5;">
+                        <img src="${cafe.img}" alt="${cafe.name}" 
+                             style="width:100%; height:100%; object-fit:cover;"
+                             onerror="this.src='https://via.placeholder.com/400x250?text=No+Image'">
+                    </div>
+
+                    <div style="padding:15px;">
+                        <h3 style="margin:0 0 10px 0; color:#4a5d4d; font-size:1.1rem; font-family:'Kanit'; text-align:center;">${cafe.name}</h3>
+                        
+                        <div class="rating-bar-container" style="font-size: 0.75rem; border-top: 1px solid #f0f0f0; padding-top: 10px;">
+                            <div class="rating-item" style="margin-bottom: 4px;">
+                                <span style="width: 50px;">บรรยากาศ</span>
+                                <div class="bar-bg" style="flex:1; height:6px;"><div class="bar-fill" style="width: ${avgDetail.atmosphere * 20}%; height:100%;"></div></div>
+                                <span class="num" style="width: 20px; text-align:right;">${avgDetail.atmosphere}</span>
+                            </div>
+                            <div class="rating-item" style="margin-bottom: 4px;">
+                                <span style="width: 50px;">อาหาร</span>
+                                <div class="bar-bg" style="flex:1; height:6px;"><div class="bar-fill" style="width: ${avgDetail.food * 20}%; height:100%;"></div></div>
+                                <span class="num" style="width: 20px; text-align:right;">${avgDetail.food}</span>
+                            </div>
+                        </div>
+
+                        <p style="font-size:0.8rem; color:#888; margin-top:10px; font-family:'Kanit'; text-align:center;">
+                            อ่านทั้งหมด ${storeReviews.length} รีวิว
+                        </p>
+                    </div>
+                </div>`;
+        });
+        mainDisplay.innerHTML = html;
+        mainDisplay.style.display = "grid";
+        mainDisplay.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+        mainDisplay.style.gap = "20px";
+    } catch (error) {
+        console.error("Error calculating ratings:", error);
+        mainDisplay.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+    }
+};
+
+    // --- ฟังก์ชัน 2: แสดงรีวิวของร้านที่เลือก ---
+// --- ฟังก์ชัน 2: แสดงรีวิวของร้านที่เลือก (แก้ไขส่วนที่แดง) ---
+window.viewStoreReviews = async function(cafeName) {
+    const backBtn = document.getElementById("backToList");
+    const viewTitle = document.getElementById("view-title");
+    const mainDisplay = document.getElementById("main-content-display");
+
+    backBtn.style.display = "block";
+    viewTitle.innerText = "รีวิวทั้งหมดของ " + cafeName;
+    mainDisplay.innerHTML = "<p style='text-align:center; grid-column:1/-1; font-family:Kanit;'>กำลังโหลดรีวิว...</p>";
+
+    try {
+        const q = query(collection(db, "cafes"), orderBy("timestamp", "desc"));
+        const snapshot = await getDocs(q);
+        let reviewHtml = "";
+        let count = 0;
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            if (data.name === cafeName) {
+                count++;
+                const fileName = cafeFiles[data.name.trim()] || "index";
+
+                // ใส่เครื่องหมาย Backtick ครอบทั้งหมดเพื่อให้กลายเป็น String
+                reviewHtml += `
+                <div class="review-card">
+                    <div style="position:absolute; top:15px; right:15px; display:flex; flex-direction:column; align-items:flex-end; gap:5px; z-index:10;">
+                        <button onclick="window.location.href='../cafe/${fileName}.html'" 
+                                style="background:rgba(74, 93, 77, 0.9); color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; font-family:'Kanit'; font-size:0.8rem;">
+                            ดูหน้าร้าน 🏠
+                        </button>
+                        <div style="background:rgba(255,255,255,0.8); padding:2px 10px; border-radius:10px; color:#f1c40f; font-weight:bold; font-size:0.9rem; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+                            ⭐ ${data.rating}
+                        </div>
+                    </div>
+
+                    <img src="${data.imageURL || 'https://via.placeholder.com/400x250'}" style="width:100%; height:250px; object-fit:cover;">
+
+                    <div class="rating-item item-atmosphere">
+        <span>บรรยากาศ</span>
+        <div class="bar-bg"><div class="bar-fill" style="width: ${(data.detailRating?.atmosphere || 0) * 20}%"></div></div>
+        <span class="num">${data.detailRating?.atmosphere || '-'}</span>
+    </div>
+    <div class="rating-item item-service">
+        <span>การบริการ</span>
+        <div class="bar-bg"><div class="bar-fill" style="width: ${(data.detailRating?.service || 0) * 20}%"></div></div>
+        <span class="num">${data.detailRating?.service || '-'}</span>
+    </div>
+    <div class="rating-item item-food">
+        <span>อาหาร</span>
+        <div class="bar-bg"><div class="bar-fill" style="width: ${(data.detailRating?.food || 0) * 20}%"></div></div>
+        <span class="num">${data.detailRating?.food || '-'}</span>
+    </div>
+    <div class="rating-item item-price">
+        <span>ราคา</span>
+        <div class="bar-bg"><div class="bar-fill" style="width: ${(data.detailRating?.price || 0) * 20}%"></div></div>
+        <span class="num">${data.detailRating?.price || '-'}</span>
+    </div>
+    <div class="rating-item item-travel">
+        <span>การเดินทาง</span>
+        <div class="bar-bg"><div class="bar-fill" style="width: ${(data.detailRating?.travel || 0) * 20}%"></div></div>
+        <span class="num">${data.detailRating?.travel || '-'}</span>
+    </div>
+
+                    <div style="padding:20px;">
+                        <p style="font-family:'Kanit'; color:#555; line-height:1.6; margin-top:5px;">${data.reviewText}</p>
+                        <div style="display:flex; align-items:center; gap:10px; margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
+                            <img src="${data.ReviewerPhoto || '../imagas/coffee-beans.png'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+                            <span style="font-size:0.85rem; color:#777; font-family:'Kanit';">โดย ${data.ReviewerName}</span>
+                        </div>
+                    </div>
+                </div>`;
+            }
+        });
+
+        if (count === 0) {
+            mainDisplay.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px; font-family:Kanit;">
+                <p>ยังไม่มีรีวิวสำหรับร้านนี้ มาเป็นคนแรกที่รีวิวกันเถอะ!</p>
+            </div>`;
+        } else {
+            mainDisplay.innerHTML = reviewHtml;
+            mainDisplay.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+        }
+        document.getElementById("newCafeName").value = cafeName;
+        window.scrollTo(0,0);
+    } catch (error) { 
+        console.error("View Reviews Error:", error); 
+        mainDisplay.innerHTML = "<p>ไม่สามารถโหลดรีวิวได้ในขณะนี้</p>";
+    }
+};
+
+    // --- ส่วนการตั้งค่าอื่นๆ ---
+    document.addEventListener('DOMContentLoaded', () => {
+        window.renderCafeList(); // เรียกใช้ครั้งแรก
+
+        // จัดการ Modal
+        const modal = document.getElementById("reviewModal");
+        const openBtn = document.getElementById("reviewBtn");
+        const closeBtn = document.querySelector(".close-button");
+        if (openBtn) openBtn.onclick = (e) => { e.preventDefault(); modal.style.display = "flex"; };
+        if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
+        
+        const backBtn = document.getElementById("backToList");
+        if (backBtn) backBtn.onclick = window.renderCafeList;
+    });
+
+    // ตรวจสอบ User
+    // แก้ไขส่วนตรวจสอบ User ใน <script type="module">
+onAuthStateChanged(auth, async (user) => {
+    const authBtn = document.getElementById('mainAuthBtn');
+    const avatarDiv = document.getElementById('userAvatar');
+    
+    if (user) {
+        // ถ้าเข้าสู่ระบบแล้ว: ซ่อนปุ่ม Login, แสดง Avatar
+        if (authBtn) authBtn.style.setProperty('display', 'none', 'important');
+        if (avatarDiv) {
+            avatarDiv.style.setProperty('display', 'flex', 'important');
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists() && userDoc.data().photo) {
+                avatarDiv.querySelector('img').src = userDoc.data().photo;
+            }
+        }
+    } else {
+        // *** เพิ่มส่วนนี้: ถ้ายังไม่ได้เข้าสู่ระบบ ให้โชว์ปุ่ม Login และซ่อน Avatar ***
+        if (authBtn) authBtn.style.setProperty('display', 'flex', 'important');
+        if (avatarDiv) avatarDiv.style.setProperty('display', 'none', 'important');
+    }
+});
+
+    // อัปโหลดและส่งรีวิว
+    async function uploadToCloudinary(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "my_cafe_preset");
+        const res = await fetch(`https://api.cloudinary.com/v1_1/dkk0c4ls0/image/upload`, { method: "POST", body: formData });
+        const data = await res.json();
+        return data.secure_url;
+    }
+
+    document.getElementById("submitReview").onclick = async () => {
+        const user = auth.currentUser;
+        if (!user) { alert("กรุณาเข้าสู่ระบบก่อนนะคะ"); return; }
+
+        const name = document.getElementById("newCafeName").value;
+        const text = document.getElementById("newReviewText").value;
+        const rAtmosphere = parseFloat(document.getElementById("ratingAtmosphere").value);
+const rService = parseFloat(document.getElementById("ratingService").value);
+const rFood = parseFloat(document.getElementById("ratingFood").value);
+const rPrice = parseFloat(document.getElementById("ratingPrice").value);
+const rTravel = parseFloat(document.getElementById("ratingTravel").value);
+        const file = document.getElementById("cafeImageFile").files[0];
+
+        const averageOfThisReview = ((rAtmosphere + rService + rFood + rPrice + rTravel) / 5).toFixed(1);
+
+        if (name && text && file) {
+            try {
+                const btn = document.getElementById("submitReview");
+                btn.disabled = true; btn.innerText = "กำลังส่ง...";
+                
+                const url = await uploadToCloudinary(file);
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                const userData = userDoc.data() || {};
+
+                await addDoc(collection(db, "cafes"), {
+            name, 
+            reviewText: text, 
+            imageURL: url, 
+            rating: averageOfThisReview, // เก็บค่าเฉลี่ยรวมไว้แสดงที่ Card
+            detailRating: {              // เก็บแยกหมวดเผื่อนำไปทำกราฟหรือแสดงผลละเอียด
+                atmosphere: rAtmosphere,
+                service: rService,
+                food: rFood,
+                price: rPrice,
+                travel: rTravel
+            },
+            ReviewerName: userData.name || userData.username || "นักรีวิว",
+            ReviewerPhoto: userData.photo || "../imagas/coffee-beans.png",
+            timestamp: new Date(), 
+            userId: user.uid
+        });
+
+                alert("ส่งรีวิวสำเร็จ!");
+                location.reload();
+            } catch (e) { alert("เกิดข้อผิดพลาด"); }
+        } else { alert("กรอกข้อมูลให้ครบนะจ๊ะ"); }
+    };
+
+    // --- ระบบแสดงคำแนะนำ (Autocomplete Suggestions) ---
+const suggestionList = document.getElementById('suggestionList');
+
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const inputVal = this.value.trim().toLowerCase();
+        suggestionList.innerHTML = ''; // ล้างค่าเก่า
+
+        if (inputVal.length > 0) {
+            // กรองชื่อจาก cafeList ที่มีคำที่พิมพ์อยู่
+            const filteredCafes = cafeList.filter(cafe => 
+                cafe.name.toLowerCase().includes(inputVal)
+            );
+
+            if (filteredCafes.length > 0) {
+                suggestionList.style.display = 'block';
+                
+                filteredCafes.forEach(cafe => {
+                    const li = document.createElement('li');
+                    li.style.padding = '12px 20px';
+                    li.style.cursor = 'pointer';
+                    li.style.borderBottom = '1px solid #f0f0f0';
+                    li.style.fontFamily = "'Kanit'";
+                    li.style.transition = '0.2s';
+                    li.innerHTML = `<strong>${cafe.name}</strong>`;
+
+                    // เอฟเฟกต์เมื่อเอาเมาส์วาง
+                    li.onmouseover = () => li.style.backgroundColor = '#f9f9f9';
+                    li.onmouseout = () => li.style.backgroundColor = 'transparent';
+
+                    // เมื่อคลิกเลือกชื่อคาเฟ่
+                    li.onclick = () => {
+                        searchInput.value = cafe.name;
+                        suggestionList.style.display = 'none';
+                        window.viewStoreReviews(cafe.name); // นำทางไปยังหน้ารีวิวทันที
+                    };
+                    
+                    suggestionList.appendChild(li);
+                });
+            } else {
+                suggestionList.style.display = 'none';
+            }
+        } else {
+            suggestionList.style.display = 'none';
+        }
+    });
+
+    // ปิดกล่องคำแนะนำเมื่อคลิกที่อื่นข้างนอก
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !suggestionList.contains(e.target)) {
+            suggestionList.style.display = 'none';
+        }
+    });
+}
+
+    // --- ระบบค้นหาเมื่อกดปุ่ม ---
+const searchButton = document.getElementById('searchButton');
+
+function performSearch() {
+    const keyword = searchInput.value.trim();
+    if (keyword) {
+        // ค้นหาว่าชื่อที่พิมพ์ตรงกับร้านไหนใน cafeList หรือไม่
+        const found = cafeList.find(c => c.name.toLowerCase() === keyword.toLowerCase());
+        
+        if (found) {
+            window.viewStoreReviews(found.name);
+        } else {
+            // ถ้าไม่ตรงเป๊ะๆ ให้ลองค้นหาแบบกว้าง (ใช้ตัวแรกที่เจอ)
+            const partialMatch = cafeList.find(c => c.name.toLowerCase().includes(keyword.toLowerCase()));
+            if (partialMatch) {
+                window.viewStoreReviews(partialMatch.name);
+            } else {
+                alert("ไม่พบข้อมูลคาเฟ่ชื่อนี้ค่ะ");
+            }
+        }
+    }
+}
+
+if (searchButton) searchButton.onclick = performSearch;
+if (searchInput) {
+    searchInput.onkeypress = (e) => { if (e.key === 'Enter') performSearch(); };
+}
+
+// ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = '../user/index.html';
+        });
+        }
+    
+</script>
