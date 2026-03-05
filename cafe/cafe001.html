@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14:25 Hours. </title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body>
+     <nav class="navbar">
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+        </ul>
+    </nav>
+    
+    <br>
+    
+    <div class="gallery-wrapper-new">
+        <div class="main-image-container">
+            <img src="../imagas/1425/1425cafe1.webp" alt="Black Ground Cafe" id="main-cafe-image">
+        </div>
+
+        <div class="thumbnail-strip">
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe1.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe4.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe7.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe2.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe6.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe5.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe3.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe9.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe10.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe11.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe13.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe15.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe8.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/1425/1425cafe12.webp" onclick="changeImage(this.src)"></div>
+
+            <a href="javascript:void(0)" class="view-more-btn" id="openGallery"> (14 ) » </a>
+
+            <div id="imageModal" class="modal">
+                <span class="close-button">&times;</span>
+                <div class="modal-content">
+                    <h2>รูปภาพทั้งหมดจาก 14:25 Hours. </h2>
+                    <div class="image-gallery-grid">
+                        <img src="../imagas/1425/1425cafe1.webp" >
+                        <img src="../imagas/1425/1425cafe4.webp" >
+                        <img src="../imagas/1425/1425cafe7.webp" >
+                        <img src="../imagas/1425/1425cafe2.jpg" >
+                        <img src="../imagas/1425/1425cafe6.webp" >
+                        <img src="../imagas/1425/1425cafe5.jpg" >
+                        <img src="../imagas/1425/1425cafe3.webp" >
+                        <img src="../imagas/1425/1425cafe9.webp" >
+                        <img src="../imagas/1425/1425cafe10.webp" >
+                        <img src="../imagas/1425/1425cafe11.webp" >
+                        <img src="../imagas/1425/1425cafe13.webp" >
+                        <img src="../imagas/1425/1425cafe15.jpg" >
+                        <img src="../imagas/1425/1425cafe8.jpg" >
+                        <img src="../imagas/1425/1425cafe12.webp" >
+                    </div>
+                </div>
+            </div>
+
+            <div id="fullImageOverlay">
+                <img id="fullImage" src="">
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <main class="container">
+        <section class="shop-title-card">
+            <h1>14:25 Hours.  </h1>
+            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 09.00 น. - 16.00 น. ☕️ </p>
+            <p><i class="fas fa-map-marker-alt"></i> ตำบลในเมือง, อำเภอเมือง, จังหวัดพิจิตร</p>
+        </section>
+    
+            <section class="card menu-section">
+    <h2 class="section-title">ไฮไลท์แนะนำจากทางร้าน</h2>
+
+    <div class="highlight-item">
+        <div class="highlight-image clickable-menu-card" 
+            data-img="../imagas/1425/1425cafe7.webp" 
+            data-name="บรรยากาศมินิมอล อบอุ่น" 
+            data-price="Cafe & Relax" 
+            data-desc="14:25 Hours. ตกแต่งในสไตล์ที่ดูสะอาดตาแต่ให้ความรู้สึกอบอุ่นเหมือนอยู่บ้าน เป็นพื้นที่ที่เหมาะกับการมานั่งจิบกาแฟพักผ่อนในช่วงบ่าย">
+            <img src="../imagas/1425/1425cafe7.webp" alt="บรรยากาศร้าน 14:25 Hours">
+        </div>
+        <div class="highlight-text">
+            <span class="tag">Vibe & Style</span>
+            <h3>บรรยากาศมินิมอล อบอุ่น</h3>
+            <p>สัมผัสความเรียบง่ายที่ลงตัวในอำเภอเมืองพิจิตร ร้านถูกออกแบบมาให้ดูโปร่งสบายตา เหมาะสำหรับสาย Cafe Hopping ที่ต้องการรูปสวยๆ และบรรยากาศที่ผ่อนคลาย</p>
+            <div class="highlight-features">
+                <span>📍 เมืองพิจิตร</span>
+                <span>🏠 สไตล์มินิมอล</span>
+                <span>📸 แสงสวยถ่ายรูปง่าย</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-item reverse">
+        <div class="highlight-image clickable-menu-card" 
+            data-img="../imagas/1425/594843367_875629584813032_4812328247584458139_n.jpg" 
+            data-name="ท็อฟฟี่เค้กในตำนาน" 
+            data-price="Must Try!" 
+            data-desc="เมนูเด็ดที่ใครมาก็ต้องสั่ง ท็อฟฟี่เค้กเนื้อนุ่มหน้าแน่น รสชาติเข้มข้น หวานมันกำลังดี อร่อยจนหยุดไม่ได้">
+            <img src="../imagas/1425/594843367_875629584813032_4812328247584458139_n.jpg" alt="เมนูแนะนำท็อฟฟี่เค้ก">
+        </div>
+        <div class="highlight-text">
+            <span class="tag">Signature Menu</span>
+            <h3>ท็อฟฟี่เค้กในตำนาน</h3>
+            <p>ไฮไลท์เด็ดที่แอดมินคอนเฟิร์มว่าอร่อยมาก! ท็อฟฟี่เค้กของทางร้านขึ้นชื่อเรื่องความหอมและความนุ่ม หน้าเค้กอัดแน่นด้วยถั่วและคาราเมลที่เคี่ยวมาอย่างดี ทานคู่กับอเมริกาโน่เย็นๆ คือที่สุด</p>
+            <div class="highlight-features">
+                <span>🍰 เบเกอรี่โฮมเมด</span>
+                <span>☕ กาแฟรสชาติดี</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="card menu-section">
+            <h2 class="section-title">คะแนนจากทางเว็บไซต์</h2>
+            <div class="rating-container">
+                <div class="rating-row">
+                    <span class="label">รสชาติ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> 
+                    </div>
+                    <span class="score">5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">บรรยากาศ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                    <span class="score">3.5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">การบริการ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="score">5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">ราคา</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 60%;"></div>
+                    </div>
+                    <span class="score">3</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">การเดินทาง</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="score">5</span>
+                </div>
+            </div>
+
+            <div class="admin-review-note">
+                <strong>ทำไมถึงให้คะแนนแบบนี้?</strong>
+                <p>ส่วนตัวชอบขนมของทางรา้นมาก โดยเฉพาะท็อฟฟี่เค้กที่อร่อยมากกกกก อร่อยสุดๆ แาจจะติดในเรื่องของราคาที่ค่อนข้างสูง การเดินทางสะดวกอยู่ใต้ตัวเมืองค่ะ</p>
+            </div>
+        </section>  
+
+        <section class="card menu-section">
+            <div class="vibes-section">
+                <h2 class="title">#Vibes</h2>
+                <div class="scroll-container">
+    
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@yu.phichit/video/7589674755121270036" data-video-id="7589674755121270036" >
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@khimnps/video/7505354315012394295" data-video-id="7505354315012394295">
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@kwangdp/video/7591839529514880276" data-video-id="7591839529514880276">
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+         
+       <section class="card gallery-section">
+            <h2 class="section-title">เมนูอาหารและเครื่องดื่ม</h2>
+            <div class="image-grid">
+                <div class="grid-item" style="background-image: url('../imagas/1425/1425cafemenu1.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/1425/1425cafemenu2.jpg')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/1425/1425cafemenu3.jpg')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/1425/1425cafemenu4.jpg')"></div>
+
+            </div>
+        </section>
+
+        <section class="card testimonial-section">
+            <h2 class="section-title">รีวิวจากลูกค้า</h2>
+            <div id="single-cafe-reviews" class="cafe-grid">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="load-more-reviews" class="view-more-btn" style="display: none; border: none; cursor: pointer;">
+                    ดูรีวิวเพิ่มเติม
+                </button>
+            </div>
+        </section>
+
+        <section class="card contact-grid">
+            <div class="contact-details">
+                <h2 class="section-title">ติดต่อเรา</h2>
+                <ul class="contact-list">
+                    <li>
+                        <a href="https://maps.app.goo.gl/5cZgGKWZg9JvdF5K8" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            <span>54 27 ตำบล ในเมือง อำเภอเมืองพิจิตร พิจิตร 66000 </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/p/1425-Hours-100070979940285/?locale=th_TH" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook: 14:25 Hours. 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:0644194171">
+                            <i class="fas fa-phone"></i> 064 419 4171
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="location-map">
+                <h2 class="section-title">เส้นทาง</h2>
+    
+                <a href="https://maps.app.goo.gl/5cZgGKWZg9JvdF5K8" target="_blank" class="map-container">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244898.52412190143!2d100.03532429453124!3d16.448200899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe7000e10c011%3A0x32fbc054d4a1b59!2s14%3A25%20Hours.!5e0!3m2!1sth!2sth!4v1771396820949!5m2!1sth!2sth"
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </a>
+
+                <a href="https://maps.app.goo.gl/5cZgGKWZg9JvdF5K8" target="_blank" class="map-link">
+                    <i class="fas fa-location-arrow"></i> คลิกเพื่อนำทางผ่าน Google Maps
+                </a>
+            </div>
+        </section>
+    </main> 
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">
+                    อยากให้เราไปรีวิวร้านไหน? 
+                    <a href="../contact/index.html?tab=info" onclick="goToContactForm(event)">ส่งข้อความหาเราได้เลย</a>
+                </p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="../index.html">หน้าแรก</a></li>
+                        <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="../reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="../login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ผู้จัดทำ</h4>
+                    <ul>
+                        <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <div class="floating-auth">
+        <a href="../login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+            <img src="../imagas/coffee-beans.png" alt="Avatar">
+        </div>
+    </div>
+
+    <button class="floating-fav-btn" id="btn-cafe001" 
+        onclick="toggleFavorite(event)">
+        <i class="far fa-heart"></i>
+    </button>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, deleteDoc , collection, getDocs, query, where, orderBy} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+    // ฟังก์ชันหลักที่ใช้ "จำ" สถานะการล็อกอิน
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+            // --- กรณี Login แล้ว ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'none', 'important');
+            }
+            if (avatarDiv) {
+                // สั่งให้โชว์เป็น flex และใช้ important เพื่อชนะ CSS ที่เราเขียนดักไว้
+                avatarDiv.style.setProperty('display', 'flex', 'important');
+                
+                // ดึงรูปโปรไฟล์มาใส่
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.photo) {
+                            avatarDiv.querySelector('img').src = userData.photo;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        } else {
+            // --- กรณีไม่ได้ Login ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'flex', 'important');
+            }
+            if (avatarDiv) {
+                avatarDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+    });
+
+    // ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = '../user/index.html';
+        });
+        }
+
+    // *** ตั้งค่าข้อมูลของหน้านี้ (แก้ไขให้ตรงกับแต่ละร้าน) ***
+    // เปลี่ยนให้ ID ตรงกับที่เขียนไว้ใน <button id="btn-cafe001">
+const cafeData = {
+    id: "cafe001", 
+    name: "14:25 Hours.", 
+    image: "../imagas/1425/1425cafe1.webp" 
+};
+
+    const favBtn = document.getElementById(`btn-${cafeData.id}`);
+
+    // 1. ตรวจสอบสถานะหัวใจเมื่อโหลดหน้า
+    onAuthStateChanged(auth, async (user) => {
+        if (user && favBtn) {
+            const favRef = doc(db, "users", user.uid, "favorites", cafeData.id);
+            const docSnap = await getDoc(favRef);
+            
+            if (docSnap.exists()) {
+                favBtn.classList.add('active');
+                const icon = favBtn.querySelector('i');
+                if (icon) icon.classList.replace('far', 'fas');
+            
+            }
+        }
+    });
+
+    // ฟังก์ชันสร้างหัวใจดวงน้อยๆ
+function createHeart(e) {
+    const heart = document.createElement('i');
+    heart.className = 'fas fa-heart floating-heart';
+    
+    // กำหนดตำแหน่งเริ่มต้นที่จุดที่เราคลิก
+    // ใช้ clientX/Y เพื่อให้ตำแหน่งตรงกับเมาส์หรือนิ้วบนหน้าจอ
+    heart.style.left = (e.clientX - 10) + 'px';
+    heart.style.top = (e.clientY - 10) + 'px';
+    
+    document.body.appendChild(heart);
+    
+    // เมื่อเล่นอนิเมชั่นจบ (0.8s) ให้ลบ Element ทิ้งเพื่อไม่ให้หนักเครื่อง
+    setTimeout(() => {
+        heart.remove();
+    }, 800);
+}
+
+// แก้ไขฟังก์ชัน toggleFavorite เดิม
+window.toggleFavorite = async function(e) {
+    // 1. เรียกใช้ฟังก์ชันสร้างหัวใจ (ส่งตัวแปร e เข้าไปเพื่อหาตำแหน่งคลิก)
+    if (e) createHeart(e);
+
+    const user = auth.currentUser;
+    if (!user) {
+        alert("กรุณาเข้าสู่ระบบก่อนนะคะ");
+        return;
+    }
+
+    const favRef = doc(db, "users", user.uid, "favorites", cafeData.id);
+    const icon = favBtn.querySelector('i');
+
+    try {
+        const docSnap = await getDoc(favRef);
+        if (docSnap.exists()) {
+            await deleteDoc(favRef);
+            favBtn.classList.remove('active');
+            if (icon) icon.classList.replace('fas', 'far');
+        } else {
+            await setDoc(favRef, {
+                name: cafeData.name,
+                image: cafeData.image,
+                addedAt: new Date()
+            });
+            favBtn.classList.add('active');
+            if (icon) icon.classList.replace('far', 'fas');
+        }
+    } catch (error) {
+        console.error("Error toggling favorite:", error);
+    }
+};
+
+    // ผูกฟังก์ชันเข้ากับปุ่ม (ถ้าใน HTML มี onclick="toggleFavorite()" อยู่แล้วบรรทัดนี้ไม่ต้องก็ได้)
+    if (favBtn) {
+        favBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleFavorite();
+        });
+    }
+
+    // 3. ดึงรีวิว (ปรับปรุงใหม่ให้เหมือนหน้ารีวิวหลัก)
+async function fetchCafeReviews(cafeName) {
+    const reviewContainer = document.getElementById("single-cafe-reviews");
+    const loadMoreBtn = document.getElementById("load-more-reviews");
+    
+    const q = query(
+        collection(db, "cafes"), 
+        where("name", "==", cafeName), 
+        orderBy("timestamp", "desc")
+    );
+
+    try {
+        const snapshot = await getDocs(q);
+        let content = "";
+        let count = 0;
+
+        if (snapshot.empty) {
+            reviewContainer.innerHTML = "<p style='text-align:center; padding:20px; color:#888;'>ยังไม่มีรีวิวสำหรับร้านนี้ มาเป็นคนแรกที่รีวิวกันเถอะ!</p>";
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            count++;
+            
+            // ตั้งค่าการซ่อนรีวิวที่มากกว่า 3 อัน
+            const isHidden = count > 3 ? 'display: none;' : '';
+            const extraClass = count > 3 ? 'extra-review' : '';
+
+            // ดึงข้อมูลผู้รีวิว (เหมือนหน้ารีวิวหลักเป๊ะๆ)
+            const reviewerName = data.ReviewerName || "ผู้เยี่ยมชม";
+            const reviewerPhoto = data.ReviewerPhoto || "../imagas/coffee-beans.png";
+
+            content += `
+                <div class="review-card ${extraClass}" style="margin-bottom: 20px; border: 1px solid #eee; border-radius: 15px; overflow: hidden; background: white; ${isHidden}">
+                    <div class="card-image" style="height: 200px; overflow: hidden;">
+                        <img src="${data.imageURL || 'https://via.placeholder.com/400x250'}" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="rating-badge" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;">
+                            ⭐ ${data.rating || '5.0'}
+                        </div>
+                    </div>
+                    <div class="card-content" style="padding: 15px;">
+                        <span style="font-size: 0.75rem; color: #4a5d4d; font-weight: bold;">#${data.category || 'มินิมอล'}</span>
+                        <p style="margin: 10px 0; font-size: 0.95rem; color: #555; line-height: 1.5;">${data.reviewText}</p>
+                        
+                        <div class="reviewer-info" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; border-top: 1px solid #f9f9f9; padding-top: 10px;">
+                            <img src="${reviewerPhoto}" style="width:35px; height:35px; border-radius:50%; object-fit:cover; border: 1px solid #eee;">
+                            <span class="reviewer-name" style="font-size: 0.85rem; color: #333; font-weight: 500;">โดย ${reviewerName}</span>
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        reviewContainer.innerHTML = content;
+
+        // จัดการปุ่มโหลดเพิ่มเติม
+        if (count > 3) {
+            loadMoreBtn.style.display = "inline-block";
+            loadMoreBtn.onclick = () => {
+                document.querySelectorAll('.extra-review').forEach(el => {
+                    el.style.display = 'block';
+                });
+                loadMoreBtn.style.display = "none";
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching reviews:", error);
+        reviewContainer.innerHTML = "<p>โหลดข้อมูลผิดพลาด</p>";
+    }
+
+};
+
+    // สั่งให้ทำงานเมื่อโหลดหน้า (อย่าลืมเปลี่ยนชื่อร้านให้ตรงกับหน้านั้นๆ)
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchCafeReviews("14:25 Hours."); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
+    });
+
+        document.querySelectorAll('.grid-item').forEach(item => {
+        item.addEventListener('click', function() {
+        // ดึง URL รูปภาพจาก background-image
+        const bg = this.style.backgroundImage;
+        const url = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        
+        // สร้างหน้าต่างเล็กๆ (Lightbox) แสดงรูป
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.style = `
+            position: fixed; z-index: 3000; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        `;
+        
+        const img = document.createElement('img');
+        img.src = url;
+        img.style = "max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);";
+        
+        lightbox.appendChild(img);
+        document.body.appendChild(lightbox);
+        
+        // คลิกที่ไหนก็ได้เพื่อปิด
+        lightbox.onclick = () => document.body.removeChild(lightbox);
+        });
+        });
+    </script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById("imageModal");
+    const viewMoreBtn = document.getElementById("openGallery"); // เรียกผ่าน ID ที่ตั้งใหม่
+    const closeBtn = document.querySelector(".close-button");
+    const overlay = document.getElementById('fullImageOverlay');
+    const fullImg = document.getElementById('fullImage');
+    const mainImage = document.getElementById('main-cafe-image');
+
+    // 1. เมื่อคลิกปุ่ม "ดูรูปภาพทั้งหมด" ให้แสดง Modal
+    if (viewMoreBtn) {
+        viewMoreBtn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // ปิดการ scroll หน้าเว็บหลัก
+        }
+    }
+
+    // 2. เมื่อคลิกปุ่มกากบาท (X) ให้ปิด Modal
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // เปิดการ scroll หน้าเว็บหลัก
+        }
+    }
+
+    // 3. จัดการรูปภาพใน Modal Grid
+    const galleryImages = document.querySelectorAll('.image-gallery-grid img');
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            // เมื่อคลิกรูปใน Modal:
+            // A. เปลี่ยนรูปหลักที่หน้าจอ (background)
+            if (mainImage) {
+                mainImage.src = this.src;
+            }
+            // B. แสดงรูปขยายแบบเต็มจอ (Overlay)
+            if (fullImg && overlay) {
+                fullImg.src = this.src;
+                overlay.style.display = 'flex';
+            }
+        });
+    });
+
+    // 4. คลิกที่พื้นหลังของ Overlay เพื่อปิดรูปขยาย
+    if (overlay) {
+        overlay.onclick = function() {
+            overlay.style.display = 'none';
+        }
+    }
+
+    // 5. คลิกพื้นที่ว่างนอกหน้าต่าง Modal เพื่อปิด
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+});
+
+// สคริปต์สำหรับกดขยายรูปเมนูแนะนำ
+document.addEventListener('DOMContentLoaded', () => {
+    const menuCards = document.querySelectorAll('.clickable-menu-card');
+
+    menuCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const img = this.dataset.img;
+            const name = this.dataset.name;
+            const price = this.dataset.price;
+            const desc = this.dataset.desc;
+
+            // สร้างโครงสร้าง Overlay
+            const overlay = document.createElement('div');
+            overlay.style = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+                display: flex; align-items: center; justify-content: center;
+                z-index: 10005; opacity: 0; transition: opacity 0.3s ease;
+                cursor: pointer; padding: 20px;
+            `;
+
+            // สร้างตัวการ์ดเมนู
+            const menuPopup = document.createElement('div');
+            menuPopup.style = `
+                background: rgba(255, 255, 255, 0.95);
+                width: 100%; max-width: 400px;
+                border-radius: 25px; padding: 30px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                text-align: center; cursor: default;
+                transform: translateY(20px); transition: transform 0.3s ease;
+            `;
+
+            menuPopup.innerHTML = `
+                <img src="${img}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                <h2 style="margin: 0; color: #4a5d4d; font-size: 1.5rem;">${name}</h2>
+                <span style="display: block; color: #8d7a66; font-weight: 600; font-size: 1.2rem; margin: 10px 0;">${price}</span>
+                <p style="color: #666; line-height: 1.6; font-size: 1rem; margin-bottom: 0;">${desc}</p>
+                <button style="margin-top: 25px; background: #4a5d4d; color: white; border: none; padding: 10px 30px; border-radius: 50px; font-family: 'Kanit'; cursor: pointer;">ปิดหน้าต่าง</button>
+            `;
+
+            overlay.appendChild(menuPopup);
+            document.body.appendChild(overlay);
+
+            // แสดง Effect (Fade In)
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                menuPopup.style.transform = 'translateY(0)';
+            }, 10);
+
+            // ฟังก์ชันปิด
+            const closeBox = () => {
+                overlay.style.opacity = '0';
+                menuPopup.style.transform = 'translateY(20px)';
+                setTimeout(() => document.body.removeChild(overlay), 300);
+            };
+
+            overlay.onclick = closeBox;
+            menuPopup.querySelector('button').onclick = closeBox;
+            menuPopup.onclick = (e) => e.stopPropagation(); // กันกดโดนตัวการ์ดแล้วปิด
+        });
+    });
+});
+
+    function changeImage(src) {
+    const mainImg = document.getElementById('main-cafe-image');
+    mainImg.style.opacity = '0'; // เพิ่ม effect จางลงเล็กน้อย
+    setTimeout(() => {
+        mainImg.src = src;
+        mainImg.style.opacity = '1';
+    }, 200);
+}
+
+</script>
+
+

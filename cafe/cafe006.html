@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intense coffee house.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body>
+     <nav class="navbar">
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
+    
+    <br>
+    
+    <div class="gallery-wrapper-new">
+        <div class="main-image-container">
+            <img src="../imagas/Intensecoffeehouse/Intense1.webp" alt="Black Ground Cafe" id="main-cafe-image">
+        </div>
+
+        <div class="thumbnail-strip">
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense10.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense11.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense13.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense1.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense3.webp" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense15.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense6.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense4.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense14.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense9.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense8.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense7.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense5.jpg" onclick="changeImage(this.src)"></div>
+            <div class="thumbnail-item-new"><img src="../imagas/Intensecoffeehouse/Intense2.jpg" onclick="changeImage(this.src)"></div>
+
+            <a href="javascript:void(0)" class="view-more-btn" id="openGallery"> (14 ) » </a>
+
+            <div id="imageModal" class="modal">
+                <span class="close-button">&times;</span>
+                <div class="modal-content">
+                    <h2>รูปภาพทั้งหมดจาก Intense coffee house.</h2>
+                    <div class="image-gallery-grid">
+                        <img src="../imagas/Intensecoffeehouse/Intense10.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense11.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense13.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense1.webp">
+            <img src="../imagas/Intensecoffeehouse/Intense3.webp">
+            <img src="../imagas/Intensecoffeehouse/Intense15.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense6.jpg" >
+            <img src="../imagas/Intensecoffeehouse/Intense4.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense14.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense9.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense8.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense7.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense5.jpg">
+            <img src="../imagas/Intensecoffeehouse/Intense2.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div id="fullImageOverlay">
+                <img id="fullImage" src="">
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <main class="container">
+        <section class="shop-title-card">
+            <h1>Intense coffee house.</h1>
+            <p> 🗓️ วันจันทร์ – วันอาทิตย์ 07.30 น. - 16.30 น.☕️ </p>
+            <p><i class="fas fa-map-marker-alt"></i> ตำบลในเมือง, อำเภอเมือง, จังหวัดพิจิตร</p>
+        </section>
+    
+ <section class="card menu-section">
+    <h2 class="section-title">ไฮไลท์แนะนำ</h2>
+
+    <div class="highlight-item">
+        <div class="highlight-image clickable-menu-card" 
+            data-img="../imagas/intense/shop-vibe.jpg" 
+            data-name="ความเท่สไตล์ Industrial Loft" 
+            data-price="Strong & Cool" 
+            data-desc="Intense Coffee House ตกแต่งด้วยโทนสีเข้ม ดิบ เท่ สไตล์ Loft เป็นพื้นที่สำหรับคอกาแฟตัวจริงที่ต้องการดื่มด่ำกับรสชาติท่ามกลางบรรยากาศสุดคูล">
+            <img src="../imagas/Intensecoffeehouse/Intense3.webp" alt="บรรยากาศร้าน Intense Coffee House">
+        </div>
+        <div class="highlight-text">
+            <span class="tag">Vibe & Spirit</span>
+            <h3>ความเท่สไตล์ Industrial Loft</h3>
+            <p>สัมผัสเอกลักษณ์ความเข้มข้นทั้งรสชาติและดีไซน์ในเมืองพิจิตร ร้านถูกออกแบบมาให้ดูสุขุมด้วยโทนสีดำและงานปูนเปลือย เหมาะสำหรับนั่งคุยงานหรือพักผ่อนแบบแมนๆ ในมาดคูล</p>
+            <div class="highlight-features">
+                <span>📍 เมืองพิจิตร</span>
+                <span>🏠 สไตล์อินดัสเทรียล ลอฟท์</span>
+                <span>☕ กลิ่นอายคอฟฟี่โรสเตอร์</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-item reverse">
+        <div class="highlight-image clickable-menu-card" 
+            data-img="../imagas/intense/matcha-special.jpg" 
+            data-name="Matcha Specialty" 
+            data-price="Premium Series" 
+            data-desc="สัมผัสรสชาติชาเขียวมัทฉะเกรดพรีเมียมจากญี่ปุ่น ที่มีความเข้มข้น หอมนุ่ม และกลมกล่อม เป็นเมนูที่ไม่ควรพลาดสำหรับคนรักมัทฉะ">
+            <img src="../imagas/Intensecoffeehouse/Intense5.jpg" alt="เมนู Matcha Specialty">
+        </div>
+        <div class="highlight-text">
+            <span class="tag">Highlight Menu</span>
+            <h3>สัมผัสความเข้มข้นของมัทฉะแท้</h3>
+            <p>ดื่มด่ำกับรสชาติชาเขียวมัทฉะคุณภาพสูง ที่ทางร้านคัดสรรมาอย่างพิถีพิถัน ให้รสสัมผัสที่นุ่มนวล หอมกลิ่นมัทฉะแท้ๆ และมีความเข้มข้นในทุกคำ เป็นเมนูที่คนรักมัทฉะตัวจริงต้องมาลอง</p>
+            <div class="highlight-features">
+                <span>🇯🇵 มัทฉะเกรดพรีเมียมจากญี่ปุ่น</span>
+                <span>🍵 รสเข้มข้น หอมกลมกล่อม</span>
+                <span>💚 สำหรับคนรักมัทฉะโดยเฉพาะ</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="card menu-section">
+            <h2 class="section-title">คะแนนจากทางเว็บไซต์</h2>
+            <div class="rating-container">
+                <div class="rating-row">
+                    <span class="label">รสชาติ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div> 
+                    </div>
+                    <span class="score">5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">บรรยากาศ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                    <span class="score">3.5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">การบริการ</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="score">5</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">ราคา</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 60%;"></div>
+                    </div>
+                    <span class="score">3</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="label">การเดินทาง</span>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 100%;"></div>
+                    </div>
+                    <span class="score">5</span>
+                </div>
+            </div>
+
+            <div class="admin-review-note">
+                <strong>ทำไมถึงให้คะแนนแบบนี้?</strong>
+                <p>ส่วนตัวชอบขนมของทางรา้นมาก โดยเฉพาะท็อฟฟี่เค้กที่อร่อยมากกกกก อร่อยสุดๆ แาจจะติดในเรื่องของราคาที่ค่อนข้างสูง การเดินทางสะดวกอยู่ใต้ตัวเมืองค่ะ</p>
+            </div>
+        </section>  
+
+        <section class="card menu-section">
+            <div class="vibes-section">
+                <h2 class="title">#Vibes</h2>
+                <div class="scroll-container">
+    
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@pornchanok20022/video/7276743604498943237" data-video-id="7276743604498943237" >
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@lettuce_m/video/7439682367834475784" data-video-id="7439682367834475784" >
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+
+                    <div class="card tiktok-card">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@rmuaypuipui/video/7506713881797152008" data-video-id="7506713881797152008">
+                            <section></section>
+                        </blockquote>
+                        <script async src="https://www.tiktok.com/embed.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+         
+       <section class="card gallery-section">
+            <h2 class="section-title">เมนูอาหารและเครื่องดื่ม</h2>
+            <div class="image-grid">
+                <div class="grid-item" style="background-image: url('../imagas/Intensecoffeehouse/menu1.webp')"></div>
+                <div class="grid-item" style="background-image: url('../imagas/Intensecoffeehouse/menu2.webp')"></div>
+            </div>
+        </section>
+
+        <section class="card testimonial-section">
+            <h2 class="section-title">รีวิวจากลูกค้า</h2>
+            <div id="single-cafe-reviews" class="cafe-grid">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+        <button id="load-more-reviews" class="view-more-btn" style="display: none; border: none; cursor: pointer;">
+            ดูรีวิวเพิ่มเติม
+        </button>
+        </section>
+
+        <section class="card contact-grid">
+            <div class="contact-details">
+                <h2 class="section-title">ติดต่อเรา</h2>
+                <ul class="contact-list">
+                    <li>
+                        <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            <span>64 2 ถ.บึงสีไฟ เมืองพิจิตร 66000</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/Intense.coffeehouse/" target="_blank">
+                            <i class="fab fa-facebook-f"></i> Facebook: Intense coffee house. 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:0937954544">
+                            <i class="fas fa-phone"></i> 093 795 4544
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="location-map">
+                <h2 class="section-title">เส้นทาง</h2>
+    
+                <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank" class="map-container">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.7027190209956!2d100.34410787514383!3d16.439917784294614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfe7875d335db1%3A0x6648d076014e65b0!2sIntense%20coffee%20house!5e0!3m2!1sth!2sth!4v1768182591880!5m2!1sth!2sth" 
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </a>
+
+            <a href="https://maps.app.goo.gl/Ja6VubKphojXwhPP9" target="_blank" class="map-link">
+                <i class="fas fa-location-arrow"></i> คลิกเพื่อนำทางผ่าน Google Maps
+            </a>
+        </div>
+        </section>
+    </main> 
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">
+                    อยากให้เราไปรีวิวร้านไหน? 
+                    <a href="../contact/index.html?tab=info" onclick="goToContactForm(event)">ส่งข้อความหาเราได้เลย</a>
+                </p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="../index.html">หน้าแรก</a></li>
+                        <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="../reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="../login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ผู้จัดทำ</h4>
+                    <ul>
+                        <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+    <div class="floating-auth">
+        <a href="../login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+            <img src="../imagas/coffee-beans.png" alt="Avatar">
+        </div>
+    </div>
+
+    <button class="floating-fav-btn" id="btn-cafe006" 
+        onclick="toggleFavorite(event)">
+        <i class="far fa-heart"></i>
+    </button>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, deleteDoc , collection, getDocs, query, where, orderBy} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+    // ฟังก์ชันหลักที่ใช้ "จำ" สถานะการล็อกอิน
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+            // --- กรณี Login แล้ว ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'none', 'important');
+            }
+            if (avatarDiv) {
+                // สั่งให้โชว์เป็น flex และใช้ important เพื่อชนะ CSS ที่เราเขียนดักไว้
+                avatarDiv.style.setProperty('display', 'flex', 'important');
+                
+                // ดึงรูปโปรไฟล์มาใส่
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.photo) {
+                            avatarDiv.querySelector('img').src = userData.photo;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        } else {
+            // --- กรณีไม่ได้ Login ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'flex', 'important');
+            }
+            if (avatarDiv) {
+                avatarDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+    });
+
+    // ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = '../user/index.html';
+        });
+        }
+
+    // *** ตั้งค่าข้อมูลของหน้านี้ (แก้ไขให้ตรงกับแต่ละร้าน) ***
+    // เปลี่ยนให้ ID ตรงกับที่เขียนไว้ใน <button id="btn-cafe001">
+const cafeData = {
+    id: "cafe006", 
+    name: "Intense coffee house.", 
+    image: "../imagas/Intensecoffeehouse/Intense1.webp" 
+};
+
+    const favBtn = document.getElementById(`btn-${cafeData.id}`);
+
+    // 1. ตรวจสอบสถานะหัวใจเมื่อโหลดหน้า
+    onAuthStateChanged(auth, async (user) => {
+        if (user && favBtn) {
+            const favRef = doc(db, "users", user.uid, "favorites", cafeData.id);
+            const docSnap = await getDoc(favRef);
+            
+            if (docSnap.exists()) {
+                favBtn.classList.add('active');
+                const icon = favBtn.querySelector('i');
+                if (icon) icon.classList.replace('far', 'fas');
+            
+            }
+        }
+    });
+
+    // ฟังก์ชันสร้างหัวใจดวงน้อยๆ
+function createHeart(e) {
+    const heart = document.createElement('i');
+    heart.className = 'fas fa-heart floating-heart';
+    
+    // กำหนดตำแหน่งเริ่มต้นที่จุดที่เราคลิก
+    // ใช้ clientX/Y เพื่อให้ตำแหน่งตรงกับเมาส์หรือนิ้วบนหน้าจอ
+    heart.style.left = (e.clientX - 10) + 'px';
+    heart.style.top = (e.clientY - 10) + 'px';
+    
+    document.body.appendChild(heart);
+    
+    // เมื่อเล่นอนิเมชั่นจบ (0.8s) ให้ลบ Element ทิ้งเพื่อไม่ให้หนักเครื่อง
+    setTimeout(() => {
+        heart.remove();
+    }, 800);
+}
+
+// แก้ไขฟังก์ชัน toggleFavorite เดิม
+window.toggleFavorite = async function(e) {
+    // 1. เรียกใช้ฟังก์ชันสร้างหัวใจ (ส่งตัวแปร e เข้าไปเพื่อหาตำแหน่งคลิก)
+    if (e) createHeart(e);
+
+    const user = auth.currentUser;
+    if (!user) {
+        alert("กรุณาเข้าสู่ระบบก่อนนะคะ");
+        return;
+    }
+
+    const favRef = doc(db, "users", user.uid, "favorites", cafeData.id);
+    const icon = favBtn.querySelector('i');
+
+    try {
+        const docSnap = await getDoc(favRef);
+        if (docSnap.exists()) {
+            await deleteDoc(favRef);
+            favBtn.classList.remove('active');
+            if (icon) icon.classList.replace('fas', 'far');
+        } else {
+            await setDoc(favRef, {
+                name: cafeData.name,
+                image: cafeData.image,
+                addedAt: new Date()
+            });
+            favBtn.classList.add('active');
+            if (icon) icon.classList.replace('far', 'fas');
+        }
+    } catch (error) {
+        console.error("Error toggling favorite:", error);
+    }
+};
+
+    // ผูกฟังก์ชันเข้ากับปุ่ม (ถ้าใน HTML มี onclick="toggleFavorite()" อยู่แล้วบรรทัดนี้ไม่ต้องก็ได้)
+    if (favBtn) {
+        favBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleFavorite();
+        });
+    }
+
+    // 3. ดึงรีวิว (ปรับปรุงใหม่ให้เหมือนหน้ารีวิวหลัก)
+async function fetchCafeReviews(cafeName) {
+    const reviewContainer = document.getElementById("single-cafe-reviews");
+    const loadMoreBtn = document.getElementById("load-more-reviews");
+    
+    const q = query(
+        collection(db, "cafes"), 
+        where("name", "==", cafeName), 
+        orderBy("timestamp", "desc")
+    );
+
+    try {
+        const snapshot = await getDocs(q);
+        let content = "";
+        let count = 0;
+
+        if (snapshot.empty) {
+            reviewContainer.innerHTML = "<p style='text-align:center; padding:20px; color:#888;'>ยังไม่มีรีวิวสำหรับร้านนี้ มาเป็นคนแรกที่รีวิวกันเถอะ!</p>";
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            count++;
+            
+            // ตั้งค่าการซ่อนรีวิวที่มากกว่า 3 อัน
+            const isHidden = count > 3 ? 'display: none;' : '';
+            const extraClass = count > 3 ? 'extra-review' : '';
+
+            // ดึงข้อมูลผู้รีวิว (เหมือนหน้ารีวิวหลักเป๊ะๆ)
+            const reviewerName = data.ReviewerName || "ผู้เยี่ยมชม";
+            const reviewerPhoto = data.ReviewerPhoto || "../imagas/coffee-beans.png";
+
+            content += `
+                <div class="review-card ${extraClass}" style="margin-bottom: 20px; border: 1px solid #eee; border-radius: 15px; overflow: hidden; background: white; ${isHidden}">
+                    <div class="card-image" style="height: 200px; overflow: hidden;">
+                        <img src="${data.imageURL || 'https://via.placeholder.com/400x250'}" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="rating-badge" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;">
+                            ⭐ ${data.rating || '5.0'}
+                        </div>
+                    </div>
+                    <div class="card-content" style="padding: 15px;">
+                        <span style="font-size: 0.75rem; color: #4a5d4d; font-weight: bold;">#${data.category || 'มินิมอล'}</span>
+                        <p style="margin: 10px 0; font-size: 0.95rem; color: #555; line-height: 1.5;">${data.reviewText}</p>
+                        
+                        <div class="reviewer-info" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; border-top: 1px solid #f9f9f9; padding-top: 10px;">
+                            <img src="${reviewerPhoto}" style="width:35px; height:35px; border-radius:50%; object-fit:cover; border: 1px solid #eee;">
+                            <span class="reviewer-name" style="font-size: 0.85rem; color: #333; font-weight: 500;">โดย ${reviewerName}</span>
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        reviewContainer.innerHTML = content;
+
+        // จัดการปุ่มโหลดเพิ่มเติม
+        if (count > 3) {
+            loadMoreBtn.style.display = "inline-block";
+            loadMoreBtn.onclick = () => {
+                document.querySelectorAll('.extra-review').forEach(el => {
+                    el.style.display = 'block';
+                });
+                loadMoreBtn.style.display = "none";
+            };
+        }
+    } catch (error) {
+        console.error("Error fetching reviews:", error);
+        reviewContainer.innerHTML = "<p>โหลดข้อมูลผิดพลาด</p>";
+    }
+
+};
+
+    // สั่งให้ทำงานเมื่อโหลดหน้า (อย่าลืมเปลี่ยนชื่อร้านให้ตรงกับหน้านั้นๆ)
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchCafeReviews("Intense coffee house."); // ใส่ชื่อร้านให้ตรงกับในฐานข้อมูล
+    });
+
+        document.querySelectorAll('.grid-item').forEach(item => {
+        item.addEventListener('click', function() {
+        // ดึง URL รูปภาพจาก background-image
+        const bg = this.style.backgroundImage;
+        const url = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        
+        // สร้างหน้าต่างเล็กๆ (Lightbox) แสดงรูป
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.style = `
+            position: fixed; z-index: 3000; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        `;
+        
+        const img = document.createElement('img');
+        img.src = url;
+        img.style = "max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);";
+        
+        lightbox.appendChild(img);
+        document.body.appendChild(lightbox);
+        
+        // คลิกที่ไหนก็ได้เพื่อปิด
+        lightbox.onclick = () => document.body.removeChild(lightbox);
+        });
+        });
+    </script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById("imageModal");
+    const viewMoreBtn = document.getElementById("openGallery"); // เรียกผ่าน ID ที่ตั้งใหม่
+    const closeBtn = document.querySelector(".close-button");
+    const overlay = document.getElementById('fullImageOverlay');
+    const fullImg = document.getElementById('fullImage');
+    const mainImage = document.getElementById('main-cafe-image');
+
+    // 1. เมื่อคลิกปุ่ม "ดูรูปภาพทั้งหมด" ให้แสดง Modal
+    if (viewMoreBtn) {
+        viewMoreBtn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // ปิดการ scroll หน้าเว็บหลัก
+        }
+    }
+
+    // 2. เมื่อคลิกปุ่มกากบาท (X) ให้ปิด Modal
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // เปิดการ scroll หน้าเว็บหลัก
+        }
+    }
+
+    // 3. จัดการรูปภาพใน Modal Grid
+    const galleryImages = document.querySelectorAll('.image-gallery-grid img');
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            // เมื่อคลิกรูปใน Modal:
+            // A. เปลี่ยนรูปหลักที่หน้าจอ (background)
+            if (mainImage) {
+                mainImage.src = this.src;
+            }
+            // B. แสดงรูปขยายแบบเต็มจอ (Overlay)
+            if (fullImg && overlay) {
+                fullImg.src = this.src;
+                overlay.style.display = 'flex';
+            }
+        });
+    });
+
+    // 4. คลิกที่พื้นหลังของ Overlay เพื่อปิดรูปขยาย
+    if (overlay) {
+        overlay.onclick = function() {
+            overlay.style.display = 'none';
+        }
+    }
+
+    // 5. คลิกพื้นที่ว่างนอกหน้าต่าง Modal เพื่อปิด
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+});
+
+// สคริปต์สำหรับกดขยายรูปเมนูแนะนำ
+document.addEventListener('DOMContentLoaded', () => {
+    const menuCards = document.querySelectorAll('.clickable-menu-card');
+
+    menuCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const img = this.dataset.img;
+            const name = this.dataset.name;
+            const price = this.dataset.price;
+            const desc = this.dataset.desc;
+
+            // สร้างโครงสร้าง Overlay
+            const overlay = document.createElement('div');
+            overlay.style = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+                display: flex; align-items: center; justify-content: center;
+                z-index: 10005; opacity: 0; transition: opacity 0.3s ease;
+                cursor: pointer; padding: 20px;
+            `;
+
+            // สร้างตัวการ์ดเมนู
+            const menuPopup = document.createElement('div');
+            menuPopup.style = `
+                background: rgba(255, 255, 255, 0.95);
+                width: 100%; max-width: 400px;
+                border-radius: 25px; padding: 30px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                text-align: center; cursor: default;
+                transform: translateY(20px); transition: transform 0.3s ease;
+            `;
+
+            menuPopup.innerHTML = `
+                <img src="${img}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                <h2 style="margin: 0; color: #4a5d4d; font-size: 1.5rem;">${name}</h2>
+                <span style="display: block; color: #8d7a66; font-weight: 600; font-size: 1.2rem; margin: 10px 0;">${price}</span>
+                <p style="color: #666; line-height: 1.6; font-size: 1rem; margin-bottom: 0;">${desc}</p>
+                <button style="margin-top: 25px; background: #4a5d4d; color: white; border: none; padding: 10px 30px; border-radius: 50px; font-family: 'Kanit'; cursor: pointer;">ปิดหน้าต่าง</button>
+            `;
+
+            overlay.appendChild(menuPopup);
+            document.body.appendChild(overlay);
+
+            // แสดง Effect (Fade In)
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                menuPopup.style.transform = 'translateY(0)';
+            }, 10);
+
+            // ฟังก์ชันปิด
+            const closeBox = () => {
+                overlay.style.opacity = '0';
+                menuPopup.style.transform = 'translateY(20px)';
+                setTimeout(() => document.body.removeChild(overlay), 300);
+            };
+
+            overlay.onclick = closeBox;
+            menuPopup.querySelector('button').onclick = closeBox;
+            menuPopup.onclick = (e) => e.stopPropagation(); // กันกดโดนตัวการ์ดแล้วปิด
+        });
+    });
+});
+
+    function changeImage(src) {
+    const mainImg = document.getElementById('main-cafe-image');
+    mainImg.style.opacity = '0'; // เพิ่ม effect จางลงเล็กน้อย
+    setTimeout(() => {
+        mainImg.src = src;
+        mainImg.style.opacity = '1';
+    }, 200);
+}
+
+</script>
+
+

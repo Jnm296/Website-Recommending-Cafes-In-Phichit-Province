@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รวมคาเฟ่</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <a href="https://www.phichit.go.th/phichit/" class="logo-link" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <img src="../imagas/images.jpg" alt="Logo">
+                </div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าแรก</a></li>
+            <li><a href="#">รวมคาเฟ่</a></li>
+            <li><a href="../reviews/index.html">รีวิว</a></li>
+            <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+        </ul>
+    </nav>
+    <header class="page-header">
+        <h1>รวมคาเฟ่</h1>
+        <p>รวบรวมคาเฟ่ชื่อดังในพิจิตรที่คุณห้ามพลาด</p>
+
+        <div class="search-box" style="position: relative; display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <div style="position: relative;">
+                <input type="text" id="searchInput" placeholder="พิมพ์ชื่อคาเฟ่ที่ต้องการ..."  style="padding: 12px 25px; width: 350px; border-radius: 30px; border: 1px solid #ddd; font-family: 'Kanit'; outline: none;">  
+                <ul id="suggestionList" style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; margin: 5px 0; z-index: 2000; text-align: left; max-height: 200px; overflow-y: auto;"></ul>
+            </div>
+
+            <button id="searchButton" style="padding: 12px 30px; border-radius: 30px; background-color: #4a5d4d; color: white; border: none; cursor: pointer; font-family: 'Kanit'; white-space: nowrap;">
+                ค้นหา
+            </button>
+        </div>
+
+        <div class="category-tags" style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <span style="font-size: 0.9rem; color: #999; align-self: center;">แท็กยอดนิยม:</span>
+            <button class="tag">#มินิมอล</button>
+            <button class="tag">#ธรรมชาติ</button>
+            <button class="tag">#วินเทจ</button>
+        </div>
+    </header>
+
+    <div class="container">
+    <section id="minimal" class="cafe-section">
+        <h2 class="section-title"><i class="fas fa-seedling"></i> สไตล์มินิมอล (Minimal Style)</h2>
+        <div class="cafe-grid">
+            <a href="../cafe/cafe001.html" class="cafe-item" data-keywords="14:25 Hours.,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">01</div>
+                    <button class="fav-btn" id="btn-cafe001" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe001', '14:25 Hours.', '../imagas/1425/1425cafe1.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/1425/1425cafe1.webp" alt="คาเฟ่ 1425">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>14:25 Hours.</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe002.html" class="cafe-item" data-keywords="Black Ground Cafe & Dining, มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">02</div>
+                    <button class="fav-btn" id="btn-cafe002" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe002', 'Black Ground Cafe & Dining', '../imagas/Black Ground Cafe & Dining/Black7.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/Black Ground Cafe & Dining/Black7.webp" alt="คาเฟ่บอนนี่">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Black Ground Cafe & Dining</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe004.html" class="cafe-item" data-keywords="Faamsuk cafe,ฟาร์มสุข คาเฟ่,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">04</div>
+                    <button class="fav-btn" id="btn-cafe004" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe004', 'Faamsuk cafe', '../imagas/FAAMSUK/FAA1.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/FAAMSUK/FAA1.webp" alt="คาเฟ่ฟาร์มสุข">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Faamsuk cafe</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe005.html" class="cafe-item" data-keywords="For you coffee Lake view resort,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">05</div>
+                    <button class="fav-btn" id="btn-cafe005" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe005', 'For you coffee Lake view resort', '../imagas/foryoucoffee/foryou3.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/foryoucoffee/foryou3.webp" alt="คาเฟ่ฟอลยู">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>For you coffee Lake view resort</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe006.html" class="cafe-item" data-keywords="Intense coffee house.,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">06</div>
+                    <button class="fav-btn" id="btn-cafe006" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe006', 'Intense coffee house.', '../imagas/Intensecoffeehouse/Intense1.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/Intensecoffeehouse/Intense1.webp" alt="คาเฟ่อินเทน">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Intense coffee house.</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe007.html" class="cafe-item" data-keywords="Lark Cafe,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">07</div>
+                    <button class="fav-btn" id="btn-cafe007" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe007', 'Lark Cafe', '../imagas/LarkCafe/Lark8.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/LarkCafe/Lark8.webp" alt="คาเฟ่ลาร์ค">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Lark Cafe</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe009.html" class="cafe-item" data-keywords="Siam2C,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">09</div>   
+                    <button class="fav-btn" id="btn-cafe009" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe009', 'Siam2C', '../imagas/SIAM2C/Siam2C1.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/SIAM2C/Siam2C1.webp" alt="คาเฟ่สยามทู">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Siam2C</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe011.html" class="cafe-item" data-keywords="Bali กำนันเต่า,มินิมอล">
+                <div class="img-container">
+                    <div class="cafe-number">11</div>
+                    <button class="fav-btn" id="btn-cafe011" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe011', 'Bali กำนันเต่า', '../imagas/กำนันเต่า/billcafe9.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/กำนันเต่า/billcafe9.webp" alt="คาเฟ่กำนันเต่า">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Bali กำนันเต่า</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            </div>
+    </section>
+
+    <section id="vintage" class="cafe-section" style="margin-top: 50px;">
+        <h2 class="section-title"><i class="fas fa-history"></i> สไตล์วินเทจ (Vintage Style)</h2>
+        <div class="cafe-grid">
+            <a href="../cafe/cafe003.html" class="cafe-item" data-keywords="Chim Niyom Cafe,ชิมนิยม คาเฟ่,วินเทจ">
+                <div class="img-container">
+                    <div class="cafe-number">03</div>
+                    <button class="fav-btn" id="btn-cafe003" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe003', 'Chim Niyom Cafe', '../imagas/chim/chimcafe1.jpg')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/chim/chimcafe1.jpg" alt="คาเฟ่ชิมนิยม">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Chim Niyom Cafe</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe010.html" class="cafe-item" data-keywords="Kanvela Art Space,วินเทจ">
+                <div class="img-container">
+                    <div class="cafe-number">10</div>
+                    <button class="fav-btn" id="btn-cafe010" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe010', 'Kanvela Art Space', '../imagas/กาลเวฬา/k4.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/กาลเวฬา/k4.webp" alt="คาเฟ่เวฬา">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Kanvela Art Space</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+
+            <a href="../cafe/cafe012.html" class="cafe-item" data-keywords="Chim Hong Cafe,วินเทจ">
+                <div class="img-container">
+                    <div class="cafe-number">12</div>
+                    <button class="fav-btn" id="btn-cafe012" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe012', 'Chim Hong Cafe', '../imagas/ชิมฮง/ชิมฮง14.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/ชิมฮง/ชิมฮง14.webp" alt="คาเฟ่ชิมฮง">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Chim Hong Cafe</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>
+            </div>
+    </section>
+
+    <section id="nature" class="cafe-section" style="margin-top: 50px;">
+        <h2 class="section-title"><i class="fas fa-leaf"></i> สายธรรมชาติ (Nature & Garden)</h2>
+        <div class="cafe-grid">
+            <a href="../cafe/cafe008.html" class="cafe-item" data-keywords="Makesense,ธรรมชาติ">
+                <div class="img-container">
+                    <div class="cafe-number">08</div>
+                    <button class="fav-btn" id="btn-cafe008" 
+                        onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite('cafe008', 'Makesense', '../imagas/Make​Sense/Makesense14.webp')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <img src="../imagas/Make​Sense/Makesense14.webp" alt="คาเฟ่เมคเซน">
+                </div>
+                <div class="cafe-info">
+                    <span class="location-tag">📍 อ.เมืองพิจิตร</span>
+                    <h3>Makesense</h3>
+                    <div class="view-btn status-text">สำรวจร้านนี้</div>
+                </div>
+            </a>     
+            </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand-section">
+                <div class="footer-logo">เว็บไซต์แนะนำคาเฟ่ในจังหวัดพิจิตร</div>
+                <p class="footer-description">คอมมูนิตี้คนรักคาเฟ่ในพิจิตร รวบรวมข้อมูลรีวิวและการเดินทาง</p>
+                <p class="contact-invitation">
+                    อยากให้เราไปรีวิวร้านไหน? 
+                    <a href="../contact/index.html?tab=info" onclick="goToContactForm(event)">ส่งข้อความหาเราได้เลย</a>
+                </p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-column">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="../index.html">หน้าแรก</a></li>
+                        <li><a href="../allcafe/index.html">รวมคาเฟ่</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>บริการของเรา</h4>
+                    <ul>
+                        <li><a href="../reviews/index.html">รีวิวจากผู้ใช้</a></li>
+                        <li><a href="../login/index.html">สมัครใช้งาน</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>ผู้จัดทำ</h4>
+                    <ul>
+                        <li><a href="../contact/index.html">เกี่ยวกับเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <div class="floating-auth">
+        <a href="../login/index.html" id="mainAuthBtn" class="btn-open-login" style="text-decoration: none;">
+            <span>👤</span> เข้าสู่ระบบ
+        </a>
+    
+        <div id="userAvatar" class="user-profile-float" onclick="location.href='user/index.html'">
+            <img src="../imagas/coffee-beans.png" alt="Avatar">
+        </div>    
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDt4kR8SacD2LPwmyFpcZ4FNHJpCT-pOwc",
+            authDomain: "phichit-cafe.firebaseapp.com",
+            projectId: "phichit-cafe",
+            storageBucket: "phichit-cafe.firebasestorage.app",
+            messagingSenderId: "825175930096",
+            appId: "1:825175930096:web:32336ea0ebc1cdf3c33e35"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+    // ฟังก์ชันหลักที่ใช้ "จำ" สถานะการล็อกอิน
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+            // --- กรณี Login แล้ว ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'none', 'important');
+            }
+            if (avatarDiv) {
+                // สั่งให้โชว์เป็น flex และใช้ important เพื่อชนะ CSS ที่เราเขียนดักไว้
+                avatarDiv.style.setProperty('display', 'flex', 'important');
+                
+                // ดึงรูปโปรไฟล์มาใส่
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const userData = userDoc.data();
+                        if (userData.photo) {
+                            avatarDiv.querySelector('img').src = userData.photo;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        } else {
+            // --- กรณีไม่ได้ Login ---
+            if (authBtn) {
+                authBtn.style.setProperty('display', 'flex', 'important');
+            }
+            if (avatarDiv) {
+                avatarDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+        });
+
+        // ดึงปุ่มรูปโปรไฟล์มา
+        const avatarDiv = document.getElementById('userAvatar');
+
+        // ถ้ามีการคลิกที่รูปโปรไฟล์
+        if (avatarDiv) {
+        avatarDiv.addEventListener('click', () => {
+        // สั่งให้ไปหน้าโปรไฟล์
+        window.location.href = '../user/index.html';
+        });
+        }
+
+    onAuthStateChanged(auth, async (user) => {
+        const authBtn = document.getElementById('mainAuthBtn');
+        const avatarDiv = document.getElementById('userAvatar');
+
+        if (user) {
+        console.log("เข้าสู่ระบบด้วยชื่อ:", user.email);
+
+        // --- 1. จัดการ UI ปุ่ม Login และ Avatar (ใช้รูปแบบโค้ดแรกที่ชัวร์กว่า) ---
+        if (authBtn) {
+            authBtn.style.setProperty('display', 'none', 'important');
+        }
+        if (avatarDiv) {
+            avatarDiv.style.setProperty('display', 'flex', 'important');
+            
+            // ดึงรูปโปรไฟล์จาก Firestore มาใส่
+            try {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    if (userData.photo) {
+                        avatarDiv.querySelector('img').src = userData.photo;
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching user photo:", error);
+            }
+        }
+
+        // --- 2. เช็คสถานะหัวใจ (ดึงมาจากโค้ดที่สอง) ---
+        try {
+            const favRef = collection(db, "users", user.uid, "favorites");
+            const querySnapshot = await getDocs(favRef);
+            
+            // ล้างสีหัวใจก่อนเช็คใหม่ (กันบั๊กกรณีสลับ User)
+            document.querySelectorAll('.fav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                const icon = btn.querySelector('i');
+                if (icon) icon.classList.replace('fas', 'far');
+            });
+
+            querySnapshot.forEach((doc) => {
+                const cafeId = doc.id;
+                const btn = document.getElementById(`btn-${cafeId}`);
+                if (btn) {
+                    btn.classList.add('active');
+                    const icon = btn.querySelector('i');
+                    if (icon) icon.classList.replace('far', 'fas');
+                }
+            });
+        } catch (error) {
+            console.error("Error loading hearts:", error);
+        }
+
+        } else {
+        // --- 3. กรณีไม่ได้ Login (Logout) ---
+        if (authBtn) {
+            authBtn.style.setProperty('display', 'flex', 'important');
+        }
+        if (avatarDiv) {
+            avatarDiv.style.setProperty('display', 'none', 'important');
+        }
+        
+        // ล้างสีแดงออกจากหัวใจทุกดวง
+        document.querySelectorAll('.fav-btn').forEach(btn => {
+            btn.classList.remove('active');
+            const icon = btn.querySelector('i');
+            if (icon) icon.classList.replace('fas', 'far');
+        });
+        }
+    });
+
+    // --- ฟังก์ชันกดหัวใจ (ย้ายมาไว้ใน module ให้ถูกต้อง) ---
+window.toggleFavorite = async (cafeId, cafeName, cafeImg) => {
+    const user = auth.currentUser;
+    
+    // ตรวจสอบการ Login
+    if (!user) {
+        alert("กรุณาเข้าสู่ระบบก่อนบันทึกร้านโปรดค่ะ");
+        window.location.href = '../login/index.html';
+        return;
+    }
+
+    const favRef = doc(db, "users", user.uid, "favorites", cafeId);
+    const btn = document.getElementById(`btn-${cafeId}`);
+    const icon = btn.querySelector('i');
+
+    try {
+        const docSnap = await getDoc(favRef);
+        
+        if (docSnap.exists()) {
+            // ถ้ามีอยู่แล้ว -> ลบออก
+            await deleteDoc(favRef);
+            btn.classList.remove('active');
+            icon.classList.replace('fas', 'far'); // เปลี่ยนเป็นหัวใจโปร่ง
+        } else {
+            // ถ้ายังไม่มี -> เพิ่มเข้าไป
+            await setDoc(favRef, { 
+                name: cafeName, 
+                image: cafeImg,
+                addedAt: new Date()
+            });
+            btn.classList.add('active');
+            icon.classList.replace('far', 'fas'); // เปลี่ยนเป็นหัวใจทึบ
+        }
+    } catch (error) {
+        console.error("Error toggling favorite:", error);
+        alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+    }
+};
+
+    // --- ระบบค้นหาและรายการแนะนำ (Suggestions) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const suggestionList = document.getElementById('suggestionList');
+
+        // 1. ดึงชื่อคาเฟ่ทั้งหมดในหน้าเว็บมาเก็บไว้ทำ Suggestion
+        function getCafeNames() {
+            const titles = document.querySelectorAll('.cafe-item h3');
+            return Array.from(titles).map(h3 => h3.innerText);
+        }
+
+        const cafeNames = getCafeNames();
+
+        // 2. ฟังก์ชันหลักในการกรองร้าน (Filter)
+        function filterCafes() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            const sections = document.querySelectorAll('.cafe-section');
+
+            if (keyword === "") {
+                showAllSections();
+                return;
+            }
+
+            sections.forEach(section => {
+                const items = section.querySelectorAll('.cafe-item');
+                let hasMatch = false;
+
+                items.forEach(item => {
+                    const title = item.querySelector('h3').innerText.toLowerCase();
+                    const keywords = item.getAttribute('data-keywords').toLowerCase();
+                    
+                    if (title.includes(keyword) || keywords.includes(keyword)) {
+                        item.style.display = "block";
+                        hasMatch = true;
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+                section.style.display = hasMatch ? "block" : "none";
+            });
+            suggestionList.style.display = "none"; // ค้นหาแล้วปิดรายการแนะนำ
+        }
+
+        // 3. ระบบรายการแนะนำขณะพิมพ์ (Autocomplete)
+        searchInput.addEventListener('input', () => {
+            const val = searchInput.value.toLowerCase().trim();
+            suggestionList.innerHTML = "";
+            
+            if (val.length > 0) {
+                const matches = cafeNames.filter(name => name.toLowerCase().includes(val));
+                
+                if (matches.length > 0) {
+                    matches.forEach(match => {
+                        const li = document.createElement('li');
+                        li.textContent = match;
+                        li.style.padding = "12px 20px";
+                        li.style.cursor = "pointer";
+                        li.style.borderBottom = "1px solid #f0f0f0";
+                        
+                        li.onclick = () => {
+                            searchInput.value = match;
+                            suggestionList.style.display = "none";
+                            filterCafes(); // คลิกแล้วค้นหาทันที
+                        };
+                        
+                        li.onmouseover = () => li.style.backgroundColor = "#f9f9f9";
+                        li.onmouseout = () => li.style.backgroundColor = "transparent";
+                        
+                        suggestionList.appendChild(li);
+                    });
+                    suggestionList.style.display = "block";
+                } else {
+                    suggestionList.style.display = "none";
+                }
+            } else {
+                suggestionList.style.display = "none";
+            }
+        });
+
+        // ปุ่มค้นหา
+        searchButton.addEventListener('click', filterCafes);
+
+        // กด Enter เพื่อค้นหา
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') filterCafes();
+        });
+
+        // คลิกข้างนอกแล้วปิดลิสต์
+        document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) suggestionList.style.display = "none";
+        });
+
+        // --- ระบบ Tag ---
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.onclick = function() {
+                const selectedTag = this.innerText.replace('#', '').toLowerCase();
+                if (searchInput.value === selectedTag) {
+                    searchInput.value = '';
+                    showAllSections();
+                } else {
+                    searchInput.value = selectedTag;
+                    filterSectionsByTag(selectedTag);
+                }
+            };
+        });
+    });
+
+    // ฟังก์ชันแสดงทุก Section
+    function showAllSections() {
+        document.querySelectorAll('.cafe-section').forEach(section => {
+            section.style.display = "block";
+            section.querySelectorAll('.cafe-item').forEach(item => {
+                item.style.display = "block";
+            });
+        });
+    }
+
+    // ฟังก์ชันกรองตาม Tag
+    function filterSectionsByTag(tag) {
+        const sections = document.querySelectorAll('.cafe-section');
+        const tagMap = { 'มินิมอล': 'minimal', 'วินเทจ': 'vintage', 'ธรรมชาติ': 'nature' };
+
+        sections.forEach(section => {
+            const sectionId = section.id.toLowerCase();
+            const items = section.querySelectorAll('.cafe-item');
+            let hasMatch = false;
+
+            items.forEach(item => {
+                const keywords = item.getAttribute('data-keywords').toLowerCase();
+                if (keywords.includes(tag) || (tagMap[tag] === sectionId)) {
+                    item.style.display = "block";
+                    hasMatch = true;
+                } else {
+                    item.style.display = "none";
+                }
+            });
+            section.style.display = hasMatch ? "block" : "none";
+        });
+    }
+
+    // เพิ่มฟังก์ชันนี้ลงไปท้าย script
+// ย้ายออกมาไว้นอกบล็อก script type="module" หรือเขียนแบบนี้เพื่อให้ HTML มองเห็น
+
+
+</script>
+<script>
+    // ฟังก์ชันนี้ต้องอยู่นอก type="module" เท่านั้น!
+    function goToContactForm(event) {
+        // เช็คว่าเราอยู่ที่หน้า contact หรือยัง
+        if (window.location.pathname.includes('contact/index.html')) {
+            // ถ้าอยู่หน้า contact แล้ว ไม่ต้องโหลดหน้าใหม่
+            event.preventDefault(); 
+            if (typeof openTab === 'function') {
+                openTab('info');
+            }
+            const contactSection = document.getElementById('info');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        // ถ้าไม่อยู่หน้า contact ลิงก์จะทำงานปกติ พาไปที่หน้า contact?tab=info
+    }
+</script>
