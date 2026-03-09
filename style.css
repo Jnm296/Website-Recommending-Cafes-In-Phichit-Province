@@ -941,11 +941,26 @@ body {
     color: var(--deep-pink);
 }
 
-/* Responsive สำหรับมือถือ */
-@media (max-width: 768px) {
-    .footer-content { flex-direction: column; text-align: center; }
-    .footer-links-grid { grid-template-columns: 1fr 1fr; }
-    .footer-brand-section { text-align: center; }
+/* --- สำหรับโทรศัพท์ (Responsive) --- */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* เรียงจากบนลงล่าง */
+        text-align: center; /* จัดให้อยู่ตรงกลางเพื่อความสวยงามบนมือถือ */
+    }
+
+    .footer-links-grid {
+        flex-direction: column; /* หัวข้อเมนูเรียงต่อกันลงมา */
+        gap: 30px;
+        align-items: center;
+    }
+
+    .footer-logo {
+        font-size: 20px;
+    }
+
+    .footer-column h4 {
+        margin-bottom: 10px;
+    }
 }
 /* ---------------------- */
 .rating-bar-container { margin: 10px 0; }
@@ -1008,4 +1023,5 @@ body {
     width: 80%;
     height: 80%;
     object-fit: cover; /* สำคัญมาก: ป้องกันรูปยืดหรือเบี้ยว */
+
 }
